@@ -7,44 +7,40 @@ import {
 	AfterViewInit,
 	Inject,
 	PLATFORM_ID,
+	OnInit,
 } from '@angular/core';
+import Swiper from 'swiper';
 
+import {
+	Navigation,
+	Pagination
+} from 'swiper/modules';
 import {
 	Unsubscriber
 } from '@core';
 
+Swiper.use([Navigation, Pagination]);
+
 @Unsubscriber()
 @Component({
-	selector		: 'home',
-	templateUrl		: '../templates/home.pug',
-	styleUrls		: [ '../styles/home.scss' ],
-	host			: { class: 'home' },
-	changeDetection	: ChangeDetectionStrategy.OnPush,
+	selector: 'home',
+	templateUrl: '../templates/home.pug',
+	styleUrls: ['../styles/home.scss'],
+	host: { class: 'home' },
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent
+implements OnInit, AfterViewInit {
 
-	constructor( @Inject( PLATFORM_ID ) private platformId: Object ) {}
+	constructor(
+		@Inject(PLATFORM_ID) private platformId: Object
+	) {}
+
+	ngOnInit(): void {
+	}
 
 	ngAfterViewInit(): void {
-		if ( isPlatformBrowser( this.platformId )) {
-			const toggleTopButton = () => {
-				const backToTop = document.getElementById('backtop');
-				backToTop.style.opacity = window.scrollY >= 800 ? '1' : '0';
-				backToTop.style.visibility = window.scrollY >= 800 ? 'visible' : 'hidden';
-			};
-			const scrollToTop = () => {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
-			};
-
-			// Set up event listeners
-			const backToTop = document.getElementById('backtop');
-			backToTop.addEventListener('click', scrollToTop);
-
-			window.addEventListener('scroll', toggleTopButton);
-			window.addEventListener('resize', toggleTopButton);
+		if ( isPlatformBrowser( this.platformId ) ) {
 		}
 	}
 

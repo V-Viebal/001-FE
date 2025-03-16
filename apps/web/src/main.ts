@@ -16,14 +16,17 @@ if ( process.env.ENV_NAME === 'prod' ) {
  * Bootstrap the Angular application in the browser.
  * This runs on the client-side after SSR or prerendering has completed.
  */
-platformBrowserDynamic()
-.bootstrapModule(AppModule)
+import('@lottiefiles/dotlottie-wc')
 .then(() => {
-	// Register the service worker only in production and if supported
-	if ( 'serviceWorker' in navigator &&  process.env.ENV_NAME === 'prod' ) {
-		navigator.serviceWorker.register('./ngsw-worker.js');
-	}
-})
-.catch((err: Error) =>
-	console.error('Error bootstrapping Angular app:', err)
-);
+	platformBrowserDynamic()
+	.bootstrapModule(AppModule)
+	.then(() => {
+		// Register the service worker only in production and if supported
+		if ( 'serviceWorker' in navigator &&  process.env.ENV_NAME === 'prod' ) {
+			navigator.serviceWorker.register('./ngsw-worker.js');
+		}
+	})
+	.catch((err: Error) =>
+		console.error('Error bootstrapping Angular app:', err)
+	);
+}).catch(err => console.error('Failed to load DotLottieWC:', err));

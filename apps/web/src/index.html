@@ -24,6 +24,14 @@
 			content="template website, mẫu website, website miễn phí, thiết kế website, viebal, trang web đẹp"
 		/>
 
+		<link
+			rel="preload"
+			href="assets/images/logos/logo-splash.lottie"
+			as="fetch"
+			type="application/json"
+			crossorigin
+		/>
+
 		<!-- Canonical URL for SEO (avoid duplicate content) -->
 		<link rel="canonical" href="https://viebal.top" />
 
@@ -110,7 +118,6 @@
 				}
 			}
 		</script>
-
 		<!-- Robots and Sitemap for SEO Crawling -->
 		<link rel="robots" href="/robots.txt" />
 		<link
@@ -124,54 +131,52 @@
 	<body style="position: relative">
 		<app></app>
 
-		Splash Screen with Optimized LCP Image
+		<!-- Splash Screen with Optimized LCP Animation -->
 		<div class="splash-screen">
-			<img
-				src="assets/images/logos/logo-vertical.png"
-				width="220"
-				alt="Viebal - Mẫu Website Đẹp & Miễn Phí"
-				loading="eager"
-			/>
+			<dotlottie-wc
+				src="assets/images/logos/logo-splash.lottie"
+				autoplay>
+			</dotlottie-wc>
 		</div>
 
 		<!-- Inline CSS for Splash Screen (Minimized for Performance) -->
 		<style>
-			@keyframes flash {
-				0% {
-					opacity: 1;
-				}
-				50% {
-					opacity: 0.1;
-				}
-				100% {
-					opacity: 1;
-				}
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden; /* Prevent scrolling while splash is visible */
 			}
-
 			.splash-screen {
 				position: fixed;
-				z-index: 2;
+				top: 0;
+				left: 0;
+				z-index: 9999; /* High z-index to ensure it overlays everything */
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
-				width: 100%;
-				min-width: 0;
-				max-width: 100vw;
-				height: 100%;
-				min-height: 0;
-				max-height: 100vh;
+				width: 100vw;
+				height: 100vh;
 				background-color: #fff;
+				transition: opacity 0.3s ease; /* Smooth fade-out */
 			}
 
-			.splash-screen img {
-				animation: flash 2s infinite;
-				transform: scale(1.5);
-			}
-
-			app[ng-version] + .splash-screen {
-				display: none !important;
+			.splash-screen dotlottie-wc {
+				width: 500px; /* Adjust size as needed */
+				height: 500px;
 			}
 		</style>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				setTimeout(() => {
+					const splashScreen = document.querySelector('.splash-screen');
+					if (splashScreen) {
+						splashScreen.classList.add('hidden');
+						document.body.style.overflow = 'auto';
+					}
+				}, 4000);
+			});
+		</script>
 	</body>
 </html>

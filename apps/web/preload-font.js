@@ -53,6 +53,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	// Preload fonts in parallel
 	const fontsToLoad = [
+		preloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-Regular-400.ttf?hs3yr2', '400' ),
 		preloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-Medium-500.ttf?hs3yr2', '500' ),
 		preloadFont( 'InterHeading', '/assets/fonts/Inter/heading/InterTight-Medium-500.ttf?hs3yr2', '500' ),
 	];
@@ -78,7 +79,6 @@ window.addEventListener( 'load', () => {
 		lazyloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-Thin-100.ttf?hs3yr2', '100' ),
 		lazyloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-ExtraLight-200.ttf?hs3yr2', '200' ),
 		lazyloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-Light-300.ttf?hs3yr2', '300' ),
-		lazyloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-Regular-400.ttf?hs3yr2', '400' ),
 		lazyloadFont( 'Inter', '/assets/fonts/Inter/body/Inter-SemiBold-600.ttf?hs3yr2', '600' ),
 	];
 

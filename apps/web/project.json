@@ -45,10 +45,16 @@
 					"apps/web/src/sitemap.xml"
 				],
 				"styles": [
+					"node_modules/swiper/swiper-bundle.min.css",
+					"node_modules/swiper/modules/navigation.min.css",
+					"node_modules/swiper/modules/pagination.min.css",
 					"apps/web/src/scss/styles.scss",
 					"apps/web/src/scss/libs.scss"
 				],
-				"scripts": ["apps/web/preload-font.js"],
+				"scripts": [
+					"node_modules/swiper/swiper-bundle.min.js",
+					"apps/web/preload-font.js"
+				],
 				"stylePreprocessorOptions": {
 					"includePaths": ["apps/web"]
 				},
