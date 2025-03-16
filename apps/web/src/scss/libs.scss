@@ -1,0 +1,61 @@
+@import 'partials/core';
+@import 'partials/variable';
+@import 'partials/mixin';
+@import 'partials/fontface';
+@import 'partials/sprite';
+@import 'partials/reset';
+@import 'partials/form';
+@import 'partials/typography';
+@import 'partials/helper';
+@import 'partials/customize';
+@import 'partials/responsive';
+@import 'partials/structure';
+
+body {
+	$palette-prefix: '--palette-';
+
+	// Append pre-defined colors in $palettes
+	@each $name, $colors in $palettes {
+		@each $tone, $color in $colors {
+			$property: $palette-prefix + $name + '-' + $tone;
+
+			#{ $property }: $color;
+		}
+	}
+}
+
+.p-tooltip-text {
+	padding: 0.25rem 0.75rem;
+}
+
+.p-toolbar {
+	height: 64px;
+	padding: 0 20px;
+	border-radius: 0;
+
+}
+
+p-table {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	.p-datatable {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		height: 100%;
+
+		.p-datatable-wrapper {
+			height: -webkit-fill-available;
+		}
+
+		p-sorticon {
+			margin-left: 1rem;
+		}
+
+		.p-datatable-footer {
+			padding: 0 8px;
+		}
+	}
+}

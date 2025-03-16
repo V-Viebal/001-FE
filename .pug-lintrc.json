@@ -1,0 +1,18 @@
+{
+	"extends": "./node_modules/pug-lint-config-clock/.pug-lintrc.json",
+	"disallowClassLiteralsBeforeIdLiterals": true,
+	"disallowIdAttributeWithStaticValue": true,
+	"disallowIdLiterals": null,
+	"requireLowerCaseAttributes": null,
+	"requireSpecificAttributes": null,
+	"validateAttributeSeparator": {
+		"separator": ", ",
+		"multiLineSeparator": ",\n\t"
+	},
+	"validateIndentation": "\t",
+	"validateLineBreaks": null,
+	"disallowMultipleLineBreaks": true,
+	"disallowDuplicateAttributes": true,
+	"requireClassLiteralsBeforeAttributes": true,
+	"validateDivTags": true
+}

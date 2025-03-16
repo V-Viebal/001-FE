@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<!-- Base URL for Angular routing -->
+		<base href="/" />
+
+		<!-- Title (Keep under 60 characters for Google) -->
+		<title>Viebal - Mẫu Website Đẹp & Miễn Phí</title>
+
+		<!-- Meta Tags for SEO and Compatibility -->
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="Cache-Control"
+			content="no-cache, no-store, must-revalidate"
+		/>
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="Khám phá kho template website phong phú, miễn phí - dễ dàng chọn lựa và tạo trang web riêng của bạn chỉ trong vài bước đơn giản, một website đẹp và chuyên nghiệp."
+		/>
+		<meta
+			name="keywords"
+			content="template website, mẫu website, website miễn phí, thiết kế website, viebal, trang web đẹp"
+		/>
+
+		<!-- Canonical URL for SEO (avoid duplicate content) -->
+		<link rel="canonical" href="https://viebal.top" />
+
+		<!-- Favicon and Apple Touch Icons (Optimized for All Devices) -->
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="assets/favicons/favicon.ico"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="assets/favicons/apple-icon-180x180.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="assets/favicons/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="assets/favicons/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="assets/favicons/manifest.json" />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta
+			name="msapplication-TileImage"
+			content="assets/favicons/ms-icon-144x144.png"
+		/>
+		<meta name="theme-color" content="#ffffff" />
+
+		<!-- Open Graph Meta Tags for Social Sharing and SEO -->
+		<meta
+			property="og:title"
+			content="Viebal - Mẫu Website Đẹp & Miễn Phí"
+		/>
+		<meta
+			property="og:description"
+			content="Khám phá kho template website phong phú, miễn phí - dễ dàng chọn lựa và tạo trang web riêng của bạn chỉ trong vài bước đơn giản, một website đẹp và chuyên nghiệp."
+		/>
+		<meta
+			property="og:image"
+			content="https://viebal.top/assets/images/logos/logo.png"
+		/>
+		<meta property="og:url" content="https://viebal.top" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Viebal" />
+
+		<!-- Twitter Card Meta Tags for Twitter and Google Rich Results -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="Viebal - Mẫu Website Đẹp & Miễn Phí"
+		/>
+		<meta
+			name="twitter:description"
+			content="Khám phá kho template website phong phú, miễn phí - dễ dàng chọn lựa và tạo trang web riêng của bạn chỉ trong vài bước đơn giản, một website đẹp và chuyên nghiệp."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://viebal.top/assets/images/logos/logo.png"
+		/>
+
+		<!-- Structured Data (JSON-LD) for Rich Snippets (Enhanced for Logo and Organization) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				"name": "Viebal",
+				"url": "https://viebal.top",
+				"description": "Khám phá kho template website phong phú, miễn phí - dễ dàng chọn lựa và tạo trang web riêng của bạn chỉ trong vài bước đơn giản, một website đẹp và chuyên nghiệp.",
+				"publisher": {
+					"@type": "Organization",
+					"name": "Viebal",
+					"logo": {
+						"@type": "ImageObject",
+						"url": "https://viebal.top/assets/images/logos/logo.png",
+						"width": 1200,
+						"height": 630
+					}
+				}
+			}
+		</script>
+
+		<!-- Robots and Sitemap for SEO Crawling -->
+		<link rel="robots" href="/robots.txt" />
+		<link
+			rel="sitemap"
+			type="application/xml"
+			title="Sitemap"
+			href="/sitemap.xml"
+		/>
+
+	</head>
+	<body style="position: relative">
+		<app></app>
+
+		Splash Screen with Optimized LCP Image
+		<div class="splash-screen">
+			<img
+				src="assets/images/logos/logo-vertical.png"
+				width="220"
+				alt="Viebal - Mẫu Website Đẹp & Miễn Phí"
+				loading="eager"
+			/>
+		</div>
+
+		<!-- Inline CSS for Splash Screen (Minimized for Performance) -->
+		<style>
+			@keyframes flash {
+				0% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.1;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.splash-screen {
+				position: fixed;
+				z-index: 2;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				min-width: 0;
+				max-width: 100vw;
+				height: 100%;
+				min-height: 0;
+				max-height: 100vh;
+				background-color: #fff;
+			}
+
+			.splash-screen img {
+				animation: flash 2s infinite;
+				transform: scale(1.5);
+			}
+
+			app[ng-version] + .splash-screen {
+				display: none !important;
+			}
+		</style>
+	</body>
+</html>

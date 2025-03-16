@@ -1,0 +1,207 @@
+mixin item-label
+	span.text-truncate([title]='item.label | empty')
+		| {{ item.label }}
+	ng-container(
+		*ngTemplateOutlet='item.labelTemplate')
+
+mixin item-description
+	| {{ item.description }}
+	ng-container(
+		*ngTemplateOutlet='item.descriptionTemplate')
+
+mixin no-option
+	+if('isSearching')
+		| {{ searchConfig?.notFoundMessage }}
+	+else
+		+if('notFoundMessage')
+			| {{ notFoundMessage }}
+		+else
+			| {{
+			|	name
+			|		? ( "CUB.MESSAGE.NO_OPTIONS_AVAILABLE_WITH_NAME" | translate : { name: name | lowercase } )
+			|		: ( "CUB.MESSAGE.NO_OPTIONS_AVAILABLE" | translate )
+			| }}
+
+mixin button
+	button(
+		[icon]='item.icon',
+		[iconColor]='item.iconColor',
+		[iconSize]='item.iconSize',
+		[disabled]='item.disabled',
+		(triggered)='toggleItem( item )')&attributes(attributes)
+		block
+		span.cub-dropdown-item
+			span.cub-dropdown-item__label
+				cub-chip(
+					*ngIf='item.color; else elseBlock;',
+					[color]='item.color')
+					+item-label
+				ng-template(#elseBlock)
+					+item-label
+			span.cub-dropdown-item__description
+				+item-description
+
+mixin menu-item
+	ng-container(
+		*ngIf='multiple; else elseBlock;')
+		+button()(
+			cubMenuItem,
+			[autoClose]='false')&attributes(attributes)
+			ng-container(
+				cubMenuItemPrefix,
+				*ngIf='multiple && !item.isBlank')
+				cub-checkbox(
+					size='large',
+					[ngModel]='item.isSelected')
+	ng-template(#elseBlock)
+		+button()(
+			cubMenuSelectItem,
+			[selected]='item.isSelected')&attributes(attributes)
+			ng-container(
+				cubMenuItemSuffix,
+				*ngIf='item?.suffixDescription')
+				label.text-truncate(
+					[title]='item.suffixDescription')
+					| {{ item.suffixDescription }}
+
+cub-menu.cub-dropdown(
+	[beforeTriggerItem]='beforeSelectItem')
+	cub-menu-header(
+		*ngIf='searchable')
+		ng-template(cubMenuHeader)
+			cub-search-box(
+				autoFocusOn,
+				[placeholder]='searchConfig?.placeholder',
+				(searching)='onSearching( $event )')
+	cub-menu-content
+		ng-template(cubMenuContent)
+			cub-menu-group(
+				*ngIf=`displayingItems.length
+					|| !displayingGroups.length`)
+				ng-container(
+					*ngIf=`!displayingItems.length
+						&& !displayingGroups.length`)
+					+no-option
+				+for('item of displayingItems; track item')
+					+menu-item()
+			+for('group of displayingGroups; track group')
+				cub-menu-group(
+					[title]='group.title')
+					ng-container(
+						*ngIf='!group.displayingItems.length')
+						+no-option
+					+for('item of group.displayingItems; track item')
+						+menu-item()
+
+cub-form-field(
+	[tabindex]='tabindex',
+	[label]='label',
+	[description]='description',
+	[helpText]='helpText',
+	[size]='size',
+	[variant]='variant',
+	[autoWidth]='autoWidth',
+	[includeOuterSize]='includeOuterSize',
+	[hideRequiredMarker]='hideRequiredMarker',
+	[control]='control',
+	[errorsMessage]='errorsMessage',
+	[displayErrorMode]='displayErrorMode',
+	[focusing]='isOpened',
+	(container.click)='onClick()',
+	(container.keydown)='onKeydown( $event )',
+	(container.focus)='onFocus()',
+	(container.blur)='onBlur()')
+	ng-container(
+		cubFormFieldPrefix,
+		*ngIf=`!multiple
+			&& displaying?.[ 0 ]?.icon`)
+		cub-icon(
+			[name]='displaying[ 0 ].icon',
+			[color]='displaying[ 0 ].iconColor',
+			[size]=`
+				displaying[ 0 ].iconSize
+					|| (
+						dropdownFormField.isSmallSize
+							? "16px"
+							: "20px"
+					)
+			`)
+	.cub-dropdown__displaying-list(
+		#displayingBlock,
+		*ngIf=`multiple
+			|| displaying?.[ 0 ].color;
+			else elseBlock;`)
+		+for('item of displaying; track item')
+			cub-chip.cub-dropdown__displaying-item(
+				[class.cub-dropdown__displaying-item__error]=`
+					item.isNotAvailable && displayItemError`,
+				[color]='item.color')
+				ng-container(
+					*ngIf='item.isNotAvailable; else elseBlock;')
+					| {{ "CUB.LABEL.UNAVAILABLE" | translate }}
+				ng-template(#elseBlock)
+					span.cub-dropdown__displaying-item__label(
+						[attr.title]='item.label')
+						+item-label
+				button(
+					tabindex='-1',
+					*ngIf=`multiple
+						&& dropdownFormField.isFocused
+						&& !readonly`,
+					[disabled]='disabled',
+					(click)='$event?.stopPropagation(); deselectItem( item )')
+					cub-icon(
+						name='close',
+						size='12px')
+	ng-template(#elseBlock)
+		+for('item of displaying; track item')
+			.cub-dropdown__displaying-raw(
+				#displayingBlock)
+				+item-label
+	input(
+		cubFormFieldInput,
+		readonly,
+		tabindex='-1',
+		[name]='name || label',
+		[placeholder]=`
+			displaying?.[ 0 ].isNotAvailable
+				? ( "CUB.LABEL.UNAVAILABLE" | translate )
+				: placeholder
+					?? ( name
+						? ( "CUB.PLACEHOLDER.SELECT_WITH_NAME" | translate : { name: name | lowercase } )
+						: ( "CUB.PLACEHOLDER.SELECT" | translate ) )
+		`,
+		[autoFocusOn]='autoFocusOn',
+		[autoReset]='autoReset',
+		[required]='isRequired',
+		[disabled]='isDisabled',
+		[clearable]='canClear',
+		[ngModel]='displayingText',
+		(cleared)='onCleared()')
+	ng-container(
+		cubFormFieldDisplay,
+		*ngIf=`displaying?.[ 0 ].isNotAvailable && !multiple`)
+		| {{ "CUB.LABEL.UNAVAILABLE" | translate }}
+	ng-container(
+		cubFormFieldSuffix,
+		*ngIf='!readonly')
+		cub-icon(
+			size='16px',
+			color='tertiary',
+			[name]=`isOpened
+				? "chevron-up"
+				: "chevron-down"`)
+	ng-container(
+		cubFormFieldError,
+		*ngIf=`displaying?.[ 0 ].isNotAvailable
+			&& !dropdownError`)
+		| {{
+		|	name
+		|		? ( "CUB.MESSAGE.UNAVAILABLE_WITH_NAME" | translate : { name } )
+		|		: ( "CUB.MESSAGE.UNAVAILABLE" | translate )
+		| }}
+	ng-container(
+		cubFormFieldError,
+		*ngIf='dropdownError')
+		ng-content(
+			select='[cubDropdownError]')

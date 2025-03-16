@@ -1,0 +1,77 @@
+mixin content
+	.layout.layout-column.ph-20(
+		[ngStyle]=`{
+			'max-width.px'
+			: '410' }`)
+		.layout-column.layout-align-start-center.layout-gap-20.full-width
+			h2
+				| {{ existAccount ? ('AUTH.LABEL.ACCOUNT_EXISTS' | translate) : ('AUTH.LABEL.SIGN_IN' | translate) }}
+			.layout-column.full-width.layout-gap-4
+				form.layout-column.layout-gap-16.full-width.mih-244(
+					autocomplete='on',
+					[formGroup]='signInForm',
+					(submit)='signin()')
+					ng-container(*ngIf='existAccount else elseExistAccount')
+						span.text-center(
+							[innerHtml]='"AUTH.MESSAGE.EMAIL_EXISTS" | translate : { email: existAccount}')
+					ng-template(#elseExistAccount)
+						cub-form-field(
+							hideRequiredMarker,
+							[label]='"AUTH.LABEL.EMAIL" | translate')
+							input(
+								cubFormFieldInput,
+								clearable,
+								autoFocusOn,
+								type='email',
+								name='email',
+								autocomplete='email',
+								formControlName='email',
+								[placeholder]='"AUTH.PLACEHOLDER.TYPE_EMAIL" | translate',
+								[(valueControl)]='account.email',
+								(valueControlChange)='changeValue()')
+							ng-container(
+								cubFormFieldError,
+								*ngIf='isEmailPasswordIncorrect')
+					cub-form-field(
+						hideRequiredMarker,
+						[label]='"AUTH.LABEL.PASSWORD" | translate')
+						input(
+							autoFocusOn,
+							cubFormFieldInput,
+							name='password',
+							autocomplete='password',
+							formControlName='password',
+							[clearable]='false',
+							[type]='hiddenPassword ? "text" : "password"',
+							[placeholder]='"AUTH.PLACEHOLDER.TYPE_PASSWORD" | translate',
+							[(valueControl)]='account.password',
+							(valueControlChange)='changeValue()')
+						ng-container(cubFormFieldSuffix)
+							button(
+								cubBasicButton,
+								iconSize='16px',
+								iconColor='secondary',
+								[icon]='hiddenPassword ? "eye" : "eye-slash"',
+								(click)='hiddenPassword = !hiddenPassword')
+						ng-container(
+							cubFormFieldError,
+							*ngIf='isEmailPasswordIncorrect')
+							| {{ "AUTH.MESSAGE.ACCOUNT_OR_PASSWORD_INVALID" | translate }}
+					button.full-width.mt-8(
+						cubButton='primary',
+						type='submit',
+						size='large',
+						[disabled]=`signInForm?.invalid
+							|| isEmailPasswordIncorrect
+							|| isSubmitting`)
+						+if('isSubmitting')
+							cub-loading
+						+else
+							| {{ "AUTH.LABEL.SIGN_IN" | translate }}
+			.layout-column.layout-gap-8.text-center
+				span
+					| {{ "AUTH.LABEL.FORGOT_YOUR_PASSWORD" | translate }}&nbsp;
+					a.text-semibold(
+						(click)='stateNavigate([ PATH?.RESET_PASSWORD ])')
+						| {{ "AUTH.LABEL.RESET_PASSWORD" | translate }}
+include patterns/auth.pug

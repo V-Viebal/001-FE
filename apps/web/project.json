@@ -1,0 +1,312 @@
+{
+	"name": "web",
+	"$schema": "node_modules/nx/schemas/project-schema.json",
+	"root": "apps/web",
+	"sourceRoot": "apps/web/src",
+	"projectType": "application",
+	"targets": {
+		"build": {
+			"executor": "@angular-builders/custom-webpack:browser",
+			"outputs": ["{options.outputPath}"],
+			"options": {
+				"customWebpackConfig": {
+					"path": "apps/web/webpack.browser.config.js"
+				},
+				"outputPath": "dist/web/browser",
+				"index": "apps/web/src/index.html",
+				"main": "apps/web/src/main.ts",
+				"polyfills": "apps/web/src/polyfills.ts",
+				"tsConfig": "apps/web/src/tsconfig.app.json",
+				"webWorkerTsConfig": "apps/web/src/tsconfig.worker.json",
+				"ngswConfigPath": "apps/web/ngsw-config.json",
+				"outputHashing": "none",
+				"crossOrigin": "use-credentials",
+				"aot": false,
+				"optimization": false,
+				"sourceMap": true,
+				"namedChunks": true,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"buildOptimizer": false,
+				"serviceWorker": false,
+				"statsJson": false,
+				"assets": [
+					{
+						"glob": "**/*",
+						"input": "apps/web/src/assets/",
+						"output": "/assets/"
+					},
+					{
+						"glob": "favicon.ico",
+						"input": "apps/web/src/assets/",
+						"output": "/"
+					},
+					"apps/web/src/robots.txt",
+					"apps/web/src/sitemap.xml"
+				],
+				"styles": [
+					"apps/web/src/scss/styles.scss",
+					"apps/web/src/scss/libs.scss"
+				],
+				"scripts": ["apps/web/preload-font.js"],
+				"stylePreprocessorOptions": {
+					"includePaths": ["apps/web"]
+				},
+				"allowedCommonJsDependencies": [
+					"@editorjs/checklist",
+					"@editorjs/code",
+					"@editorjs/delimiter",
+					"@editorjs/header",
+					"@editorjs/inline-code",
+					"@editorjs/list",
+					"@editorjs/marker",
+					"@editorjs/paragraph",
+					"@editorjs/quote",
+					"@editorjs/raw",
+					"@editorjs/table",
+					"@editorjs/underline",
+					"@editorjs/alert",
+					"@editorjs/embed",
+					"@editorjs/link",
+					"@editorjs/image",
+					"editorjs-drag-drop",
+					"editorjs-text-alignment-blocktune",
+					"editorjs-text-color-plugin",
+					"editorjs-undo",
+					"editorjs-alert",
+					"angular-svg-round-progressbar",
+					"cropperjs",
+					"crypto-js",
+					"exceljs",
+					"file-saver",
+					"image-conversion",
+					"lodash",
+					"moment-timezone",
+					"moment",
+					"moment/locale/vi",
+					"xlsx",
+					"leader-line-new",
+					"sweetalert2",
+					"core-js"
+				]
+			},
+			"configurations": {
+				"aot": {
+					"aot": true
+				},
+				"develop": {
+					"fileReplacements": [
+						{
+							"replace": "apps/web/src/environments/environment.ts",
+							"with": "apps/web/src/environments/environment.develop.ts"
+						},
+						{
+							"replace": "apps/web/src/environments/hash.ts",
+							"with": "apps/web/src/environments/hash.develop.ts"
+						}
+					]
+				},
+				"staging": {
+					"outputHashing": "all",
+					"aot": true,
+					"optimization": true,
+					"sourceMap": false,
+					"extractLicenses": true,
+					"namedChunks": false,
+					"buildOptimizer": true,
+					"serviceWorker": true,
+					"outputPath": "dist/production/browser",
+					"fileReplacements": [
+						{
+							"replace": "apps/web/src/environments/environment.ts",
+							"with": "apps/web/src/environments/environment.staging.ts"
+						},
+						{
+							"replace": "apps/web/src/environments/hash.ts",
+							"with": "apps/web/src/environments/hash.staging.ts"
+						},
+						{
+							"replace": "apps/web/webpack.browser.config.js",
+							"with": "apps/web/webpack.browser.config.prod.js"
+						}
+					]
+				},
+				"production": {
+					"outputHashing": "all",
+					"aot": true,
+					"optimization": true,
+					"sourceMap": false,
+					"namedChunks": false,
+					"extractLicenses": true,
+					"buildOptimizer": true,
+					"serviceWorker": true,
+					"outputPath": "dist/production/browser",
+					"fileReplacements": [
+						{
+							"replace": "apps/web/src/environments/environment.ts",
+							"with": "apps/web/src/environments/environment.production.ts"
+						},
+						{
+							"replace": "apps/web/src/environments/hash.ts",
+							"with": "apps/web/src/environments/hash.production.ts"
+						},
+						{
+							"replace": "apps/web/webpack.browser.config.js",
+							"with": "apps/web/webpack.browser.config.prod.js"
+						}
+					]
+				}
+			}
+		},
+		"server": {
+			"executor": "@angular-builders/custom-webpack:server",
+			"options": {
+				"outputPath": "dist/web/server",
+				"customWebpackConfig": {
+					"path": "apps/web/webpack.server.config.js"
+				},
+				"main": "apps/web/src/main.server.ts",
+				"stylePreprocessorOptions": {
+					"includePaths": ["apps/web"]
+				},
+				"tsConfig": "apps/web/src/tsconfig.server.json",
+				"optimization": false,
+				"sourceMap": true,
+				"extractLicenses": false,
+				"statsJson": false,
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					{
+						"glob": "**/*",
+						"input": "apps/web/src/assets/",
+						"output": "/assets/"
+					},
+					{
+						"glob": "favicon.ico",
+						"input": "apps/web/src/assets/",
+						"output": "/"
+					},
+					"apps/web/src/robots.txt",
+					"apps/web/src/sitemap.xml"
+				]
+			},
+			"configurations": {
+				"production": {
+					"optimization": false,
+					"sourceMap": false,
+					"namedChunks": false,
+					"extractLicenses": true,
+					"outputPath": "dist/production/server",
+					"fileReplacements": [
+						{
+							"replace": "apps/web/src/environments/environment.ts",
+							"with": "apps/web/src/environments/environment.production.ts"
+						},
+						{
+							"replace": "apps/web/src/environments/hash.ts",
+							"with": "apps/web/src/environments/hash.production.ts"
+						},
+						{
+							"replace": "apps/web/webpack.server.config.js",
+							"with": "apps/web/webpack.server.config.prod.js"
+						}
+					]
+				},
+				"staging": {
+					"optimization": false,
+					"sourceMap": false,
+					"namedChunks": false,
+					"extractLicenses": true,
+					"outputPath": "dist/production/server",
+					"fileReplacements": [
+						{
+							"replace": "apps/web/src/environments/environment.ts",
+							"with": "apps/web/src/environments/environment.staging.ts"
+						},
+						{
+							"replace": "apps/web/src/environments/hash.ts",
+							"with": "apps/web/src/environments/hash.staging.ts"
+						},
+						{
+							"replace": "apps/web/webpack.server.config.js",
+							"with": "apps/web/webpack.server.config.prod.js"
+						}
+					]
+				},
+				"develop": {
+					"fileReplacements": [
+						{
+							"replace": "apps/web/src/environments/environment.ts",
+							"with": "apps/web/src/environments/environment.develop.ts"
+						},
+						{
+							"replace": "apps/web/src/environments/hash.ts",
+							"with": "apps/web/src/environments/hash.develop.ts"
+						}
+					]
+				}
+			}
+		},
+		"serve-ssr": {
+			"executor": "@angular-devkit/build-angular:ssr-dev-server",
+			"options": {
+				"browserTarget": "web:build",
+				"serverTarget": "web:server",
+				"host": "localhost",
+				"port": 8888,
+				"open": true
+			},
+			"configurations": {
+				"production": {
+					"browserTarget": "web:build:production",
+					"serverTarget": "web:server:production"
+				},
+				"staging": {
+					"browserTarget": "web:build:staging",
+					"serverTarget": "web:server:staging"
+				},
+				"develop": {
+					"browserTarget": "web:build:develop",
+					"serverTarget": "web:server:develop"
+				}
+			}
+		},
+		"prerender": {
+			"executor": "@angular-devkit/build-angular:prerender",
+			"options": {
+				"routes": ["/"],
+				"browserTarget": "web:build",
+				"serverTarget": "web:server"
+			},
+			"configurations": {
+				"production": {
+					"browserTarget": "web:build:production",
+					"serverTarget": "web:server:production"
+				},
+				"staging": {
+					"browserTarget": "web:build:staging",
+					"serverTarget": "web:server:staging"
+				},
+				"develop": {
+					"browserTarget": "web:build:develop",
+					"serverTarget": "web:server:develop"
+				}
+			}
+		},
+		"extract-i18n": {
+			"executor": "@angular-builders:extract-i18n",
+			"options": {
+				"buildTarget": "web:build"
+			}
+		}
+	},
+	"schematics": {
+		"@schematics/angular:component": {
+			"prefix": "app",
+			"style": "scss"
+		},
+		"@schematics/angular:directive": {
+			"prefix": "app"
+		}
+	}
+}

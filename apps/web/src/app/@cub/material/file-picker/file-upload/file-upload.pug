@@ -1,0 +1,39 @@
+.file-input-box
+	.input-box((click)='pickFile()')
+		h4
+		i.fa-solid.fa-upload
+		| Lựa chọn file tải lên
+	small Loại file hỗ trơ: JPG, PNG, SVG
+
+.cub-file-upload__attachment(
+	#fileListContainer,
+	*ngIf='files?.length')
+	.cub-file-upload__attachment__scroll-button__left(
+		[class.hidden]='!canScrollingLeft')
+		cub-icon(
+			name='chevron-left',
+			size='16px',
+			color='white',
+			(click)='previousScrolling()')
+	.cub-file-upload__attachment__scroll-button__right(
+		[class.hidden]='!canScrollingRight')
+		cub-icon(
+			name='chevron-right',
+			size='16px',
+			color='white',
+			(click)='nextScrolling()')
+	.cub-file-upload__attachment__file-list
+		+for(`
+			file of files;
+			let idx = $index;
+			track file`)
+			.cub-file-upload__attachment__file-list__wrapper
+				.cub-file-upload__attachment__file-list__wrapper--hover
+				cub-file.cub-file-upload__attachment__file-list__file(
+					showNameOnTooltip,
+					[file]='file',
+					(click)='previewFile( idx )')
+				button.cub-file-upload__attachment__file-list__file-btn-remove(
+					cubClearButton,
+					size='16px',
+					(click)='removeFile( file )')

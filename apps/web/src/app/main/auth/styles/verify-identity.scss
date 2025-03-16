@@ -1,0 +1,40 @@
+@import 'src/scss/partials/variable';
+
+:host {
+	&::ng-deep {
+		a {
+			font-weight: $font-weight-semibold;
+		}
+
+		.form-verify {
+			max-width: 410px;
+			height: 100%;
+			width: 100%;
+			gap: 22px;
+			margin: 0 auto;
+			.cub-form-field {
+				&.cub-form-field--large {
+					.cub-form-field__input {
+						outline: unset;
+						border-radius: unset;
+						min-height: 44px;
+						padding: 8px 11px;
+						border-bottom: 1px solid $color-border-primary;
+
+						&:focus-within {
+							box-shadow: unset;
+						}
+					}
+
+					input {
+						font-size: 20px;
+						font-style: normal;
+						font-weight: 500;
+						line-height: 28px;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}

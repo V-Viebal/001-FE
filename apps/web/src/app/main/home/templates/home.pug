@@ -1,0 +1,931 @@
+.relative.overflow-hidden.flex.flex-col.min-h-screen(class='supports-[overflow:clip]:overflow-clip')
+	header#site-header.absolute.top-2.w-full.z-30(class='md:top-6')
+		.max-w-6xl.mx-auto.px-4(class='sm:px-6')
+			.flex.items-center.justify-between.gap-3.h-56.rounded-2xl.px-3.backdrop-blur-sm.bg-white.bg-opacity-80
+				div
+					a.block(href='index.html' rel='home' aria-label="Viebal")
+						cub-image(
+							noLazy,
+							width='28px',
+							height='28px',
+							alt='Viebal',
+							[src]='"assets/images/logos/logo.svg"')
+				.inline-flex.items-center
+					nav.hidden(class='sm:flex sm:grow')
+						ul.flex.grow.justify-end.flex-wrap.items-center.text-sm
+							li.ml-6
+								a.block.font-medium.text-gray-800(href='docs/index.htm' class='hover:underline') Documentation
+							li.ml-5.pl-5.border-l.border-gray-200
+								a.block.font-medium.text-gray-800(class='hover:underline' href='login/index.htm') Sign In
+					.ml-6
+						a.btn-xs.h-32.text-gray-50.bg-gray-800.group(class='hover:bg-gray-900' href='unlimited-access/index.htm')
+							span Liên Hệ
+							span.transition-transform.ml-1(class='text-white/60 group-hover:translate-x-0.5')
+								svg.fill-current(xmlns='http://www.w3.org/2000/svg' width='11' height='11')
+									path(d='M5.977 10.368 4.953 9.354 8.02 6.286H.568V4.805H8.02L4.953 1.742 5.977.723 10.8 5.546z')
+
+	main.grow
+		.pb-12
+			section.relative.z-10(class='before:absolute before:inset-0 before:pointer-events-none before:-z-10 before:bg-gray-100 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-gray-900/10 after:to-transparent')
+				.absolute.inset-0.pointer-events-none.-z-10.bg-gradient(aria-hidden='true')
+					svg.absolute(class='-top-[200px] left-1/2 -translate-x-1/2 -ml-[520px]' xmlns='http://www.w3.org/2000/svg' width='674' height='596' fill='none')
+						g(filter='url(#sh1a)')
+							path(fill='url(#sh1b)' fill-rule='evenodd' d='m93 93 488 329.105L303.687 503 93 93Z' clip-rule='evenodd')
+						defs
+							lineargradient#sh1b(x1='-2.47' x2='149.396' y1='227.957' y2='586.484' gradientunits='userSpaceOnUse')
+								stop(stop-color='#FB7185' stop-opacity='.32')
+								stop(offset='1' stop-color='#FB7185' stop-opacity='.01')
+							filter#sh1a(width='672.843' height='594.843' x='.578' y='.578' color-interpolation-filters='sRGB' filterunits='userSpaceOnUse')
+								feflood(flood-opacity='0' result='BackgroundImageFix')
+								feblend(in='SourceGraphic' in2='BackgroundImageFix' result='shape')
+								fegaussianblur(result='effect1_foregroundBlur_2006_5' stddeviation='46.211')
+				.max-w-6xl.mx-auto.px-4(class='sm:px-6')
+					.relative.pt-28.pb-12(class='md:pt-36 md:pb-16')
+						.flex.flex-col(class='max-w-[620px]')
+							h1.h1.mb-5 Hiện Thực Hoá Ý Tưởng tuyệt vời của bạn
+							p.text-lg.text-gray-500
+								| Landing pages, websites, porfolio, web apps và dashboards được xây dựng với&nbsp;
+								strong.font-normal.text-gray-900.whitespace-nowrap Giao Diện Hiện Đại
+								| và hỗ trợ tất cả công nghệ mới nhất thuộc nhiều nhóm ngành&nbsp;
+								strong.font-normal.text-gray-900 Thương Mại Điện Tử
+								| ,&nbsp;
+								strong.font-normal.text-gray-900 Mạng Xã Hội
+								| ,&nbsp;
+								strong.font-normal.text-gray-900 Quản Lý Doanh Nghiệp
+								| , và&nbsp;
+								strong.font-normal.text-gray-900 Các Trang Dịch Vụ Giải Trí
+							.-order-1
+								.inline-flex.mb-6
+									.flex.items-center.gap-2.text-sm.text-gray-500.p-1.pr-3.rounded-full.bg-white.bg-opacity-80.shadow.backdrop-blur
+										.flex.-space-x-2(class='-ml-0.5')
+											img.rounded-full.border-2.border-white.box-content(decoding='async' fetchpriority='high' src='./assets/base/images/dev-01.jpg' width='20' height='20' alt='Alessio Santo')
+											img.rounded-full.border-2.border-white.box-content(decoding='async' fetchpriority='high' src='./assets/base/images/dev-02.jpg' width='20' height='20' alt='Arnob Dada')
+											img.rounded-full.border-2.border-white.box-content(decoding='async' fetchpriority='high' src='./assets/base/images/dev-03.jpg' width='20' height='20' alt='Ryan Chew')
+											img.rounded-full.border-2.border-white.box-content(decoding='async' fetchpriority='high' src='./assets/base/images/dev-04.jpg' width='20' height='20' alt='Adrian')
+										span
+											| Được tin tưởng bởi&nbsp;
+											strong.font-normal.text-gray-900 100+
+											|  khách hàng.
+							.mt-8
+								a.btn.text-gray-50.bg-gray-800.group(class='hover:bg-gray-900 shadow-[0px_12px_12px_-6px_rgba(3,7,18,.20)]' href='unlimited-access/index.htm')
+									span Liên Hệ Trải Nghiệm Miễn Phí
+									span.transition-transform(class='text-white/60 group-hover:translate-x-0.5 ml-1.5')
+										svg.fill-current(xmlns='http://www.w3.org/2000/svg' width='11' height='11')
+											path(d='M5.977 10.368 4.953 9.354 8.02 6.286H.568V4.805H8.02L4.953 1.742 5.977.723 10.8 5.546z')
+						.absolute.bottom-0.pointer-events-none.-z-10(class='left-[520px]' aria-hidden='true')
+							svg(xmlns='http://www.w3.org/2000/svg' width='1132' height='641' fill='none')
+								g(filter='url(#sh2a)' opacity='.48')
+									circle(cx='566' cy='540' r='246' fill='#7E5FFB')
+								defs
+									filter#sh2a(width='1132' height='1132' x='0' y='-26' color-interpolation-filters='sRGB' filterunits='userSpaceOnUse')
+										feflood(flood-opacity='0' result='BackgroundImageFix')
+										feblend(in='SourceGraphic' in2='BackgroundImageFix' result='shape')
+										fegaussianblur(result='effect1_foregroundBlur_2010_54' stddeviation='160')
+						.absolute.pointer-events-none.-z-10(class='sm:block left-[600px] -top-[196px] -rotate-[16deg]')
+							picture
+								source(type='image/webp' srcset='/assets/base/images/hero-illustration.webp')
+								img.max-w-none(decoding='async' fetchpriority='high' src='/assets/base/images/hero-illustration.png' width='1051' height='740' alt='Preview of some Tailwind templates')
+			section.max-w-6xl.mx-auto.px-4(class='sm:px-6')
+				.flex.flex-col.pt-12.space-y-12.bg-gradient-to-b.to-transparent(class='md:pt-20 md:space-y-16 from-gray-300-12 to-90')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='gray/index.htm')
+													span Gray
+											p.text-gray-500.mt-1(class='text-[15px]') Showcase your product in style with this black and white landing page template.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/gray/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiR3JheSIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6ODU1ODgxLCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiMTYwOTk0LCAwIiwicSI6MSwiZCI6MSwiYSI6W10sInYiOiI0ODI5NCIsInMiOiJlMWFmOGNmNjAzOTczYmFlYTQ1ODM0MmYyYzc2ZWRmMzc5YjBkYjNiZWMxZjdhMzIwODZhYWEwZGUxMWQyNzU1YzJmNTNkM2E0ZmIxZWE3OWU0MTY0ZmQ3NTMwYzZmMDUxNzQ4OTNhMjZlNjE0MmVlYWJmOWRjNTczMGQxOWI0ZCJ9' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-gray-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-gray-01.png' width='332' height='500' alt='Gray template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-gray-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-gray-02.png' width='332' height='500' alt='Gray template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='open-pro/index.htm')
+													span Open PRO
+											p.text-gray-500.mt-1(class='text-[15px]') A dark and sleek SaaS website template to show off your startup or software.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/open-pro/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiT3BlbiBQUk8iLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjY0NTMyMCwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjYzMDcxLCAwIiwicSI6MSwiZCI6MSwiYSI6W10sInYiOiI0ODI5NCIsInMiOiIwMzc0ZDVhZTM0NWU3OTFmZDEwOTc0Mzg0M2NlNDg4ZWRjMDQxODhjNTE0M2QzZTQ1ZGUzZmVhYzFhZTNjYjEzNjE4MWU2ZjYyMTI3YmFlYjUxOTEwYTY1NDJjMWVkM2MxOTJkYTA3YmIyYWZlNWNiZTM0MDlhZmNhYmQxYTJkMiJ9' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-open-pro-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-open-pro-01.png' width='332' height='500' alt='Open PRO template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-open-pro-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-open-pro-02.png' width='332' height='500' alt='Open PRO template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='waitlist/index.htm')
+													span Waitlist
+											p.text-gray-500.mt-1(class='text-[15px]') Start building your product&rsquo;s audience with this sleek coming soon landing page.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/waitlist/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiV2FpdGxpc3QiLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjg3NDc2NCwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjE3NTc3NiwgMCIsInEiOjEsImQiOjEsImEiOltdLCJ2IjoiNDgyOTQiLCJzIjoiM2I2MDhiZjY4NzI2MmI2MGE0ODViMDRkZmJjNGM3YmE2MWY2NDUyZmUzY2Q0MzcwNjhlMjMzNGU1YjRmODZlMjYwMDA0Njg3N2QzNzNlZmU3YTg5YzU4OGRhYmM1YzlhNmYzZTE2ZjRiMjdkNzU5NmM5N2ZjYTk4NTlhYTMwODUifQ==' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-waitlist-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-waitlist-01.png' width='332' height='207' alt='Waitlist template preview 01' loading='lazy')
+										picture.block.translate-y-6
+											source(type='image/webp' srcset='assets/base/images/template-thumb-waitlist-01b.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-waitlist-01b.png' width='332' height='207' alt='Waitlist template preview 01b' loading='lazy')
+									.pr-6(class='sm:translate-y-16')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-waitlist-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-waitlist-02.png' width='332' height='207' alt='Waitlist template preview 02' loading='lazy')
+										picture.block.translate-y-6
+											source(type='image/webp' srcset='assets/base/images/template-thumb-waitlist-02b.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-waitlist-02b.png' width='332' height='207' alt='Waitlist template preview 02b' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='devfolio/index.htm')
+													span DevFolio
+											p.text-gray-500.mt-1(class='text-[15px]')
+												| A modern one-page portfolio to show your developer&apos;s experience, projects, and more.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/devfolio/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiRGV2Rm9saW8iLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjg3OTc2NCwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjE4MDUxOSwgMCIsInEiOjEsImQiOjEsImEiOltdLCJ2IjoiNDgyOTQiLCJzIjoiNTU4YTY0MzRiYTBkYzIzMjFkYWRiYzc5MDM5OGQ1OTRlZGM2Yjk2M2JjN2E3YjI1MTYxMzA5MTNiYzM2M2M2MjkxZDI5ZjhhNzFiYzgzM2JhN2U2MjdmN2YzMDAwNGM2ZDE1MmVmNjk1MDVkNzk5ZmYzMGI3OGJiMmJjMjNkMmQifQ==' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-devfolio-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-devfolio-01.png' width='332' height='500' alt='DevFolio template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-devfolio-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-devfolio-02.png' width='332' height='500' alt='DevFolio template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='tidy/index.htm')
+													span Tidy
+											p.text-gray-500.mt-1(class='text-[15px]') An elegant website template to show off your company&apos;s corporate side.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/tidy/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiVGlkeSIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6NjQ1MzE5LCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiNjMwNjksIDAiLCJxIjoxLCJkIjoxLCJhIjpbXSwidiI6IjQ4Mjk0IiwicyI6ImE3ZDdhOGI0OWNiYTZmNmU4ZWYwY2FhODM2NjdjOTJlNTYxNWMwOTg5M2NlYTg3OGJmMTgxM2M2ZmRjYmNjMzFhNjdlZmU3YzAzYzAxYjA4OGE3N2VmOWNhYWM4NmRmNzUxZGE4M2E1NWQ5MThiMThhODAxZDdlYWU5ZmI2YzA5In0=' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-tidy-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-tidy-01.png' width='332' height='500' alt='Tidy template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-tidy-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-tidy-02.png' width='332' height='500' alt='Tidy template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='jobboard/index.htm')
+													span JobBoard
+											p.text-gray-500.mt-1(class='text-[15px]') A trendy job board template to kick-start your jobs directory business.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/jobboard/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiSm9iQm9hcmQiLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjc5NDAzMCwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjEyOTQxMywgMCIsInEiOjEsImQiOjEsImEiOltdLCJ2IjoiNDgyOTQiLCJzIjoiZDhmZjY5ODY1OTE5ZTEzMWUwZTI4NDE3ZWYxYjIwMGE0ZDI3NjYxYTQ0NWU3ZTNiZGZiNzBhNzZlZDcxNjI3NDg3NzllYjJmYmFmODgxM2QxOWMyMWUyNmI0MzA5OWZhZGE0M2NjNDgzMjYxZDk4MWRlOWY2OTEyNDcxYTNhYzQifQ==' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-jobboard-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-jobboard-01.png' width='332' height='500' alt='JobBoard template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-jobboard-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-jobboard-02.png' width='332' height='500' alt='JobBoard template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='cube/index.htm')
+													span Cube
+											p.text-gray-500.mt-1(class='text-[15px]')
+												| A fabulous landing page template for quickly iterating on ideas, startups and software.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/cube/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiQ3ViZSIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6NjQ1MzE3LCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiNjMwNjIsIDAiLCJxIjoxLCJkIjoxLCJhIjpbXSwidiI6IjQ4Mjk0IiwicyI6ImMyMDE0M2FlOGM5ZTE3NTU0YmEwODVmYmY1Mzg2ZjU0YzZjNzdjYjdmNjhhMGI1NDUyYTYzZjdkYWE0ZmI0OWRlMGYyZGQ2YjcwMjExNGM2M2U0MjdlZDNlNzA0MWQ4ZjZjNDE5ZDhiMGNhNTY3Yzk0ZGYzODZhY2NkOWJlYTY4In0=' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-cube-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-cube-01.png' width='332' height='500' alt='Cube template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-cube-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-cube-02.png' width='332' height='500' alt='Cube template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='appy/index.htm')
+													span Appy
+											p.text-gray-500.mt-1(class='text-[15px]') A dark &amp; white website template designed for showcasing mobile apps.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/appy/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiQXBweSIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6NjQ1MzIyLCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiNjMxNDIsIDAiLCJxIjoxLCJkIjoxLCJhIjpbXSwidiI6IjQ4Mjk0IiwicyI6ImU2ZTU2YmJmZDJkNzFmMzdjMmI4YTdlNzNkMzA3ODUxOGJiYzRhMWZiYmY1Y2FmYjNhZDhkZjcwYjBmMzQzZDZlZjA2NDM2ZTZiOWYxMzA2NDE3OWI4YTkyMjVkYWEyMmVmMTFjYTZjMDg2OWNiYzdlZWZkNDJiMjM4NDFmMTkyIn0=' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-appy-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-appy-01.png' width='332' height='500' alt='Appy template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-appy-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-appy-02.png' width='332' height='500' alt='Appy template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='devspace/index.htm')
+													span DevSpace
+											p.text-gray-500.mt-1(class='text-[15px]') A gorgeous personal blog template to share your thoughts and ideas.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/devspace/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiRGV2U3BhY2UiLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjgwOTUxMSwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjEzNzM1NywgMCIsInEiOjEsImQiOjEsImEiOltdLCJ2IjoiNDgyOTQiLCJzIjoiMWUxZjJmZDAwNDU4MzAxOWEwMmJhZWVmNDI2NDg3MTM1MWVkMmY1Y2M3Yjc0NDFiZTQxYWJiNzQwM2E5NDU3ZDZlODFkNTIyMWNmYWJmNmVhMDAwMzA0ZjMzNGJkZmFiNGVkNDM4MDAxMzE3ZTI1ODZjNWU1M2EzOThhNDA3ODMifQ==' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-devspace-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-devspace-01.png' width='332' height='500' alt='DevSpace template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-devspace-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-devspace-02.png' width='332' height='500' alt='DevSpace template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='docs-template/index.htm')
+													span Docs
+											p.text-gray-500.mt-1(class='text-[15px]') Create comprehensive product docs with this handy documentation template.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/docs/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiRG9jcyIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6Nzk4NjU2LCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiMTMxMzQyLCAwIiwicSI6MSwiZCI6MSwiYSI6W10sInYiOiI0ODI5NCIsInMiOiJiOGJhMTVkNDEyY2E1NjU5Y2ZiOTc5Y2M2YzFhNDVlOGMzYWVjYmJkY2FkZjUwZWZhOGUzZDg5NDEzZWQ3YjJmYjQwYzBiZmQxYjZhZmMwNDY5OTU2YTU0NDkxMTFmMWE0M2VhNjNiMTYxMDY3MTlmYTkyYjFkZTg1YTc3MDFhOSJ9' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-docs-template-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-docs-template-01.png' width='332' height='500' alt='Docs template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-docs-template-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-docs-template-02.png' width='332' height='500' alt='Docs template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='fintech/index.htm')
+													span FinTech
+											p.text-gray-500.mt-1(class='text-[15px]') A stylish landing page perfect for showcasing modern apps and services.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/fintech/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiRmluVGVjaCIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6Nzk4NjU1LCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiMTMxMzM2LCAwIiwicSI6MSwiZCI6MSwiYSI6W10sInYiOiI0ODI5NCIsInMiOiJkMTZhYzAxNDgwYmE5NTE0OGE3Njk2NTU2ZGRhZjg2OGJlYjA1ZTEwMmM0OTRiZmFlZGI1ZDIzZmQ1YTJkMzU1YTc5MDk4YjQ5MjhmYWFjNGI0MDgyOTBjNDNkZDcyODM2Y2FiYTA2ZmU4YTBhYjZkZGY4OTEzMDRjZTE2ZGZlMyJ9' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-fintech-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-fintech-01.png' width='332' height='500' alt='FinTech template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-fintech-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-fintech-02.png' width='332' height='500' alt='FinTech template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='talent/index.htm')
+													span Talent
+											p.text-gray-500.mt-1(class='text-[15px]')
+												| A stunning website template suitable for SaaS apps, recruiting networks, and more.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/talent/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiVGFsZW50IiwiaSI6Imh0dHBzOlwvXC9zdGF0aWMucGFkZGxlLmNvbVwvYXNzZXRzXC9pbWFnZXNcL2NoZWNrb3V0XC9kZWZhdWx0X3Byb2R1Y3RfaWNvbi5wbmciLCJyIjpudWxsLCJjbSI6IiIsInJlIjowLCJwIjo4MDM3MTMsImNjIjp7IlVTRCI6IjQ5LjAwIn0sImgiOiIxMzQwNDksIDAiLCJxIjoxLCJkIjoxLCJhIjpbXSwidiI6IjQ4Mjk0IiwicyI6Ijk5NmNlOGUyNDE0M2YwMzBhZmU1YzYxNWVhMTA2MWFlMzAyMTIzNGEzNjAyMzkzMDUyZGRiZWE2MWY2NWZhYjRkODk4NzkwNjMyNWZlN2FiNDc2MTA4NmI4M2QyZDdjNGQyMzQ3ZGYyNDMyOTE1NWI3ODMzNWNhNTc1MzRjZDVkIn0=' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-talent-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-talent-01.png' width='332' height='500' alt='Talent template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-talent-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-talent-02.png' width='332' height='500' alt='Talent template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='creative/index.htm')
+													span Creative
+											p.text-gray-500.mt-1(class='text-[15px]') The perfect landing page template for launching communities and creative sites.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/creative/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiQ3JlYXRpdmUiLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjc5MzEyMSwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjEyOTA5NywgMCIsInEiOjEsImQiOjEsImEiOltdLCJ2IjoiNDgyOTQiLCJzIjoiM2ZmMWFkYTk3N2M2MWUxN2Q1YzAwMzdmZWZhNWZiOTAwYTRlZjk3OWMxYzJiZDM5ZTRkODQxNWYxN2Y5Zjk3NTVkMDU3YjMwMmRmOTg3ZmZjMGJkMGI2Yzc3ZDg0YzE1N2NmZGNjMDdjNjIzMmYxNjYyMjhhNDg3ODc3OGI2NGUifQ==' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-creative-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-creative-01.png' width='332' height='500' alt='Creative template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-creative-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-creative-02.png' width='332' height='500' alt='Creative template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='neon/index.htm')
+													span Neon
+											p.text-gray-500.mt-1(class='text-[15px]')
+												| Shine a spotlight on your next startup idea with this elegant landing page template.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/neon/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiTmVvbiIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6NjQ1MzE4LCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiNjMwNjcsIDAiLCJxIjoxLCJkIjoxLCJhIjpbXSwidiI6IjQ4Mjk0IiwicyI6IjUzM2E0NDEyMTAxODdiNzlmZDFhNTE5MGU2YTQ5ZjgzNGZhM2FjNTkzMjg0ZjQ5NGQwMDNkMDdhOGEzNTU2ZTkxNzYyNTNjODNiMmQ0OTA4OGJkODU5MDk1YmFlYWI5MGRkNWEzMDI3Zjg0MzI1OTU2MjA2Y2IzMWEwOTg3NzlmIn0=' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-neon-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-neon-01.png' width='332' height='500' alt='Neon template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-neon-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-neon-02.png' width='332' height='500' alt='Neon template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='podcast/index.htm')
+													span Podcast
+											p.text-gray-500.mt-1(class='text-[15px]') A fabulous podcast website template for hosting and sharing your shows.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/podcast/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiUG9kY2FzdCIsImkiOiJodHRwczpcL1wvc3RhdGljLnBhZGRsZS5jb21cL2Fzc2V0c1wvaW1hZ2VzXC9jaGVja291dFwvZGVmYXVsdF9wcm9kdWN0X2ljb24ucG5nIiwiciI6bnVsbCwiY20iOiIiLCJyZSI6MCwicCI6ODA5NTEwLCJjYyI6eyJVU0QiOiI0OS4wMCJ9LCJoIjoiMTM3MzU1LCAwIiwicSI6MSwiZCI6MSwiYSI6W10sInYiOiI0ODI5NCIsInMiOiJkNzZkMDFiYTQ0NGI0ODM4MzQ5YjIxNThjZTYxNTI4OWQ5MTI4YmE0ZWFlYzFlNjYwNGM0Y2ZiNGIzYWY2M2I1ZDc5MDVhYjJiOWZkMTc4MDFmNmViOTA1ZjJiMTllMDk3MTlhZTQ0ZDY2OTdlMWU0ZWJiNTQ0MWZmNWQ3YTFjYiJ9' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-podcast-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-podcast-01.png' width='332' height='500' alt='Podcast template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-podcast-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-podcast-02.png' width='332' height='500' alt='Podcast template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='community/index.htm')
+													span Community
+											p.text-gray-500.mt-1(class='text-[15px]') A beautiful forum template fit for any community and tech news portal.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/community/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiQ29tbXVuaXR5IiwiaSI6Imh0dHBzOlwvXC9zdGF0aWMucGFkZGxlLmNvbVwvYXNzZXRzXC9pbWFnZXNcL2NoZWNrb3V0XC9kZWZhdWx0X3Byb2R1Y3RfaWNvbi5wbmciLCJyIjpudWxsLCJjbSI6IiIsInJlIjowLCJwIjo4MDM3MTQsImNjIjp7IlVTRCI6IjQ5LjAwIn0sImgiOiIxMzQwNTIsIDAiLCJxIjoxLCJkIjoxLCJhIjpbXSwidiI6IjQ4Mjk0IiwicyI6ImEyZGRhZDAxMzBlNTljZDdmNmQ0MzUxY2NhYTU5ZDE5M2M3YWJmNDNkMTYwY2Y5Zjc1YTc0N2NhMjBlYjI3MTk0MjVhZjEzZGMyYzg0MzEyNmY4NWMyYzhhMTRhY2FkNDQ1MGQxNWY3YTlkNTAyMTA3MDMyMDRlMDg5N2EyNDhmIn0=' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-community-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-community-01.png' width='332' height='500' alt='Community template preview 01' loading='lazy')
+									.pr-6
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-community-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-community-02.png' width='332' height='500' alt='Community template preview 02' loading='lazy')
+					.product
+						.product-inner.x-lines
+							.flex.flex-col(class='max-h-[440px] sm:flex-row sm:justify-between')
+								.p-8(class='sm:pr-0')
+									.h-full.flex.items-center
+										.w-296
+											h2.template-name.text-xl.font-bold.text-gray-900(class='tracking-[-.04em]')
+												a.inline-flex.items-center(href='quoty/index.htm')
+													span Quoty
+											p.text-gray-500.mt-1(class='text-[15px]') Impress your freelance clients with this elegant quote and invoice template.
+											.mt-4
+												ul.flex.flex-wrap.-m-1.mb-0
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-html
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/html.svg' alt='HTML badge' title='HTML' width='28' height='28')
+														#stack-html.tooltip.mb-2(role='tooltip') Available in HTML
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-next-js
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/next-js.svg' alt='Next.js badge' title='Next.js' width='28' height='28')
+														#stack-next-js.tooltip.mb-2(role='tooltip') Available in Next.js
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-vue
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/vue.svg' alt='Vue badge' title='Vue' width='28' height='28')
+														#stack-vue.tooltip.mb-2(role='tooltip') Available in Vue
+													li.relative.group.flex.justify-center.items-center.m-1
+														span#aria-describedby-figma
+															img.bg-white.rounded-full.shadow-sm(src='assets/base/images/figma.svg' alt='Figma badge' title='Figma' width='28' height='28')
+														#stack-figma.tooltip.mb-2(role='tooltip') Available in Figma
+											.flex.space-x-3.mt-6
+												a.btn-xs.text-gray-800.bg-white.relative.boxed(href='demos/quoty/index.htm' target='_blank' rel='nofollow')
+													| Live Demo
+													svg.fill-current.text-gray-500.ml-1(class='-mt-0.5' xmlns='http://www.w3.org/2000/svg' width='9' height='9' fill='none')
+														path(d='M1.65 8.514.74 7.6l5.514-5.523H2.028l.01-1.258h6.388v6.394H7.16l.01-4.226L1.65 8.514Z')
+												button.js-buy.btn-xs.text-gray-50.bg-gray-800(class='hover:bg-gray-900' data-override='https://checkout-service.paddle.com/create/checkout/custom/eyJ0IjoiUXVvdHkiLCJpIjoiaHR0cHM6XC9cL3N0YXRpYy5wYWRkbGUuY29tXC9hc3NldHNcL2ltYWdlc1wvY2hlY2tvdXRcL2RlZmF1bHRfcHJvZHVjdF9pY29uLnBuZyIsInIiOm51bGwsImNtIjoiIiwicmUiOjAsInAiOjg0MzIxMSwiY2MiOnsiVVNEIjoiNDkuMDAifSwiaCI6IjE1MzAxMiwgMCIsInEiOjEsImQiOjEsImEiOltdLCJ2IjoiNDgyOTQiLCJzIjoiOTEyNjFlODM5NTMzNDZjMmMyM2VmN2I3ZWI4ZjgxN2NhOTBmMjkyNjVhNzBlZDViZDNkNzhjZWI5OTNiNjdkYWU3OWRmYTI3Yzk3Y2NlYzhiNTA0ZDZiNzgxZGU3YzBhMGY4ZjY0MTM5NzRkNGMzNGQzNWJjNzZjNWE5Y2E1ZTMifQ==' data-ref='')
+													span
+														| Buy Now
+														span -
+														|  $49
+								.flex.items-start.overflow-hidden.group(class='sm:rounded-r-xl sm:pl-8')
+									.pl-8.pr-6(class='sm:pl-0 sm:translate-y-6')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-quoty-01.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-quoty-01.png' width='332' height='368' alt='Quoty template preview 01' loading='lazy')
+									.pr-6(class='sm:translate-y-24')
+										picture
+											source(type='image/webp' srcset='assets/base/images/template-thumb-quoty-02.webp')
+											img.max-w-none(src='assets/base/images/template-thumb-quoty-02.png' width='332' height='368' alt='Quoty template preview 02' loading='lazy')
+	footer
+		.max-w-6xl.mx-auto.px-4(class='sm:px-6')
+			.pb-12
+				.grid.grid-cols-2.gap-y-12.gap-x-6(class='sm:grid-cols-3 lg:grid-cols-6')
+					div
+						a.inline-block.mb-2(href='index.htm' rel='home' aria-label="Viebal")
+							span.sr-only Viebal
+							cub-image(
+								noLazy,
+								width='28px',
+								height='28px',
+								alt='Viebal',
+								[src]='"/assets/images/logos/logo.svg"')
+						.text-gray-500(class='text-[13px]')
+							| &copy;
+							a(href='index.htm')
+								| Viebal
+								br
+								| Ứng Dụng tương lai
+
+button#backtop
+	svg(xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 16 23' width='16' height='23')
+		circle(cx='7.95' cy='2.32' r='1.59' fill='inherit')
+		circle(cx='7.95' cy='5.5' r='1.59' fill='inherit')
+		circle(cx='7.95' cy='8.68' r='1.59' fill='inherit')
+		circle(cx='7.95' cy='11.86' r='1.59' fill='inherit')
+		circle(cx='7.95' cy='15.05' r='1.59' fill='inherit')
+		circle(cx='7.95' cy='18.23' r='1.59' fill='inherit')
+		circle(cx='7.95' cy='21.41' r='1.59' fill='inherit')
+		circle(cx='4.77' cy='5.5' r='1.59' fill='inherit')
+		circle(cx='1.59' cy='8.68' r='1.59' fill='inherit')
+		circle(cx='14.32' cy='8.68' r='1.59' fill='inherit')
+		circle(cx='11.14' cy='5.5' r='1.59' fill='inherit')

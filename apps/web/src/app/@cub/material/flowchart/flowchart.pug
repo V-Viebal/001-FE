@@ -1,0 +1,9 @@
+.cub-flowchart-wrapper(#wrapper)
+	.cub-flowchart-content(#content)
+		cub-flowchart-node(
+			*ngIf='isReady',
+			[node]='rootNode',
+			[nextNode]='rootNode.nextNode',
+			[childNodes]='rootNode.childNodes',
+			(rendered)='onRootNodeRendered()')
+	.cub-flowchart-line-stack(#lineStack)

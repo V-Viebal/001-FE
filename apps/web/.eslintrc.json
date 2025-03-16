@@ -1,0 +1,239 @@
+{
+	"extends": ["../../.eslintrc.json"],
+	"ignorePatterns": ["!**/*"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"extends": [
+				"plugin:@nx/angular",
+				"plugin:@angular-eslint/template/process-inline-templates",
+				"plugin:@typescript-eslint/strict",
+				"plugin:@typescript-eslint/stylistic"
+			],
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"project": ["apps/web/tsconfig.json"]
+			},
+			"plugins": ["@typescript-eslint", "deprecation", "@angular-eslint"],
+			"rules": {
+				"no-restricted-imports": ["error", "create-nx-workspace"],
+				"@angular-eslint/component-selector": "off",
+				"@angular-eslint/directive-selector": "off",
+				"@angular-eslint/no-host-metadata-property": [
+					"error",
+					{
+						"allowStatic": true
+					}
+				],
+				"@angular-eslint/no-input-rename": "off",
+				"@angular-eslint/no-output-native": "off",
+				"@angular-eslint/no-output-rename": "off",
+				"@typescript-eslint/await-thenable": "error",
+				"@typescript-eslint/ban-types": "off",
+				"@typescript-eslint/ban-ts-comment": "off",
+				"@typescript-eslint/triple-slash-reference": "off",
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/no-extraneous-class": "off",
+				"@typescript-eslint/no-shadow": "error",
+				"@typescript-eslint/consistent-type-definitions": "off",
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"@typescript-eslint/explicit-member-accessibility": [
+					"error",
+					{
+						"accessibility": "explicit",
+						"ignoredMethodNames": [
+							"canActivate",
+							"canDeactivate",
+							"ngAfterContentChecked",
+							"ngAfterContentInit",
+							"ngAfterViewChecked",
+							"ngAfterViewInit",
+							"ngDoCheck",
+							"ngOnChanges",
+							"ngOnDestroy",
+							"ngOnInit"
+						],
+						"overrides": {
+							"accessors": "no-public",
+							"constructors": "no-public"
+						}
+					}
+				],
+				"@typescript-eslint/explicit-module-boundary-types": "off",
+				"@typescript-eslint/member-ordering": [
+					"error",
+					{
+						"default": [
+							"signature",
+							"static-field",
+							"instance-field",
+							"abstract-field",
+							"constructor",
+							"static-method",
+							"instance-method",
+							"abstract-method"
+						]
+					}
+				],
+				"@typescript-eslint/naming-convention": [
+					"error",
+					{
+						"format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"],
+						"leadingUnderscore": "allow",
+						"selector": "default"
+					},
+					{
+						"format": ["camelCase"],
+						"leadingUnderscore": "require",
+						"modifiers": ["private"],
+						"selector": [
+							"classMethod",
+							"classProperty",
+							"parameterProperty"
+						]
+					},
+					{
+						"format": ["PascalCase"],
+						"leadingUnderscore": "allow",
+						"selector": ["interface", "typeAlias"]
+					},
+					{
+						"format": ["camelCase"],
+						"leadingUnderscore": "require",
+						"modifiers": ["unused"],
+						"selector": ["parameter"]
+					},
+					{
+						"format": ["camelCase", "PascalCase"],
+						"selector": ["function"]
+					},
+					{
+						"format": ["PascalCase", "UPPER_CASE"],
+						"selector": ["class", "enum", "enumMember"]
+					},
+					{
+						"format": null,
+						"modifiers": ["requiresQuotes"],
+						"selector": ["property"]
+					}
+				],
+				"@typescript-eslint/no-empty-interface": "off",
+				"@typescript-eslint/no-inferrable-types": "off",
+				"@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+				"@typescript-eslint/no-unused-expressions": [
+					"error",
+					{
+						"allowShortCircuit": true,
+						"allowTernary": true
+					}
+				],
+				"@typescript-eslint/type-annotation-spacing": [
+					"error",
+					{
+						"after": true,
+						"before": false,
+						"overrides": {
+							"arrow": {
+								"after": true,
+								"before": true
+							}
+						}
+					}
+				],
+				"@typescript-eslint/typedef": [
+					"error",
+					{
+						"arrayDestructuring": true,
+						"arrowParameter": true,
+						"memberVariableDeclaration": true,
+						"objectDestructuring": true,
+						"parameter": true,
+						"propertyDeclaration": true,
+						"variableDeclaration": true,
+						"variableDeclarationIgnoreFunction": true
+					}
+				],
+				"arrow-body-style": "off",
+				"brace-style": [
+					"error",
+					"1tbs",
+					{
+						"allowSingleLine": true
+					}
+				],
+				"comma-dangle": [
+					"error",
+					{
+						"arrays": "always-multiline",
+						"exports": "never",
+						"functions": "never",
+						"imports": "never",
+						"objects": "always-multiline"
+					}
+				],
+				"curly": ["error", "multi-line"],
+				"deprecation/deprecation": "warn",
+				"dot-notation": "error",
+				"eqeqeq": ["error", "always"],
+				"id-blacklist": "off",
+				"id-denylist": "error",
+				"indent": [
+					"error",
+					"tab",
+					{
+						"MemberExpression": 0,
+						"SwitchCase": 1
+					}
+				],
+				"jsdoc/newline-after-description": "off",
+				"jsdoc/no-types": "off",
+				"max-len": [
+					"error",
+					{
+						"code": 80,
+						"ignoreComments": true,
+						"ignoreRegExpLiterals": true,
+						"ignoreStrings": true,
+						"ignoreTrailingComments": true,
+						"ignoreUrls": true
+					}
+				],
+				"no-bitwise": "off",
+				"no-console": [
+					"error",
+					{
+						"allow": ["warn", "error", "info"]
+					}
+				],
+				"no-duplicate-imports": "error",
+				"no-empty-function": "off",
+				"no-eval": "off",
+				"no-multi-spaces": "error",
+				"no-redeclare": "error",
+				"no-return-await": "error",
+				"no-shadow": "off",
+				"no-sparse-arrays": "error",
+				"no-underscore-dangle": "off",
+				"no-unused-expressions": [
+					"error",
+					{
+						"allowShortCircuit": true,
+						"allowTernary": true
+					}
+				],
+				"prefer-arrow/prefer-arrow-functions": "off",
+				"quote-props": ["error", "as-needed"],
+				"quotes": [
+					"error",
+					"single",
+					{
+						"allowTemplateLiterals": true,
+						"avoidEscape": true
+					}
+				],
+				"semi": "error",
+				"prefer-rest-params": "off"
+			}
+		}
+	]
+}

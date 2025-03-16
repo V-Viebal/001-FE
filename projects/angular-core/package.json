@@ -1,0 +1,25 @@
+{
+	"name": "angular-core",
+	"version": "3.6.8",
+	"description": "Angular Core",
+	"license": "MIT",
+	"authors": "Cubable Team",
+	"private": true,
+	"scripts": {
+		"ng-packagr": "node --max-old-space-size=4096 ./node_modules/ng-packagr/cli/main.js",
+		"lint": "ng lint",
+		"version:patch": "npm --no-git-tag-version version patch",
+		"build": "ng-packagr -p ng-package.json --config src/lib/tsconfig.lib.json && node copy-files.js && rimraf node_modules",
+		"release": "branch=$(git rev-parse --abbrev-ref HEAD); git push origin `git subtree split --prefix dist $branch`:releases_$branch --force"
+	},
+	"devDependencies": {
+		"codelyzer": "^6.0.0",
+		"ng-packagr": "^17.3.0",
+		"scss-bundle": "^3.0.1"
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	}
+}

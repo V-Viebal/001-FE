@@ -1,0 +1,12 @@
+ng-container(
+	*ngIf='files?.length; else elseBlock;')
+	+for('file of files; track file')
+		cub-file-item(
+			[file]='file',
+			[downloadable]='downloadable',
+			[renamable]='renamable',
+			[removable]='removable',
+			(renamed)='onFileRenamed( $event )',
+			(removed)='onFileRemoved( $event )')
+ng-template(#elseBlock)
+	ng-content

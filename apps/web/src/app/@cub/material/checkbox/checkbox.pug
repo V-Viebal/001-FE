@@ -1,0 +1,4 @@
+.cub-checkbox-wrapper(
+	[innerHTML]='checkboxDom | safeHtml',
+	(mousedown)='$event.stopPropagation()')
+| {{ label }}

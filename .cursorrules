@@ -1,0 +1,72 @@
+# Cursor Rules for Angular Project with CSR, SSR, SSG, and Prerendering
+
+## General Rules
+- Use **Angular CLI** to generate components, services, modules, and other artifacts for consistent structure.
+- Adhere to the **Angular Style Guide** for naming conventions, file organization, and code structure.
+- Write all code in **TypeScript** to ensure type safety and maintainability.
+- Utilize **RxJS** for reactive programming, leveraging Observables for asynchronous operations.
+- Use **Pug** as the templating language instead of HTML for all component templates.
+- Use **SCSS** as the stylesheet language instead of plain CSS for all component styles.
+
+## Rendering-Specific Rules
+
+### Client-Side Rendering (CSR)
+- Implement **lazy loading** for feature modules to reduce initial bundle size and improve load times.
+- Use **change detection strategies** (e.g., `OnPush`) to optimize rendering performance.
+- Make API calls with **Angular’s HttpClient**, including proper error handling with try-catch or RxJS operators.
+- Avoid direct DOM manipulation; use Angular’s data binding and directives in Pug templates instead.
+
+### Server-Side Rendering (SSR)
+- Integrate **Angular Universal** for SSR to enhance SEO and improve first-page load performance.
+- Ensure components are **SSR-compatible** by avoiding browser-specific APIs (e.g., `window`, `document`) unless guarded in Pug templates.
+- Use **TransferState** to share data between server and client, preventing duplicate API requests.
+- Implement **server-side caching** for frequently accessed data to reduce server load.
+
+### Static Site Generation (SSG)
+- Leverage **Angular’s prerendering** or tools like **Scully** to generate static Pug-rendered HTML files at build time.
+- Ensure all routes are **statically generated** during the build process for instant page loads.
+- Configure **Angular’s router** to support navigation and ensure all links are crawlable by search engines.
+- Add **meta tags** and **structured data** to static pages for improved SEO, using Pug syntax.
+
+### Prerendering
+- Use **Angular’s prerendering** to create static Pug-rendered HTML files for specific routes at build time.
+- Cache prerendered pages to ensure fast delivery to users.
+- Utilize **Angular’s router** for seamless client-side navigation after the initial load.
+- Include **meta tags** and **structured data** in prerendered pages for SEO optimization, using Pug syntax.
+
+## Domain-Specific Rules
+
+### Web Application
+- Use **Angular Material** or **Bootstrap** for reusable, consistent UI components, styled with SCSS.
+- Implement **responsive design** with SCSS media queries or Angular Flex-Layout.
+- Handle API requests with **Angular’s HttpClient**, ensuring robust error handling.
+- Secure routes and API calls with **authentication** and **authorization** using Angular guards and interceptors.
+
+### Website
+- Configure **Angular’s router** for navigation, ensuring all links are crawlable by search engines in Pug templates.
+- Follow **SEO best practices** by adding meta tags, structured data, and generating sitemaps in Pug templates.
+- Use **Angular’s HttpClient** for API calls with comprehensive error handling.
+- Integrate **analytics** (e.g., Google Analytics) to track user behavior, adding scripts in Pug templates.
+
+### Mobile Progressive Web App (PWA)
+- Enable **Angular’s PWA module** to provide offline capabilities and an app-like experience.
+- Implement **service workers** for caching assets and supporting offline functionality.
+- Use **Angular’s HttpClient** for API calls, with proper error handling for offline scenarios.
+- Add **push notifications** using Angular’s service worker integration, configured in Pug templates.
+
+## Formatting Rules
+- Use **single quotes** for strings in TypeScript and SCSS (e.g., `'hello'` instead of `"hello"`).
+- End TypeScript statements with **semicolons** for consistency.
+- Name classes and interfaces with **PascalCase** (e.g., `MyComponent`).
+- Name variables and functions with **camelCase** (e.g., `myVariable`).
+- Use **Pug** syntax for all component templates (e.g., `div#container` instead of `<div id="container">`).
+- Use **SCSS** for all stylesheets, leveraging features like nesting, variables, and mixins.
+
+## Best Practices
+- Follow the **DRY (Don’t Repeat Yourself)** principle to avoid code duplication.
+- Replace magic numbers with **constants** in TypeScript or SCSS variables for clarity and maintainability.
+- Keep functions **simple and focused**, avoiding excessive complexity in TypeScript.
+- Use **Angular’s dependency injection** for managing services and components.
+- Implement **error handling** for all API calls and asynchronous operations using try-catch or RxJS error handling.
+- Organize SCSS files with partials (e.g., `_variables.scss`, `_mixins.scss`) for modularity.
+- Use Pug’s includes and extends to reuse template fragments (e.g., `include header.pug`).

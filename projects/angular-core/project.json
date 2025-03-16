@@ -1,0 +1,29 @@
+{
+	"name": "angular-core",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "projects/angular-core",
+	"projectType": "application",
+	"targets": {
+		"build": {
+			"builder": "@angular-devkit/build-angular:ng-packagr",
+			"options": {
+				"project": "./projects/angular-core/ng-package.json",
+				"allowedCommonJsDependencies": [
+					"moment/locale/vi",
+					"moment-timezone",
+					"crypto-js",
+					"lodash"
+				]
+			}
+		},
+		"lint": {
+			"builder": "@angular-eslint/builder:lint",
+			"options": {
+				"lintFilePatterns": [
+					"projects/angular-core/src/**/*.ts",
+					"projects/angular-core/src/**/*.html"
+				]
+			}
+		}
+	}
+}

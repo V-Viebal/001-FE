@@ -1,0 +1,37 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"@main": ["app/main"],
+			"@main/*": ["app/main/*"],
+			"@resources": ["app/resources"],
+			"@resources/*": ["app/resources/*"],
+			"@core": ["app/@core"],
+			"@core/*": ["app/@core/*"],
+			"@error": ["app/@error"],
+			"@error/*": ["app/@error/*"],
+			"@cub": ["app/@cub"],
+			"@cub/*": ["app/@cub/*"],
+			"@environments": ["environments"],
+			"@environments/*": ["environments/*"],
+			"angular-core": ["../../../dist/angular-core"],
+		},
+	},
+	"include": ["**/*.ts", "**/*.json"],
+	"angularCompilerOptions": {
+		"allowEmptyCodegenFiles": true,
+		"fullTemplateTypeCheck": true,
+		"ivyTemplateTypeCheck": true,
+		"strictInputTypes": false,
+		"strictInputAccessModifiers": true,
+		"strictNullInputTypes": true,
+		"strictAttributeTypes": true,
+		"strictSafeNavigationTypes": true,
+		"strictDomLocalRefTypes": true,
+		"strictOutputEventTypes": true,
+		"strictDomEventTypes": true,
+		"strictContextGenerics": true,
+		"strictLiteralTypes": true
+	},
+}

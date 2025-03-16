@@ -1,0 +1,91 @@
+ng-template(#errorTemplate)
+	+if('multiErrors || !hasCustomError')
+		+for(`error of control?.errors
+				| cubControlErrors
+				: ( fieldName || ( "CUB.LABEL.VALUE" | translate ) )
+				: multiErrors
+				: errorsMessage;
+			track error`)
+			+if(`errorTemplateMap.has( error.key )`)
+				ng-container(
+					*ngTemplateOutlet=`
+						errorTemplateMap.get( error.key );
+						context: { error };
+					`)
+			+else
+				div(
+					[innerHtml]='error.message')
+	ng-content(
+		select='[cubFormFieldError]')
+
+.cub-form-field__label
+	label(
+		truncate,
+		[attr.title]='label',
+		[attr.requiredMarker]=`
+			!hideRequiredMarker
+				&& isRequired
+					? true
+					: undefined
+		`)
+		+if('label')
+			| {{ label }}
+		+else
+			ng-content(
+				select='[cubFormFieldLabel]')
+	cub-icon(
+		name='circle-info',
+		size='16px',
+		color='secondary',
+		cubTooltipWidth='300px',
+		*ngIf='description',
+		[cubTooltip]='description')
+
+.cub-form-field__input(
+	#container,
+	[class.cub-form-field__input--active]='active',
+	[class.cub-form-field__input--focusing]='focusing',
+	[tabindex]='tabindex',
+	(mouseenter)='onContainerMouseenter()',
+	(mouseleave)='onContainerMouseleave()',
+	(click)='onContainerClick( $event )',
+	(dblclick)='onContainerDblClick( $event )',
+	(keydown)='onContainerKeydown( $event )')
+	.cub-form-field__input__prefix
+		ng-content(
+			select='[cubFormFieldPrefix]')
+	.cub-form-field__input__content
+		+if(`!formFieldInput
+			|| formFieldInput.isEmpty`)
+			.cub-form-field__input__placeholder
+				ng-content(
+					select='[cubFormFieldPlaceholder]')
+		ng-content
+		.cub-form-field__input__display-layer
+			+if('formFieldDisplay')
+				ng-content(
+					select='[cubFormFieldDisplay]')
+			//- +elseif('formFieldInput?.readonly')
+			//- 	| {{ formFieldInput.value }}
+	+if('formFieldInput?.canClear')
+		.cub-form-field__input__btn-clear
+			button(
+				cubClearButton,
+				tabindex='-1',
+				(mousedown)='onClear( $event )')
+	.cub-form-field__input__suffix
+		ng-content(
+			select='[cubFormFieldSuffix]')
+
+.cub-form-field__help-text
+	+if('helpText')
+		| {{ helpText }}
+	+else
+		ng-content(
+			select='[cubFormFieldHelpText]')
+
++if(`isDisplayErrorByInline
+		&& shouldDisplayErrorState`)
+	.cub-form-field__error
+		ng-container(
+			*ngTemplateOutlet='errorTemplate')
