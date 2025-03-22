@@ -12,6 +12,9 @@ import {
 import {
 	CUBScrollBarDirective
 } from './scroll-bar.directive';
+import {
+	CUBScrollBarViewPortItemDirective
+} from './scroll-bar-view-port-item.directive';
 
 @NgModule({
 	imports: [
@@ -20,10 +23,12 @@ import {
 	exports: [
 		CUBScrollBarComponent,
 		CUBScrollBarDirective,
+		CUBScrollBarViewPortItemDirective,
 	],
 	declarations: [
 		CUBScrollBarComponent,
 		CUBScrollBarDirective,
+		CUBScrollBarViewPortItemDirective,
 	],
 	providers: [],
 })

@@ -39,7 +39,8 @@ import {
 } from '@cub/material/file-picker';
 import {
 	CUBImageModule,
-	CUBLoadingModule
+	CUBLoadingModule,
+	CUBScrollBarModule
 } from '@cub/material';
 
 import {
@@ -104,6 +105,7 @@ export function initializeTranslateService(translate: TranslateService) {
 
 		CUBImageModule,
 		CUBLoadingModule,
+		CUBScrollBarModule,
 
 		ErrorModule,
 		AuthModule,

@@ -9,7 +9,8 @@ import { firstValueFrom } from 'rxjs';
 	templateUrl: './app.pug',
 })
 export class AppComponent implements OnInit {
-	translationsLoaded = false;
+
+	protected translationsLoaded = false;
 
 	constructor(
 		@Inject(PLATFORM_ID) private platformId: Object,

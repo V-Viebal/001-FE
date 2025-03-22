@@ -1,26 +1,37 @@
 import {
 	AfterViewInit,
 	ChangeDetectorRef,
+	ContentChildren,
 	Directive,
 	ElementRef,
 	EventEmitter,
 	HostBinding,
+	HostListener,
 	inject,
 	Input,
 	NgZone,
 	OnDestroy,
 	OnInit,
-	Output
+	Output,
+	QueryList
 } from '@angular/core';
 import ResizeObserver
 	from 'resize-observer-polyfill';
+import {
+	startWith
+} from 'rxjs';
 import _ from 'lodash';
 
 import {
 	CoerceBoolean,
 	DefaultValue,
-	DetectScrollDirective
+	DetectScrollDirective,
+	untilCmpDestroyed
 } from 'angular-core';
+
+import {
+	CUBScrollBarViewPortItemDirective
+} from './scroll-bar-view-port-item.directive';
 
 export enum CUBScrollBarMode {
 	Auto = 'auto',
@@ -32,6 +43,9 @@ export enum CUBScrollBarMode {
 export class CUBScrollBar
 	extends DetectScrollDirective
 	implements AfterViewInit, OnInit, OnDestroy {
+
+	@ContentChildren( CUBScrollBarViewPortItemDirective, { descendants: true } )
+	public items: QueryList<CUBScrollBarViewPortItemDirective>;
 
 	@Input() @CoerceBoolean()
 	public deepScroll: boolean;
@@ -59,9 +73,31 @@ export class CUBScrollBar
 	@HostBinding( 'attr.scrollBar' )
 	protected readonly attrScrollBar: boolean = true;
 
+	private _loadItemsThrottle: ReturnType<typeof _.throttle>
+		= _.throttle(
+			() => {
+				this.ngZone.runOutsideAngular(
+					() => {
+						const items: CUBScrollBarViewPortItemDirective[]
+							= this.items.toArray();
+
+						for ( const i of items ?? [] ) {
+							i.checkInViewPort();
+						}
+
+						this.cdRef.detectChanges();
+					}
+				);
+			},
+			17
+		);
+
 	private readonly _resizeObserver: ResizeObserver
 		= new ResizeObserver(
-			() => this.cdRef.markForCheck()
+			() => {
+				this._loadItemsThrottle.cancel();
+				this._loadItemsThrottle();
+			}
 		);
 
 	@HostBinding( 'attr.deepScroll' )
@@ -121,6 +157,12 @@ export class CUBScrollBar
 		return this.nativeElement.scrollTop;
 	}
 
+	@HostListener( 'scroll' )
+	public triggerScroll() {
+		this._loadItemsThrottle.cancel();
+		this._loadItemsThrottle();
+	}
+
 	ngOnInit() {
 		this.init.emit( this );
 	}
@@ -128,15 +170,25 @@ export class CUBScrollBar
 	ngAfterViewInit() {
 		this._resizeObserver
 		.observe( this.nativeElement );
+
+		// Load items
+		this.items
+		.changes
+		.pipe(
+			startWith( this.items ),
+			untilCmpDestroyed( this )
+		)
+		.subscribe( () => {
+			this._loadItemsThrottle.cancel();
+			this._loadItemsThrottle();
+		} );
 	}
 
 	ngOnDestroy() {
 		this._resizeObserver.disconnect();
+		this._loadItemsThrottle.cancel();
 	}
 
-	/**
-	 * @return {void}
-	 */
 	public reset() {
 		setTimeout(() => {
 			this.nativeElement
@@ -144,10 +196,6 @@ export class CUBScrollBar
 		});
 	}
 
-	/**
-	 * @param {ScrollToOptions} options
-	 * @return {void}
-	 */
 	public scrollBy(
 		options: ScrollToOptions
 	) {
@@ -155,11 +203,6 @@ export class CUBScrollBar
 		.scrollBy( options );
 	}
 
-	/**
-	 * @param {ScrollToOptions} options
-	 * @param {number=} duration
-	 * @return {void}
-	 */
 	public scrollTo(
 		options: ScrollToOptions,
 		duration?: number
@@ -178,10 +221,6 @@ export class CUBScrollBar
 		.scrollTo( options );
 	}
 
-	/**
-	 * @param {number=} duration
-	 * @return {void}
-	 */
 	public scrollToLeft(
 		duration?: number
 	) {
@@ -191,10 +230,6 @@ export class CUBScrollBar
 		);
 	}
 
-	/**
-	 * @param {number=} duration
-	 * @return {void}
-	 */
 	public scrollToRight(
 		duration?: number
 	) {
@@ -207,10 +242,6 @@ export class CUBScrollBar
 		);
 	}
 
-	/**
-	 * @param {number=} duration
-	 * @return {void}
-	 */
 	public scrollToTop(
 		duration?: number
 	) {
@@ -220,10 +251,6 @@ export class CUBScrollBar
 		);
 	}
 
-	/**
-	 * @param {number=} duration
-	 * @return {void}
-	 */
 	public scrollToBottom(
 		duration?: number
 	) {
@@ -236,78 +263,102 @@ export class CUBScrollBar
 		);
 	}
 
-	/**
-	 * @param {number} scrollLeft
-	 * @param {number} scrollTop
-	 * @param {number=} duration
-	 * @param {Element=} element
-	 * @return {void}
-	 */
+	public scrollElementIntoView(
+		targetElement: HTMLElement,
+		options: ScrollIntoViewOptions = { behavior: 'smooth' },
+		duration: number = 450 //https://parachutedesign.ca/blog/ux-animation/
+	) {
+		if ( !this.nativeElement.contains( targetElement ) ) return;
+		const targetRect: DOMRect
+			= targetElement.getBoundingClientRect();
+		const containerRect: DOMRect
+			= this.nativeElement.getBoundingClientRect();
+		// Center the element
+		const scrollLeft: number
+			= this.scrollLeft + ( targetRect.left - containerRect.left )
+			- ( this.viewportWidth / 2 - targetRect.width / 2 );
+		const scrollTop: number
+			= this.scrollTop + ( targetRect.top - containerRect.top )
+			- ( this.viewportHeight / 2 - targetRect.height / 2 );
+		if ( _.isFinite( duration ) ) {
+			this._animateScrollTo(
+				scrollLeft,
+				scrollTop,
+				duration,
+				this.nativeElement
+			);
+		} else {
+			this.nativeElement.scrollTo({
+				left: scrollLeft,
+				top: scrollTop,
+				...options,
+			});
+		}
+	}
+
 	private _animateScrollTo(
 		scrollLeft: number,
 		scrollTop: number,
 		duration: number = 0,
-		element: Element = document.scrollingElement
+		element: Element = document.scrollingElement as HTMLElement
 	) {
+		// Easing function (ease-in-out cubic)
+		function easeInOutCubic( t: number ) {
+			return t < 0.5
+				? 4 * t * t * t
+				: 1 - Math.pow(-2 * t + 2, 3) / 2;
+		}
+
+		const startTime: number
+			= performance.now(); // Record the start time
+
+		// Horizontal scrolling logic
 		if ( element.scrollLeft !== scrollLeft ) {
-			const cosXParameter: number
-				= ( element.scrollLeft - scrollLeft ) / 2;
-			let scrollXCount: number = 0;
-			let oldTimestampX: number;
+			const startLeft: number
+				= element.scrollLeft;
+			const deltaX: number
+				= scrollLeft - startLeft;
 
-			// @ts-ignore
-			function stepX( newTimestamp: number ) {
-				if ( oldTimestampX !== undefined ) {
-					// If duration is 0 scrollCount will be Infinity
-					scrollXCount += Math.PI
-						* ( newTimestamp - oldTimestampX )
-						/ duration;
+			function stepX( timestamp: number ) {
+				const elapsedTime: number
+					= timestamp - startTime;
+				const progress: number
+					= Math.min( elapsedTime / duration, 1 ); // Clamp progress to [0, 1]
+				const easedProgress: number
+					= easeInOutCubic( progress );
 
-					if ( scrollXCount >= Math.PI ) {
-						return element.scrollLeft = scrollLeft;
-					}
+				element.scrollLeft
+					= startLeft + deltaX * easedProgress;
 
-					element.scrollLeft = cosXParameter
-						+ scrollLeft
-						+ cosXParameter
-						* Math.cos( scrollXCount );
+				if ( progress < 1 ) {
+					window.requestAnimationFrame( stepX ); // Continue animation
 				}
-
-				oldTimestampX = newTimestamp;
-
-				window.requestAnimationFrame( stepX );
 			}
 
 			window.requestAnimationFrame( stepX );
 		}
 
+		// Vertical scrolling logic
 		if ( element.scrollTop !== scrollTop ) {
-			const cosYParameter: number
-				= ( element.scrollTop - scrollTop ) / 2;
-			let scrollYCount: number = 0;
-			let oldTimestampY: number;
+			const startTop: number
+				= element.scrollTop;
+			const deltaY: number
+				= scrollTop - startTop;
 
-			// @ts-ignore
-			function stepY( newTimestamp: number ) {
-				if ( oldTimestampY !== undefined ) {
-					// If duration is 0 scrollCount will be Infinity
-					scrollYCount += Math.PI
-						* ( newTimestamp - oldTimestampY )
-						/ duration;
+			function stepY( timestamp: number ) {
+				const elapsedTime: number
+					= timestamp - startTime;
+				const progress: number
+					= Math.min( elapsedTime / duration, 1 ); // Clamp progress to [0, 1]
+				const easedProgress: number
+					= easeInOutCubic( progress );
 
-					if ( scrollYCount >= Math.PI ) {
-						return element.scrollTop = scrollTop;
-					}
+				element.scrollTop
+					= startTop + deltaY * easedProgress;
 
-					element.scrollTop = cosYParameter
-						+ scrollTop
-						+ cosYParameter
-						* Math.cos( scrollYCount );
+				if ( progress < 1 ) {
+					window.requestAnimationFrame( stepY ); // Continue animation
 				}
-
-				oldTimestampY = newTimestamp;
-
-				window.requestAnimationFrame( stepY );
 			}
 
 			window.requestAnimationFrame( stepY );
