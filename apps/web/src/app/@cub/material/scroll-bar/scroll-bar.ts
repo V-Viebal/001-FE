@@ -10,17 +10,20 @@ import {
 	NgZone,
 	OnDestroy,
 	OnInit,
-	Output
+	Output,
+	PLATFORM_ID
 } from '@angular/core';
 import ResizeObserver
 	from 'resize-observer-polyfill';
 import _ from 'lodash';
+import LocomotiveScroll from 'locomotive-scroll';
 
 import {
 	CoerceBoolean,
 	DefaultValue,
 	DetectScrollDirective
 } from 'angular-core';
+import { isPlatformBrowser } from '@angular/common';
 
 export enum CUBScrollBarMode {
 	Auto = 'auto',
@@ -55,6 +58,8 @@ export class CUBScrollBar
 		= inject( ChangeDetectorRef );
 	protected readonly ngZone: NgZone
 		= inject( NgZone );
+	protected readonly platformId: Object
+		= inject( PLATFORM_ID );
 
 	@HostBinding( 'attr.scrollBar' )
 	protected readonly attrScrollBar: boolean = true;
@@ -63,6 +68,7 @@ export class CUBScrollBar
 		= new ResizeObserver(
 			() => this.cdRef.markForCheck()
 		);
+	private scroll: LocomotiveScroll | undefined;
 
 	@HostBinding( 'attr.deepScroll' )
 	get attrDeepScroll(): boolean {
@@ -123,6 +129,9 @@ export class CUBScrollBar
 
 	ngOnInit() {
 		this.init.emit( this );
+		if ( isPlatformBrowser( this.platformId ) ) {
+			this._initLocomotiveScroll();
+		}
 	}
 
 	ngAfterViewInit() {
@@ -236,13 +245,26 @@ export class CUBScrollBar
 		);
 	}
 
-	/**
-	 * @param {number} scrollLeft
-	 * @param {number} scrollTop
-	 * @param {number=} duration
-	 * @param {Element=} element
-	 * @return {void}
-	 */
+	private _initLocomotiveScroll(): void {
+		if (!isPlatformBrowser(this.platformId) || this.scroll) return;
+
+		this.ngZone.runOutsideAngular(() => {
+			this.scroll = new LocomotiveScroll({
+				el: this.nativeElement, // Use the directive's host element
+				smooth: true,
+				multiplier: 1,
+				lerp: 0.1, // Smoothness factor
+				direction: 'vertical',
+				smartphone: { smooth: true },
+				tablet: { smooth: true },
+			});
+
+			// Update on resize
+			this.scroll.on('scroll', () => this.cdRef.markForCheck());
+			window.addEventListener('resize', () => this.scroll?.update());
+		});
+	}
+
 	private _animateScrollTo(
 		scrollLeft: number,
 		scrollTop: number,

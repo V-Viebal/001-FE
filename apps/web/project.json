@@ -49,12 +49,15 @@
 					"node_modules/swiper/swiper-bundle.min.css",
 					"node_modules/swiper/modules/navigation.min.css",
 					"node_modules/swiper/modules/pagination.min.css",
+					"node_modules/swiper/modules/scrollbar.min.css",
+					"node_modules/aos/dist/aos.css",
 					"apps/web/src/scss/styles.scss",
 					"apps/web/src/scss/libs.scss"
 				],
 				"scripts": [
 					"node_modules/swiper/swiper-bundle.min.js",
 					"node_modules/jquery/dist/jquery.min.js",
+					"node_modules/aos/dist/aos.js",
 					"apps/web/preload-font.js"
 				],
 				"stylePreprocessorOptions": {
@@ -94,8 +97,8 @@
 					"moment/locale/vi",
 					"xlsx",
 					"leader-line-new",
-					"sweetalert2",
-					"core-js"
+					"core-js",
+					"locomotive-scroll"
 				]
 			},
 			"configurations": {
@@ -182,21 +185,7 @@
 				"sourceMap": true,
 				"extractLicenses": false,
 				"statsJson": false,
-				"inlineStyleLanguage": "scss",
-				"assets": [
-					{
-						"glob": "**/*",
-						"input": "apps/web/src/assets/",
-						"output": "/assets/"
-					},
-					{
-						"glob": "favicon.ico",
-						"input": "apps/web/src/assets/",
-						"output": "/"
-					},
-					"apps/web/src/robots.txt",
-					"apps/web/src/sitemap.xml"
-				]
+				"inlineStyleLanguage": "scss"
 			},
 			"configurations": {
 				"production": {
