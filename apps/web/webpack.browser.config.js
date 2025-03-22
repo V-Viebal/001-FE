@@ -40,4 +40,7 @@ module.exports = {
 			"path": false,
 		},
 	},
+	watchOptions: {
+		ignored: /node_modules/,
+	},
 };

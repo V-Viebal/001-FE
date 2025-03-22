@@ -16,23 +16,21 @@ export class AppComponent implements OnInit {
 		private translate: TranslateService,
 		private cdr: ChangeDetectorRef
 	) {
-		if (!isPlatformBrowser(this.platformId)) {
-			this.translationsLoaded = true; // Force true for prerendering
+		if ( !isPlatformBrowser( this.platformId )) {
+			this.translationsLoaded = true;
 		}
 	}
 
 	async ngOnInit(): Promise<void> {
-		console.log('AppComponent ngOnInit started');
 		try {
-			const initialLang = 'vi'; // Or inject from 'initialLanguage' provider
-			if (isPlatformBrowser(this.platformId)) {
-				await firstValueFrom(this.translate.use(initialLang));
+			const initialLang = 'vi';
+
+			if ( isPlatformBrowser( this.platformId ) ) {
+				await firstValueFrom( this.translate.use( initialLang ) );
 			}
 			this.translationsLoaded = true;
 			this.cdr.detectChanges();
-			console.log(`Translation initialized for language: ${initialLang}`);
-		} catch (error) {
-			console.error('Error initializing translations:', error);
+		} catch ( error ) {
 			this.translationsLoaded = true;
 			this.cdr.detectChanges();
 		}

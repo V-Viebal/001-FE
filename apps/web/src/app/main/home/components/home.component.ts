@@ -25,23 +25,10 @@ export class HomeComponent implements OnInit {
 	private readonly _cdRef: ChangeDetectorRef
 		= inject( ChangeDetectorRef );
 
-	/**
-	 * @constructor
-	 */
 	ngOnInit() {
 		this._initData();
 	}
 
-	/**
-	 * @return {void}
-	 */
-	protected openExplorePage() {
-
-	}
-
-	/**
-	 * @return {void}
-	 */
 	private _initData() {
 		this._cdRef.markForCheck();
 	}

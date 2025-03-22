@@ -27,7 +27,7 @@
 		"CHANGE_EMAIL": "Thay đổi email",
 		"OR_CONTINUE_WITH": "Hoặc tiếp tục với",
 		"BACK_TO_SIGN_IN": "Trở về trang Đăng nhập",
-		"FORGOT_YOUR_PASSWORD": "Quên mật khẩu?",
+		"FORGOT_YOUR_PASSWORD": "Quên mật khẩu?"
 	},
 	"PLACEHOLDER": {
 		"TYPE_EMAIL": "email@example.com",
@@ -48,6 +48,6 @@
 		"INVALID_EMAIL": "Email không hợp lệ. Vui lòng thử lại",
 		"INVALID_CODE": "Mã xác thực không đúng. Vui lòng thử lại",
 		"VERIFYING_AUTHENTICATION_CODE": "Kiểm tra mã xác thực",
-		"EMAIL_EXISTS" : "Email <b>{{ email }}</b> đã đăng ký.</br> Hãy đăng nhập để tiếp tục",
+		"EMAIL_EXISTS" : "Email <b>{{ email }}</b> đã đăng ký.</br> Hãy đăng nhập để tiếp tục"
 	}
 }

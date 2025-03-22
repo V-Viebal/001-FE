@@ -35,4 +35,7 @@ module.exports = {
 			path: path.resolve(__dirname, '.env')
 		}),
 	],
+	watchOptions: {
+		ignored: /node_modules/,
+	},
 };

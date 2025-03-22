@@ -59,10 +59,7 @@
 		box-shadow: 0 1px .75px 0 rgba(0, 0, 0, .05),
 			0 .25px .25px 0 rgba(0, 0, 0, .15);
 
-		background-color: var(
-			--slider-thumb-color,
-			$color-light-blue
-		);
+		background-color: var(--slider-thumb-color, $color-light-blue);
 
 		&:hover,
 		&.cdk-drag-dragging {
@@ -93,9 +90,7 @@
 			font-size: 9px;
 			font-weight: $font-weight-semibold;
 
-			transform: translateY(26px)
-				scale(.01)
-				rotate(45deg);
+			transform: translateY(26px) scale(.01) rotate(45deg);
 			transition: transform visible-animation-effect(),
 				border-radius visible-animation-effect(),
 				background-color visible-animation-effect();

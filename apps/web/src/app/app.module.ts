@@ -38,7 +38,8 @@ import {
 	CUB_LOCAL_FILE_SIZE_LIMIT
 } from '@cub/material/file-picker';
 import {
-	CUBImageModule
+	CUBImageModule,
+	CUBLoadingModule
 } from '@cub/material';
 
 import {
@@ -102,6 +103,7 @@ export function initializeTranslateService(translate: TranslateService) {
 		}),
 
 		CUBImageModule,
+		CUBLoadingModule,
 
 		ErrorModule,
 		AuthModule,

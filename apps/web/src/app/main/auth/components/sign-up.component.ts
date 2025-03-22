@@ -14,13 +14,7 @@ import {
 	Params
 } from '@angular/router';
 import {
-	ULID
-} from 'ulidx';
-import {
-	of,
 	finalize,
-	switchMap,
-	catchError
 } from 'rxjs';
 import _ from 'lodash';
 

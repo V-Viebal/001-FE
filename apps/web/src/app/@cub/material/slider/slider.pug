@@ -1,12 +1,9 @@
 .cub-slider__progress-bar(
 	#progressBar,
 	[ngStyle]=`{
-		"--progress-percentage":
-			percentage,
-		"--progress-color":
-			"var(--slider-color)",
-		"--progress-track-color":
-			"var(--slider-track-color)",
+		"--progress-percentage": percentage,
+		"--progress-color": "var(--slider-color)",
+		"--progress-track-color": "var(--slider-track-color)",
 	}`,
 	[innerHTML]='progressBarDom | safeHtml')
 
@@ -23,7 +20,7 @@ button.cub-slider__thumb(
 	(cdkDragStarted)='onThumbDragStarted()',
 	(cdkDragEnded)='onThumbDragEnded()',
 	(mousedown)='$event.stopPropagation()')
-	span.cub-slider__thumb__tick(
-		*ngIf='showTickMarks')
-		span.cub-slider__thumb__tick__text
-			| {{ percentage }}
+	+if('showTickMarks')
+		span.cub-slider__thumb__tick
+			span.cub-slider__thumb__tick__text
+				| {{ percentage }}
