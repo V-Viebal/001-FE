@@ -42,7 +42,8 @@
 						"output": "/"
 					},
 					"apps/web/src/robots.txt",
-					"apps/web/src/sitemap.xml"
+					"apps/web/src/sitemap.xml",
+					"apps/web/src/manifest.webmanifest"
 				],
 				"styles": [
 					"node_modules/swiper/swiper-bundle.min.css",
@@ -53,6 +54,7 @@
 				],
 				"scripts": [
 					"node_modules/swiper/swiper-bundle.min.js",
+					"node_modules/jquery/dist/jquery.min.js",
 					"apps/web/preload-font.js"
 				],
 				"stylePreprocessorOptions": {

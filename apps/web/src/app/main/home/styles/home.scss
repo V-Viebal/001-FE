@@ -1,0 +1,177 @@
+@import 'src/scss/partials/variable';
+
+:host {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-width: 0;
+	max-width: 100%;
+	background-color: $color-white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	.home-banner {
+		display: flex;
+		align-items: flex-end;
+		position: relative;
+		align-self: center;
+		border-radius: 16px;
+		border: 1px solid $color-border-primary;
+		box-shadow: 0 0 $color-transparent-dark-grey-5;
+		background-image: url('/assets/images/banner-bg.jpg');
+		background-repeat: no-repeat;
+		background-size: auto 100%;
+		height: inherit;
+		width: 96%;
+
+		.home-banner__content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			background: linear-gradient(90deg, #fff 0%, #fff 88.06%, rgba(7, 25, 41, 0) 100.21%);
+			height: 100%;
+			border-radius: 16px 0 0 16px;
+
+			@media screen and (max-width: $layout-breakpoint-xs) {
+				width: 100%;
+				align-items: center;
+				padding: 32px;
+			}
+
+			@media screen and (min-width: $layout-breakpoint-xs) {
+				padding: 50px 100px;
+				width: 66%;
+			}
+
+			@media screen and (min-width: $layout-breakpoint-sm) {
+				width: 76%;
+				padding: 50px 100px;
+			}
+
+			@media screen and (min-width: $layout-breakpoint-md) {
+				width: 76%;
+				padding: 40px 100px 60px;
+			}
+
+			.home-banner__title {
+				display: flex;
+				flex-direction: column;
+				font-size: 32px;
+				line-height: 40px;
+				margin-bottom: 16px;
+				font-weight: $font-weight-bold;
+				color: $color-primary;
+				width: 80%;
+
+				@media screen and (max-width: $layout-breakpoint-xs) {
+					font-size: 24px;
+					line-height: 32px;
+					text-align: center;
+				}
+
+				@media screen and (min-width: $layout-breakpoint-md) {
+					font-size: 48px;
+					line-height: 64px;
+					width: 85%;
+				}
+			}
+
+			.home-banner__subtitle {
+				display: flex;
+				margin: {
+					right: 40px;
+					bottom: 40px;
+				}
+				width: 70%;
+				letter-spacing: 0.28px;
+
+				@media screen and (max-width: $layout-breakpoint-xs) {
+					font-size: 12px;
+					line-height: 16px;
+					margin-bottom: 20px;
+					text-align: center;
+				}
+			}
+		}
+
+		.home-banner_stats {
+			display: flex;
+			justify-content: flex-end;
+			position: absolute;
+			width: 100%;
+			height: 48px;
+			right: 0;
+			padding: 8px;
+			gap: 16px;
+			background: rgba(255, 255, 255, 0.7);
+			backdrop-filter: blur(14px);
+			border-radius: 0 0 16px 16px;
+
+			@media screen and (max-width: $layout-breakpoint-xs) {
+				display: none;
+			}
+		}
+
+		@media screen and (max-width: $layout-breakpoint-xs) {
+			background-image: none;
+			height: auto;
+		}
+
+		@media screen and (min-width: $layout-breakpoint-xs) {
+			background-position: top right -175px;
+		}
+
+		@media screen and (min-width: $layout-breakpoint-sm) {
+			background-position: top right -80px;
+		}
+
+		@media screen and (min-width: $layout-breakpoint-md) {
+			background-position: top right -75px;
+			width: 100%;
+		}
+	}
+
+	.course-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		min-width: 0;
+		gap: 16px;
+
+		.custom-btn {
+			min-width: 36px;
+			height: 36px;
+			min-height: 36px;
+			max-height: 36px;
+			padding: 8px 12px;
+			border-radius: 50px;
+			background-color: $color-white;
+			box-shadow: $box-shadow-basic-level-1;
+		}
+
+		.custom-btn--active {
+			color: $color-white;
+			background-color: $color-primary;
+		}
+	}
+
+	.loading-career {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		min-width: 0;
+		height: 100%;
+		min-height: 0;
+	}
+
+	@media screen and (min-width: $layout-breakpoint-md) {
+		padding-left: calc(50% - 640px);
+		padding-right: calc(50% - 640px);
+	}
+
+}

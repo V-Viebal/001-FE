@@ -1,0 +1,11 @@
+@import 'src/app/@cub/scss/partials/variable';
+
+:host {
+
+	@media screen and (max-width: $layout-breakpoint-xs) {
+		.registering-width {
+			display: none;
+		}
+	}
+
+}

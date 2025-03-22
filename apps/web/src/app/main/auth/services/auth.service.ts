@@ -17,6 +17,9 @@ import {
 } from 'rxjs/operators';
 import moment from 'moment-timezone';
 import _ from 'lodash';
+import {
+	HttpClient
+} from '@angular/common/http';
 
 import {
 	HASH
@@ -26,6 +29,7 @@ import {
 // } from '@environments/environment';
 
 import {
+	ApiHeaders,
 	ApiParams,
 	PageService,
 	ServiceWorkerService,
@@ -50,7 +54,10 @@ import {
 	IAccountAccessSignUp,
 	IAuth,
 	IVerifyData,
-	IVerifySignUp
+	IVerifySignUp,
+	ISocialProfile,
+	ISocialRequest,
+	ISocialCredential
 } from '../interfaces';
 import {
 	CONSTANT
@@ -70,6 +77,8 @@ export class AuthService {
 	private readonly _apiService: AccountApiService
 		= inject( AccountApiService );
 	private readonly _endPoint: string = '/Users';
+	private _apiGoogleUrl: string
+		= 'https://www.googleapis.com/oauth2/v1/userinfo';
 
 	private _bufferTime: number = 3590;
 	private _rotateTimeout: NodeJS.Timeout;
@@ -97,7 +106,8 @@ export class AuthService {
 		private _pageService: PageService,
 		private _accountService: AccountService,
 		private _serviceWorkerService: ServiceWorkerService,
-		private _webSocketService: WebSocketService
+		private _webSocketService: WebSocketService,
+		private _httpClient: HttpClient
 	) {
 		// this._platform.SAFARI && this._storageService.setCookieOptions({ sameSite: 'Lax', secure: false });
 
@@ -201,9 +211,40 @@ export class AuthService {
 		} ) );
 	}
 
-	/**
-	 * @return {Observable}
-	 */
+	public getGoogleProfile( accessToken: string ): Observable<ISocialProfile> {
+		const headers: ApiHeaders = {
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			'Content-Type': 'application/json',
+			// eslint-disable-next-line quote-props, @typescript-eslint/naming-convention
+			'Authorization': `Bearer ${ accessToken }`,
+		};
+
+		return this._httpClient
+		.get<ISocialProfile>( `${this._apiGoogleUrl}`, { headers } );
+	}
+
+
+	public authWithSocial(
+		credential: ISocialRequest
+	): Observable<ISocialCredential> {
+		const params: ApiParams
+			= {
+				email: credential.email,
+				token: _.aesEncrypt( credential.token ),
+			};
+
+		return this._apiService
+		.call( `${this._endPoint}/check-available-social`, 'POST', params )
+		.pipe( tap( ( result: ISocialCredential ) => {
+			this._accountService.storedAccount = result.account;
+
+			this.setStoredAuth({
+				accessToken: result.accountToken,
+				accountEmail: result.account?.email,
+			});
+		} ) );
+	}
+
 	public signout(): Observable<void> {
 		return new Observable( ( observer: Observer<void> ) => {
 			// Clear stored auth

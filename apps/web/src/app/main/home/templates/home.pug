@@ -1,1 +1,31 @@
-| {{ 'LABEL.HELLO' | translate }}
+.layout-column.layout-gap-40.full-width
+	.home-banner
+		.home-banner__content
+			h1.home-banner__title
+				| {{ "LABEL.TITLE" | translate }}
+				.text-color-primary
+					| {{ "LABEL.TITLE_2" | translate }}
+			p.home-banner__subtitle
+				| {{ "LABEL.SUBTITLE" | translate }}
+				| {{testt}}
+			button(
+				cubButton,
+				trailingIcon='chevron-right',
+				size='large',
+				(click)='openExplorePage()')
+				| {{ "LABEL.EXPLORE_CAREER" | translate }}
+		.home-banner_stats
+	.course-container
+		h1
+			| {{ "LABEL.EXPLORE_POPULAR_COURSE" | translate }}
+		.layout-row.layout-align-center-center.layout-gap-12
+			button.custom-btn(
+				[class.custom-btn--active]='true',
+				(click)='loadCourseTrending()')
+				.text-bold
+					| {{ "LABEL.TRENDING" | translate | uppercase }}
+			button.custom-btn(
+				[class.custom-btn--active]='false',
+				(click)='loadCourseNew()')
+				.text-bold
+					| {{ "LABEL.NEW" | translate | uppercase }}

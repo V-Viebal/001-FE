@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {
 	Params,
+	QueryParamsHandling,
 	Router
 } from '@angular/router';
 import _ from 'lodash';
@@ -106,18 +107,19 @@ export class AuthBase {
 			};
 	}
 
-	/**
-	 * @param {string[]} commands
-	 * @param {Params=} params
-	 * @return {void}
-	 */
 	public stateNavigate(
 		commands: string[] = [],
-		params?: Params
+		params?: Params,
+		queryParamsHandling?: QueryParamsHandling
 	) {
 		this.router.navigate(
 			commands,
-			{ queryParams: { ...params } }
+			{
+				queryParams: {
+					...params,
+				},
+				queryParamsHandling,
+			}
 		);
 	}
 

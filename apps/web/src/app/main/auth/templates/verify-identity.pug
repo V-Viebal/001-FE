@@ -16,29 +16,29 @@ form.form-verify.layout-column.layout-gap-16(
 					(keyup)='onKeyUp( $event, index )',
 					(paste)='onPasted( $event )')
 	.text-color-error.text-center(*ngIf='isOTPInvalid')
-		| {{ "AUTH.MESSAGE.INVALID_CODE" | translate }}
+		| {{ "MESSAGE.INVALID_CODE" | translate }}
 	button.full-width(
 		cubButton='primary',
 		type='submit',
 		size='large',
 		[disabled]='isSubmitting || isFormInvalid',
 		[loading]='isSubmitting')
-		| {{ "AUTH.LABEL.DONE" | translate }}
+		| {{ "LABEL.DONE" | translate }}
 	//- .actions.layout-column.text-center([class.mt-30]='!isOTPInvalid')
 	.layout-column.text-center
 		.layout-row.layout-align-center-center(
 			*ngIf='!isSubmitting; else elseBlock;')
 			.text-color-secondary(*ngIf='countdown; else elseBlock;')
-				| {{ "AUTH.LABEL.RESEND_CODE_IN" | translate: { seconds: countdown } }}
+				| {{ "LABEL.RESEND_CODE_IN" | translate: { seconds: countdown } }}
 			ng-template(#elseBlock)
 				.text-color-secondary
-					| {{ "AUTH.LABEL.NOT_RECEIVE_CODE" | translate }}&nbsp;
+					| {{ "LABEL.NOT_RECEIVE_CODE" | translate }}&nbsp;
 				cub-loading(*ngIf='isResendingOTP; else elseBlock;')
 				ng-template(#elseBlock)
 					a((click)='resendOTP()')
-						| {{ "AUTH.LABEL.RESEND_CODE" | translate }}
+						| {{ "LABEL.RESEND_CODE" | translate }}
 		ng-template(#elseBlock)
 			.layout-row.layout-align-center-center
 				cub-loading.mr-5
 				b
-					| {{ "AUTH.MESSAGE.VERIFYING_AUTHENTICATION_CODE" | translate }}
+					| {{ "MESSAGE.VERIFYING_AUTHENTICATION_CODE" | translate }}

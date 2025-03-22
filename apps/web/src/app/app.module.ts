@@ -57,6 +57,12 @@ import {
 import {
 	HomeComponent
 } from '@main/home/components';
+import {
+	CareerComponent
+} from '@main/career/components';
+import {
+	CourseComponent
+} from '@main/course/components';
 
 import {
 	AppRoutingModules
@@ -64,7 +70,9 @@ import {
 import {
 	AppComponent
 } from './app.component';
-import { TranslateLoaderService } from './translate-loader.factory';
+import {
+	TranslateLoaderService
+} from './translate-loader.factory';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const ServiceWorkerModule: ModuleWithProviders<SWModule>
@@ -75,7 +83,7 @@ const ServiceWorkerModule: ModuleWithProviders<SWModule>
 
 export function initializeTranslateService(translate: TranslateService) {
 	return () => {
-		const lang = 'vi'; // Default language
+		const lang = 'vi';
 		return translate.use(lang).toPromise();
 	};
 }
@@ -104,7 +112,9 @@ export function initializeTranslateService(translate: TranslateService) {
 	],
 	declarations: [
 		AppComponent,
-		HomeComponent
+		HomeComponent,
+		CourseComponent,
+		CareerComponent
 	],
 	providers: [
 		{

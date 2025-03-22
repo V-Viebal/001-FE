@@ -15,10 +15,10 @@ export interface IVerifyData {
 
 export interface IAccountToken {
 	accessToken: string;
-	refreshToken: string;
-	expiresAt: number;
+	refreshToken?: string;
+	expiresAt?: number;
 	expiresIn?: number;
-	tokenType: string;
+	tokenType?: string;
 }
 
 export interface IVerifySignUp {

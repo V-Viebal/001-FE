@@ -38,6 +38,7 @@ import {
 import {
 	SignInComponent
 } from './components';
+import { ResetPasswordComponent } from './components/reset-password.component';
 
 @NgModule({
 	imports: [
@@ -58,9 +59,11 @@ import {
 	],
 	exports: [
 		SignInComponent,
+		ResetPasswordComponent,
 	],
 	declarations: [
 		SignInComponent,
+		ResetPasswordComponent,
 	],
 	providers: [],
 })

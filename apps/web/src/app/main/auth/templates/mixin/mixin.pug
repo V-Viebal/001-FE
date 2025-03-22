@@ -10,14 +10,14 @@ mixin checkWeekPassword
 							[name]='passwordRule?.minlength ? "circle-check-fill" : "circle-check"',
 							[color]='passwordRule?.minlength ? "white" : "tertiary"')
 						span([class.text-color-tertiary]='!passwordRule?.minlength')
-							| {{ "AUTH.LABEL.MINIMUM_8_CHARACTERS" | translate }}
+							| {{ "LABEL.MINIMUM_8_CHARACTERS" | translate }}
 					.layout-row.layout-align-center-center.layout-gap-4
 						cub-icon(
 							size='16px',
 							[name]='passwordRule?.lowercase ? "circle-check-fill" : "circle-check"',
 							[color]='passwordRule?.lowercase ? "white" : "tertiary"')
 						span([class.text-color-tertiary]='!passwordRule?.lowercase')
-							| {{ "AUTH.LABEL.LOWERCASE_LETTERS" | translate }}
+							| {{ "LABEL.LOWERCASE_LETTERS" | translate }}
 				.layout-column.layout-align-center-start.layout-gap-8
 					.layout-row.layout-align-center-center.layout-gap-4
 						cub-icon(
@@ -25,14 +25,14 @@ mixin checkWeekPassword
 							[name]='passwordRule?.numberOrSymbol ? "circle-check-fill" : "circle-check"',
 							[color]='passwordRule?.numberOrSymbol ? "white" : "tertiary"')
 						span([class.text-color-tertiary]='!passwordRule?.numberOrSymbol')
-							| {{ "AUTH.LABEL.NUMBERS_OR_SYMBOLS" | translate }}
+							| {{ "LABEL.NUMBERS_OR_SYMBOLS" | translate }}
 					.layout-row.layout-align-center-center.layout-gap-4
 						cub-icon(
 							size='16px',
 							[name]='passwordRule?.uppercase ? "circle-check-fill" : "circle-check"',
 							[color]='passwordRule?.uppercase ? "white" : "tertiary"')
 						span([class.text-color-tertiary]='!passwordRule?.uppercase')
-							| {{ "AUTH.LABEL.UPPERCASE_LETTERS" | translate }}
+							| {{ "LABEL.UPPERCASE_LETTERS" | translate }}
 			.layout-column.layout-gap-4
 				cub-slider(
 					readonly,
@@ -44,15 +44,15 @@ mixin checkWeekPassword
 						"100": "green"
 					}`,
 					tabindex='-1')
-				| {{ "AUTH.MESSAGE.PASSWORD_STRENGTH" | translate }}
+				| {{ "MESSAGE.PASSWORD_STRENGTH" | translate }}
 				| {{ passwordHighlight[ passwordRule?.percent ]?.message | translate | uppercase }}
 
 mixin otp(step)
 	h2
-		| {{ "AUTH.MESSAGE.ENTER_OR_PASTE_CODE" | translate }}
+		| {{ "MESSAGE.ENTER_OR_PASTE_CODE" | translate }}
 	.layout-column.layout-align-center-center.layout-gap-16.full-width
 		.layout-column.layout-align-center-center
-			| {{ "AUTH.MESSAGE.VERIFY_IDENTITY_SEND" | translate }}&nbsp;
+			| {{ "MESSAGE.VERIFY_IDENTITY_SEND" | translate }}&nbsp;
 			.layout-row.layout-align-start-center
 				.text-semibold
 					| {{ account?.email }}
@@ -60,7 +60,7 @@ mixin otp(step)
 					cubBasicButton,
 					iconSize='16px',
 					icon='pencil',
-					[cubTooltip]='"AUTH.LABEL.CHANGE_EMAIL" | translate',
+					[cubTooltip]='"LABEL.CHANGE_EMAIL" | translate',
 					(click)=`step = ${step}`)
 		verify-identity(
 			[screenType]='screenType',
@@ -71,13 +71,13 @@ mixin passwordFormFieldInput(label, formControl, autoFocusOn)
 	cub-form-field(
 		#inputPass,
 		hideRequiredMarker,
-		[label]=`"AUTH.LABEL.${label}" | translate`)
+		[label]=`"LABEL.${label}" | translate`)
 		input(
 			cubFormFieldInput,
 			[autoFocusOn]=autoFocusOn,
 			[clearable]='false',
 			[type]='hiddenPassword ? "text" : "password"',
-			[placeholder]='"AUTH.PLACEHOLDER.TYPE_PASSWORD" | translate',
+			[placeholder]='"PLACEHOLDER.TYPE_PASSWORD" | translate',
 			[formControl]=`${formControl}`,
 			[(ngModel)]='account.password',
 			(blur)='closeTooltip()',
@@ -90,12 +90,12 @@ mixin passwordFormFieldInput(label, formControl, autoFocusOn)
 mixin confirmPasswordFormFieldInput(label, formControl)
 	cub-form-field(
 		hideRequiredMarker,
-		[label]=`"AUTH.LABEL.${label}" | translate`)
+		[label]=`"LABEL.${label}" | translate`)
 		input(
 			cubFormFieldInput,
 			[clearable]='false',
 			[type]='hiddenConfirm ? "text" : "password"',
-			[placeholder]='"AUTH.PLACEHOLDER.TYPE_PASSWORD" | translate',
+			[placeholder]='"PLACEHOLDER.TYPE_PASSWORD" | translate',
 			[formControl]=`${formControl}`)
 		+formFieldSuffix('hiddenConfirm')
 

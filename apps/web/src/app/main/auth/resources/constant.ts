@@ -3,10 +3,13 @@ export const CONSTANT = {
 	PATH: {
 		RESET_PASSWORD		: 'reset-password',
 		SIGN_IN				: 'sign-in',
+		SIGN_UP				: 'sign-up',
 		SIGN_OUT			: 'sign-out',
 	},
 	SCREEN_TYPE: {
 		SIGNIN			: 'signin',
 		RESET_PASSWORD	: 'reset-password',
+		SIGNUP			: 'signup',
 	},
+	GOOGLE_SCOPE: 'profile email',
 } as const;

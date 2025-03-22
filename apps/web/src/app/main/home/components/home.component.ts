@@ -1,47 +1,49 @@
 import {
-	isPlatformBrowser
-} from '@angular/common';
-import {
 	Component,
+	ChangeDetectorRef,
 	ChangeDetectionStrategy,
-	AfterViewInit,
-	Inject,
-	PLATFORM_ID,
 	OnInit,
+	inject
 } from '@angular/core';
-import Swiper from 'swiper';
+import _ from 'lodash';
 
-import {
-	Navigation,
-	Pagination
-} from 'swiper/modules';
 import {
 	Unsubscriber
 } from '@core';
 
-Swiper.use([Navigation, Pagination]);
 
 @Unsubscriber()
 @Component({
-	selector: 'home',
-	templateUrl: '../templates/home.pug',
-	styleUrls: ['../styles/home.scss'],
-	host: { class: 'home' },
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	selector		: 'home',
+	templateUrl		: '../templates/home.pug',
+	styleUrls		: [ '../styles/home.scss' ],
+	host			: { class: 'home' },
+	changeDetection	: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent
-implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
-	constructor(
-		@Inject(PLATFORM_ID) private platformId: Object
-	) {}
+	private readonly _cdRef: ChangeDetectorRef
+		= inject( ChangeDetectorRef );
 
-	ngOnInit(): void {
+	/**
+	 * @constructor
+	 */
+	ngOnInit() {
+		this._initData();
 	}
 
-	ngAfterViewInit(): void {
-		if ( isPlatformBrowser( this.platformId ) ) {
-		}
+	/**
+	 * @return {void}
+	 */
+	protected openExplorePage() {
+
+	}
+
+	/**
+	 * @return {void}
+	 */
+	private _initData() {
+		this._cdRef.markForCheck();
 	}
 
 }
