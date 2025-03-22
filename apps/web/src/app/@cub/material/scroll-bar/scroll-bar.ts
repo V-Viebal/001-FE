@@ -13,6 +13,7 @@ import {
 	OnDestroy,
 	OnInit,
 	Output,
+	PLATFORM_ID
 	QueryList
 } from '@angular/core';
 import ResizeObserver
@@ -21,6 +22,7 @@ import {
 	startWith
 } from 'rxjs';
 import _ from 'lodash';
+import LocomotiveScroll from 'locomotive-scroll';
 
 import {
 	CoerceBoolean,
@@ -28,6 +30,7 @@ import {
 	DetectScrollDirective,
 	untilCmpDestroyed
 } from 'angular-core';
+import { isPlatformBrowser } from '@angular/common';
 
 import {
 	CUBScrollBarViewPortItemDirective
@@ -69,6 +72,8 @@ export class CUBScrollBar
 		= inject( ChangeDetectorRef );
 	protected readonly ngZone: NgZone
 		= inject( NgZone );
+	protected readonly platformId: Object
+		= inject( PLATFORM_ID );
 
 	@HostBinding( 'attr.scrollBar' )
 	protected readonly attrScrollBar: boolean = true;
@@ -99,6 +104,7 @@ export class CUBScrollBar
 				this._loadItemsThrottle();
 			}
 		);
+	private scroll: LocomotiveScroll | undefined;
 
 	@HostBinding( 'attr.deepScroll' )
 	get attrDeepScroll(): boolean {
@@ -165,6 +171,9 @@ export class CUBScrollBar
 
 	ngOnInit() {
 		this.init.emit( this );
+		if ( isPlatformBrowser( this.platformId ) ) {
+			this._initLocomotiveScroll();
+		}
 	}
 
 	ngAfterViewInit() {
@@ -294,6 +303,26 @@ export class CUBScrollBar
 				...options,
 			});
 		}
+	}
+
+	private _initLocomotiveScroll(): void {
+		if (!isPlatformBrowser(this.platformId) || this.scroll) return;
+
+		this.ngZone.runOutsideAngular(() => {
+			this.scroll = new LocomotiveScroll({
+				el: this.nativeElement, // Use the directive's host element
+				smooth: true,
+				multiplier: 1,
+				lerp: 0.1, // Smoothness factor
+				direction: 'vertical',
+				smartphone: { smooth: true },
+				tablet: { smooth: true },
+			});
+
+			// Update on resize
+			this.scroll.on('scroll', () => this.cdRef.markForCheck());
+			window.addEventListener('resize', () => this.scroll?.update());
+		});
 	}
 
 	private _animateScrollTo(
