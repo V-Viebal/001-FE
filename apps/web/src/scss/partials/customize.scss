@@ -58,12 +58,6 @@ $scroll-bar-thumb-size: 8px;
 	&[suppressY='true'] {
 		overflow-y: hidden !important;
 	}
-
-	> * {
-		position: relative;
-
-		flex-shrink: 0;
-	}
 }
 
 .cdk-drag {

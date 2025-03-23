@@ -1,14 +1,25 @@
 @import 'src/scss/partials/variable';
 
+$color_1: rgba(238,239,245,.5);
+$color_2: #0b0d0f;
+$color_3: #eeeff5;
+$color_4: #fff;
+$color_5: #bebec8;
+$color_6: #75777b;
+$background-color_1: #fff;
+$background-color_2: rgba(0,0,0,0);
+$background-color_3: rgba(255,255,255,.2);
+$background-color_4: #2f3337;
+
 :host {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	min-width: 0;
-	max-width: 100%;
+	max-width: 100vw;
 	height: 100%;
 	min-height: 0;
-	max-height: 100%;
+	max-height: 100vh;
 
 	.main-header {
 		height: 950px;
@@ -20,7 +31,6 @@
 		h1+p {
 			max-width: 605px;
 			letter-spacing: .01em;
-			font-family: $font-family_1;
 		}
 		p {
 			max-width: 610px;
@@ -48,7 +58,6 @@
 				z-index: 1;
 				width: 248px;
 				color: $color_2;
-				font-family: $font-family_2;
 				font-weight: 600;
 				letter-spacing: initial;
 				padding: 13px 33px;
@@ -342,7 +351,6 @@
 		}
 		h3 {
 			padding: 289px 0 64px;
-			font-family: $font-family_3;
 			font-size: 48px;
 			font-weight: 600;
 			line-height: 48px;
@@ -457,7 +465,6 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					font-family: $font-family_3;
 					font-size: 14px;
 					font-weight: 600;
 					line-height: 14px;
@@ -726,7 +733,6 @@
 		}
 		span {
 			max-width: 311px;
-			font-family: $font-family_3;
 			font-size: 24px;
 			font-weight: 600;
 			line-height: 24px;
@@ -759,7 +765,6 @@
 			margin-bottom: 24px;
 		}
 		.coming-soon--fonts {
-			font-family: $font-family_3;
 			font-size: 16px;
 			font-weight: 600;
 			line-height: 20px;
@@ -1026,7 +1031,6 @@
 			.category {
 				margin-bottom: 24px;
 				span {
-					font-family: $font-family_4;
 					font-size: 16px;
 					font-weight: 500;
 					line-height: 16px;
