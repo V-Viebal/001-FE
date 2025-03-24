@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
-        runner: [ template-01 ] # list of runner's labels
+        runner: [ template-1 ] # list of runner's labels
     continue-on-error: true  # Allows each matrix job to continue even if one fails
     environment: ${{ inputs.environment }}
     steps:
@@ -50,7 +50,7 @@ jobs:
     needs: validate
     strategy:
       matrix:
-        runner: [ template-01 ] # list of runner's labels
+        runner: [ template-1 ] # list of runner's labels
     continue-on-error: true  # Allows each matrix job to continue even if one fails
     environment: ${{ inputs.environment }}
     steps:
