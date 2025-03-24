@@ -88,8 +88,8 @@ jobs:
           # Set environment-specific variables
           variables_to_set=(
             "ENV_NAME=$env"
-            "SERVICE_NAME=viebal"
-            "SERVICE_DOMAIN=viebal.top"
+            "SERVICE_NAME=kht"
+            "SERVICE_DOMAIN=kht.viebal.top"
             "SERVICE_PORT=80"
           )
           
