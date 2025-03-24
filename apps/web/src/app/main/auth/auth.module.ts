@@ -44,17 +44,12 @@ import {
 	AuthRoutingModule
 } from './auth-routing.module';
 import {
-	SignInComponent
-} from './components';
-import {
+	SignInComponent,
+	SignUpComponent,
+	SignOutComponent,
+	VerifyIdentityComponent,
 	ResetPasswordComponent
-} from './components/reset-password.component';
-import {
-	SignUpComponent
-} from './components/sign-up.component';
-import {
-	VerifyIdentityComponent
-} from './components/verify-identity.component';
+} from './components';
 
 @NgModule({
 	imports: [
@@ -85,12 +80,14 @@ import {
 	],
 	exports: [
 		SignInComponent,
+		SignOutComponent,
 		SignUpComponent,
 		ResetPasswordComponent,
 		VerifyIdentityComponent
 	],
 	declarations: [
 		SignInComponent,
+		SignOutComponent,
 		SignUpComponent,
 		ResetPasswordComponent,
 		VerifyIdentityComponent

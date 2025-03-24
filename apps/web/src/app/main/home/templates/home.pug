@@ -3,13 +3,13 @@ main.default-page(cubScrollBar, suppressX)
 		.background--empty
 		.nav-bar__content.nav-bar__content--mobile.ui-grid
 			.left
-				a(href='index.htm')
+				a(routerLink='/')
 					.nbc__logo
-						img.logo-desktop(src='/assets/images/logos/logo-horizontal.png' alt='KHT Khoá học tốt')
+						img.logo-desktop(src='/assets/images/logos/logo-horizontal.png', alt='KHT Khoá học tốt')
 			.right
 				.buttons-container
 					.button-container
-						a(href='https://kht.viebal.top/sign-up')
+						a(routerLink='/sign-up')
 							button.button.button--round-border.button--main-blue-btn(style='white-space: nowrap')
 								| Đăng ký
 				.nvc__right
@@ -18,44 +18,44 @@ main.default-page(cubScrollBar, suppressX)
 							.toggle-roadbar__hamburger
 		.nav-bar__content.ui-grid
 			.left
-				a(href='index.htm')
+				a(routerLink='/')
 					.nbc__logo
-						img.logo-desktop(src='/assets/images/logos/logo-horizontal.png' alt='KHT Khoá học tốt')
+						img.logo-desktop(src='/assets/images/logos/logo-horizontal.png', alt='KHT Khoá học tốt')
 			.right.right--center
 				ul.nvc__left
 					li
-						a(href='index.htm')
+						a(routerLink='/')
 							p Học viện
 							a.dropdown-reveal
 								img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 								img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 								img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 					li.no-dropdown
-						a(href='learning-paths/index.htm')
+						a(routerLink='/learning-paths')
 							p Lộ trình học tập
 					li.no-dropdown
-						a(href='https://kht.viebal.top/challenges')
+						a(routerLink='/challenges')
 							p Dự án thực hành
 					li.no-dropdown
-						a(href='pricing/index.htm')
+						a(routerLink='/pricing')
 							p Bảng giá
 					li.no-dropdown
-						a(href='community/index.htm')
+						a(routerLink='/community')
 							p Cộng đồng
 					li
-						a(target='_blank' href='')
+						a(target='_blank', routerLink='/about-us')
 							p Về chúng tôi
 							a.dropdown-reveal
 								img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 								img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 								img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 					li.no-dropdown
-						a(href='https://intercom.help/invo-academy/pl/')
+						a(routerLink='/faq')
 							p Câu hỏi thường gặp
 			.right
 				.nvc__right
 					.button-container
-						a(href='https://kht.viebal.top/sign-up')
+						a(routerLink='/sign-up')
 							button.button.button--round-border.button--main-blue-btn(style='white-space: nowrap')
 								| Đăng ký
 		.submenus-container
@@ -68,7 +68,7 @@ main.default-page(cubScrollBar, suppressX)
 								br
 								| với KHT - Khoá học tốt
 							p
-								| Từ công nghệ, kinh doanh đến nghệ thuật – 
+								| Từ công nghệ, kinh doanh đến nghệ thuật –
 								br
 								| khám phá và phát triển sự nghiệp của bạn!
 						.submenu__column
@@ -113,9 +113,9 @@ main.default-page(cubScrollBar, suppressX)
 											| "Tôi đã học cả lập trình và marketing – rất linh hoạt và thực tế!"
 									.opinion-data
 										picture
-											source(srcset='/assets/customs/img/nav-bar/user1.jpg?v=2' type='image/png')
-											source(srcset='https://invo.academy//assets/customs/img/nav-bar/user1.wepb' type='image/webp')
-											img(src='/assets/customs/img/nav-bar/user1.jpg?v=2' alt='Học kỹ năng đa dạng')
+											source(srcset='/assets/customs/img/nav-bar/user1.jpg?v=2', type='image/png')
+											source(srcset='https://invo.academy//assets/customs/img/nav-bar/user1.wepb', type='image/webp')
+											img(src='/assets/customs/img/nav-bar/user1.jpg?v=2', alt='Học kỹ năng đa dạng')
 										.opinion-user
 											h4 Nguyễn Minh Anh
 											p Tốt nghiệp khóa 3 tháng
@@ -127,9 +127,9 @@ main.default-page(cubScrollBar, suppressX)
 											| "Khóa học thiết kế giúp tôi xây dựng portfolio ấn tượng!"
 									.opinion-data
 										picture
-											source(srcset='/assets/customs/img/nav-bar/user2.jpg?v=2' type='image/png')
-											source(srcset='https://invo.academy//assets/customs/img/nav-bar/user2.wepb' type='image/webp')
-											img(src='/assets/customs/img/nav-bar/user2.jpg?v=2' alt='Học kỹ năng đa dạng')
+											source(srcset='/assets/customs/img/nav-bar/user2.jpg?v=2', type='image/png')
+											source(srcset='https://invo.academy//assets/customs/img/nav-bar/user2.wepb', type='image/webp')
+											img(src='/assets/customs/img/nav-bar/user2.jpg?v=2', alt='Học kỹ năng đa dạng')
 										.opinion-user
 											h4 Trần Văn Hùng
 											p Tốt nghiệp khóa 2 tháng
@@ -141,9 +141,9 @@ main.default-page(cubScrollBar, suppressX)
 											| "Tôi học kỹ năng mềm và kinh doanh – tự tin hơn bao giờ hết!"
 									.opinion-data
 										picture
-											source(srcset='/assets/customs/img/nav-bar/user3.jpg?v=2' type='image/png')
-											source(srcset='https://invo.academy//assets/customs/img/nav-bar/user3.wepb' type='image/webp')
-											img(src='/assets/customs/img/nav-bar/user3.jpg?v=2' alt='Học kỹ năng đa dạng')
+											source(srcset='/assets/customs/img/nav-bar/user3.jpg?v=2', type='image/png')
+											source(srcset='https://invo.academy//assets/customs/img/nav-bar/user3.wepb', type='image/webp')
+											img(src='/assets/customs/img/nav-bar/user3.jpg?v=2', alt='Học kỹ năng đa dạng')
 										.opinion-user
 											h4 Lê Thị Mai
 											p Tốt nghiệp khóa 3 tháng
@@ -164,7 +164,7 @@ main.default-page(cubScrollBar, suppressX)
 								br
 								| từ nhiều ngành nghề để giúp bạn thành công.
 						.submenu__column
-							a(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4' target='_blank')
+							a(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4', target='_blank')
 								.icon-container
 									img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-1-active.svg')
 									img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-1.svg')
@@ -172,7 +172,7 @@ main.default-page(cubScrollBar, suppressX)
 									p.list-item-content Sứ mệnh của chúng tôi
 									p.submenu__column__desc Hành trình của KHT - Khoá học tốt
 								img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-							a(href='contact/index.htm')
+							a(routerLink='/contact')
 								.icon-container
 									img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-5-active.svg')
 									img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-5.svg')
@@ -180,7 +180,7 @@ main.default-page(cubScrollBar, suppressX)
 									p.list-item-content Liên hệ
 									p.submenu__column__desc Hỏi đáp nhanh chóng
 								img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-							a(href='https://www.invotech.co/careers' target='_blank')
+							a(routerLink='/careers')
 								.icon-container
 									img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-6-active.svg')
 									img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-6.svg')
@@ -188,11 +188,11 @@ main.default-page(cubScrollBar, suppressX)
 									p.list-item-content Cơ hội việc làm
 									p.submenu__column__desc Tham gia đội ngũ KHT
 								img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a.rounded-container.rounded-container--image(href='https://www.invotech.co' target='_blank')
+						a.rounded-container.rounded-container--image(routerLink='/about-us')
 							picture
-								source(srcset='/assets/customs/img/nav-bar/team.webp?v=2' type='image/webp')
-								source(srcset='/assets/customs/img/nav-bar/team.jpg?v=2' type='image/jpg')
-								img.team(src='/assets/customs/img/nav-bar/team.jpg?v=2' alt='Học kỹ năng đa dạng')
+								source(srcset='/assets/customs/img/nav-bar/team.webp?v=2', type='image/webp')
+								source(srcset='/assets/customs/img/nav-bar/team.jpg?v=2', type='image/jpg')
+								img.team(src='/assets/customs/img/nav-bar/team.jpg?v=2', alt='Học kỹ năng đa dạng')
 							.gradient
 							.rounded-container--image__text
 								h3 KHT Khoá học tốt
@@ -217,7 +217,7 @@ main.default-page(cubScrollBar, suppressX)
 									br
 									| với KHT - Khoá học tốt
 								p
-									| Từ công nghệ, kinh doanh đến nghệ thuật – 
+									| Từ công nghệ, kinh doanh đến nghệ thuật –
 									br
 									| khám phá và phát triển sự nghiệp của bạn!
 							.submenu
@@ -248,23 +248,23 @@ main.default-page(cubScrollBar, suppressX)
 										img(src='/assets/customs/img/nav-bar/arrow-white.svg')
 				li
 					.link-and-dropdown
-						a(href='learning-paths/index.htm')
+						a(routerLink='/learning-paths')
 							| Lộ trình học tập
 				li
 					.link-and-dropdown
-						a(href='https://kht.viebal.top/challenges')
+						a(routerLink='/challenges')
 							| Dự án thực hành
 				li
 					.link-and-dropdown
-						a(href='pricing/index.htm')
+						a(routerLink='/pricing')
 							| Bảng giá
 				li
 					.link-and-dropdown
-						a(href='community/index.htm')
+						a(routerLink='/community')
 							| Cộng đồng
 				li.dropdown-container
 					.link-and-dropdown
-						a(target='_blank')
+						a(routerLink='/about-us')
 							| Về chúng tôi
 						a.dropdown-reveal-nav
 							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
@@ -281,7 +281,7 @@ main.default-page(cubScrollBar, suppressX)
 									| từ nhiều ngành nghề để giúp bạn thành công.
 							.submenu
 								.submenu__column
-									a.link-mobile-submenu(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4' target='_blank')
+									a.link-mobile-submenu(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4', target='_blank')
 										img.cat-icon(src='/assets/customs/img/nav-bar/platforma-1.svg')
 										.internal-container
 											p.list-item-content Sứ mệnh của chúng tôi
@@ -293,13 +293,13 @@ main.default-page(cubScrollBar, suppressX)
 											p.list-item-content Liên hệ
 											p.submenu__column__desc Hỏi đáp nhanh chóng
 										img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-									a.link-mobile-submenu(href='https://www.invotech.co/careers' target='_blank')
+									a.link-mobile-submenu(routerLink='/careers', target='_blank')
 										img.cat-icon(src='/assets/customs/img/nav-bar/platforma-6.svg')
 										.internal-container
 											p.list-item-content Cơ hội việc làm
 											p.submenu__column__desc Tham gia đội ngũ KHT
 										img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-							a.rounded-container.rounded-container--image(href='https://www.invotech.co' target='_blank')
+							a.rounded-container.rounded-container--image(routerLink='/', target='_blank')
 								img(src='/assets/customs/img/nav-bar/team.jpg?v=2')
 								.gradient
 								.rounded-container--image__text
@@ -311,10 +311,10 @@ main.default-page(cubScrollBar, suppressX)
 								img.arrow-right(src='/assets/customs/img/nav-bar/arrow-right-big.svg')
 				li
 					.link-and-dropdown
-						a(href='https://intercom.help/invo-academy/pl/')
+						a(routerLink='/faq')
 							| Câu hỏi thường gặp
 				li.white-link
-					a.contact(href='https://kht.viebal.top/sign-up')
+					a.contact(routerLink='/sign-up')
 						| Đăng ký
 	section.main-header
 		.text-container
@@ -329,7 +329,7 @@ main.default-page(cubScrollBar, suppressX)
 				br
 				| Tất cả đều có tại đây để bạn chinh phục!
 			.button-text-container
-				a.button-link(href='https://kht.viebal.top/sign-up')
+				a.button-link(routerLink='/sign-up')
 					button.button
 						| Bắt đầu ngay
 				.bg
@@ -338,14 +338,14 @@ main.default-page(cubScrollBar, suppressX)
 				.bg.bg--1
 				.bg.bg--2
 				picture
-					source(media='(min-width: 801px)' srcset='/assets/customs/img/header/header-1ang.webp?v=2' type='image/webp')
-					source(media='(max-width: 800px)' srcset='/assets/customs/img/header/header-mobileEN.webp?v=2' type='image/webp')
-					source(media='(min-width: 801px)' srcset='/assets/customs/img/header/header-1ang.png?v=2' type='image/png')
-					source(media='(max-width: 800px)' srcset='/assets/customs/img/header/header-mobileEN.png?v=2' type='image/png')
-					img.image-background(src='https://invo.academy//assets/customs/img/header/' alt='Học kỹ năng đa dạng')
+					source(media='(min-width: 801px)', srcset='/assets/customs/img/header/header-1ang.webp?v=2', type='image/webp')
+					source(media='(max-width: 800px)', srcset='/assets/customs/img/header/header-mobileEN.webp?v=2', type='image/webp')
+					source(media='(min-width: 801px)', srcset='/assets/customs/img/header/header-1ang.png?v=2', type='image/png')
+					source(media='(max-width: 800px)', srcset='/assets/customs/img/header/header-mobileEN.png?v=2', type='image/png')
+					img.image-background(src='https://invo.academy//assets/customs/img/header/', alt='Học kỹ năng đa dạng')
 		.header-bg.img-container
 			picture
-				source(media='(min-width: 801px)' srcset='/assets/customs/img/header/header-bg.webp?v=2' type='image/webp')
+				source(media='(min-width: 801px)', srcset='/assets/customs/img/header/header-bg.webp?v=2' type='image/webp')
 				source(media='(max-width: 800px)' srcset='/assets/customs/img/header/header-bg-mobile.webp?v=2' type='image/webp')
 				source(media='(min-width: 801px)' srcset='/assets/customs/img/header/header-bg.png?v=2' type='image/png')
 				source(media='(max-width: 800px)' srcset='/assets/customs/img/header/header-bg-mobile.png?v=2' type='image/png')
@@ -368,10 +368,13 @@ main.default-page(cubScrollBar, suppressX)
 		.finding-job__container.flex
 			.finding-job__container-title.top-title.flex.finding-job_title-class
 				h2
-					| Tìm kiếm sự nghiệp mơ ước&nbsp;
+					| Tìm kiếm sự nghiệp mơ ước
+					br
 					span không còn khó khăn
 				p
-					| Tại KHT - Khoá học tốt, chúng tôi giúp bạn học mọi kỹ năng cần thiết để phát triển sự nghiệp trong bất kỳ lĩnh vực nào bạn chọn.
+					| Tại KHT - Khoá học tốt, chúng tôi giúp bạn học mọi kỹ năng cần thiết&nbsp;
+					br
+					| để phát triển sự nghiệp trong bất kỳ lĩnh vực nào bạn chọn.
 			.colorful-container.finding-job__container-raising-qualifications
 				picture
 					source(srcset='/assets/customs/img/big-box/background.webp?v=2' type='image/webp')
@@ -740,7 +743,7 @@ main.default-page(cubScrollBar, suppressX)
 								source(srcset='/assets/customs/img/big-box/mute1.webp?v=2' type='image/webp')
 								source(srcset='/assets/customs/img/big-box/mute1.png?v=2' type='image/png')
 								img.mute-img(src='/assets/customs/img/big-box/mute1.png?v=2' alt='Học kỹ năng đa dạng')
-					a.container-middle__bottom-bc(href='https://kht.viebal.top/sign-up')
+					a.container-middle__bottom-bc(routerLink='/sign-up')
 						.container-middle__bottom.card-black.card-black__center(data-aos='fade-up' data-aos-duration='300' data-aos-delay='100')
 							img.svg-last-section(src='/assets/customs/img/big-box/book2.svg' alt='Học kỹ năng đa dạng')
 							div
@@ -804,7 +807,7 @@ main.default-page(cubScrollBar, suppressX)
 					.description
 						a(href='index.htm#three-pillars') Cách học hiệu quả
 						a(href='index.htm#home-video') Phương pháp của chúng tôi
-						a(href='https://kht.viebal.top/challenges') Dự án thực hành
+						a(routerLink='/challenges') Dự án thực hành
 				.small-dash
 				.footer-container__content-box.footer-direction
 					.category.small-font
@@ -820,31 +823,31 @@ main.default-page(cubScrollBar, suppressX)
 						| CỘNG ĐỒNG
 						img.turn-down(src='/assets/customs/img/footer/turn-down.svg' alt='Xem thêm')
 					.description
-						a(href='community/index.htm') Cộng đồng
-						a(href='https://www.facebook.com/groups/3475853989362320/' target='_blank') Nhóm Facebook
-						a(href='https://classy-hedgehog-bb8.notion.site/Regulamin-spo-eczno-ci-5d4d5bea33b44ed49142f042fa229512' target='_blank') Hướng dẫn
+						a(routerLink='/community') Cộng đồng
+						a(href='https://www.facebook.com/' target='_blank') Nhóm Facebook
+						a(href='https://www.facebook.com/' target='_blank') Hướng dẫn
 				.small-dash
 				.footer-container__content-box.footer-direction
 					.category.small-font
 						| VỀ CHÚNG TÔI
 						img.turn-down(src='/assets/customs/img/footer/turn-down.svg' alt='Xem thêm')
 					.description
-						a(href='contact/index.htm') Liên hệ
-						a(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4' target='_blank') Sứ mệnh của chúng tôi
-						a(href='https://www.invotech.co' target='_blank') KHT Khoá học tốt
+						a(routerLink='/contact') Liên hệ
+						a(routerLink='/about-us') Sứ mệnh của chúng tôi
+						a(routerLink='/about-us') KHT Khoá học tốt
 			.footer-container__content-contact
 				.contact-social
 					.contact-social__email
 						img.sms(src='/assets/customs/img/footer/sms.svg' alt='Xem thêm')
-						a(href='cdn-cgi/l/email-protection.html#21d0ddd4d4d7f8d1d6ced796d9dbd9dcddd5c1')
-							span.__cf_email__(data-cfemail='b8d0ddd4d4d7f8d1d6ced796d9dbd9dcddd5c1') [viebalmail&#64;gmail.com]
+						a(href='cdn-cgi/l/email-protection.html')
+							span.__cf_email__(type='email', href='mailto:viebalmail@gmail.com') [viebalmail&#64;gmail.com]
 					.contact-social__portal
-						a(href='https://www.facebook.com/profile.php?id=100089923222127' target='_blank')
+						a(href='https://www.facebook.com' target='_blank')
 							svg.svg-portal.hover-svg(viewbox='0 0 8 17' fill='red' xmlns='http://www.w3.org/2000/svg')
 								path(d='M6.53946 2.82271H8V0.119708C7.74802 0.082875 6.88143 0 5.87218 0C3.76635 0 2.32381 1.40746 2.32381\
 								3.99429V6.375H0V9.39675H2.32381V17H5.1729V9.39746H7.40272L7.75669 6.37571H5.17224V4.29392C5.1729 3.42054\
 								5.39422 2.82271 6.53946 2.82271Z' fill='#EEEFF5')
-						a(href='https://www.linkedin.com/company/invo-academy/' target='_blank')
+						a(href='https://www.linkedin.com' target='_blank')
 							svg.svg-link.hover-svg(viewbox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg')
 								path(d='M15.9959 15.9998V15.9991H15.9998V10.1048C15.9998 7.22125 15.4022 5 12.1568 5C10.5967 5 9.54967 5.88931 9.12224 6.7324H9.07711V5.2692H6V15.9991H9.20412V10.6861C9.20412 9.28715 9.45942 7.93444 11.1272 7.93444C12.7706 7.93444 12.795 9.5309 12.795 10.7758V15.9998H15.9959Z' fill='#EEEFF5')
 								path(d='M0 5H3.99992V15.9998H0L0 5Z' fill='#EEEFF5')

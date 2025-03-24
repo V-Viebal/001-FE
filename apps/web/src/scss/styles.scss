@@ -314,6 +314,7 @@ img+h4 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex: unset;
 }
 .svg-image {
 	width: 64px;
@@ -3706,12 +3707,10 @@ footer {
 		.nav-bar__content {
 			.left {
 				.nbc__logo {
-					width: 133px;
 					height: 24px;
 					img {
-						width: 147px;
 						height: 38px;
-						transform: translateX(-10px) translateY(-4px);
+						transform: translateX(-10px) translateY(-6px);
 					}
 				}
 			}

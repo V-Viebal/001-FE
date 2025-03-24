@@ -14,8 +14,9 @@ import {
 	ActivatedRoute
 } from '@angular/router';
 import {
-	finalize} from 'rxjs/operators';
-
+	finalize
+} from 'rxjs/operators';
+import _ from 'lodash';
 import {
 	Unsubscriber,
 	untilCmpDestroyed
@@ -33,6 +34,10 @@ import {
 } from '@resources';
 
 import {
+	ENVIRONMENT
+} from '@environments/environment';
+
+import {
 	CONSTANT
 } from '../resources';
 import {
@@ -42,9 +47,12 @@ import {
 import {
 	AuthBase
 } from './auth-base';
-import { ENVIRONMENT } from '@environments/environment';
-import { ISocialCredential, ISocialProfile, ISocialRequest, IToken } from '../interfaces';
-import _ from 'lodash';
+import {
+	ISocialCredential,
+	ISocialProfile,
+	ISocialRequest,
+	IToken
+} from '../interfaces';
 
 
 declare const google: any;

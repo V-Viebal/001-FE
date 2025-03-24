@@ -2,7 +2,7 @@ mixin content
 	.layout.layout-column.ph-20(
 		[ngStyle]=`{
 			'max-width.px'
-			: '410' }`)
+			: '430' }`)
 		.layout-column.layout-align-start-center.layout-gap-20.full-width
 			h2
 				| {{ existAccount ? ('LABEL.ACCOUNT_EXISTS' | translate) : ('LABEL.SIGN_IN' | translate) }}
@@ -82,10 +82,10 @@ mixin content
 							[disabled]='isSubmitting',
 							(click)='signInByGoogle()')
 							| {{ "LABEL.SIGN_IN_WITH_GOOGLE" | translate }}
-			.layout-column.layout-gap-8.text-center
+			.layout-column.layout-gap-8.text-center.full-width
 				span
 					| {{ "LABEL.FORGOT_YOUR_PASSWORD" | translate }}&nbsp;
-					a.text-semibold(
+					a.text-semibold.d-inline-block(
 						(click)='stateNavigate([ PATH?.RESET_PASSWORD ])')
 						| {{ "LABEL.RESET_PASSWORD" | translate }}
 include patterns/auth.pug

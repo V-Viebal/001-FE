@@ -52,8 +52,8 @@
 					"node_modules/swiper/modules/scrollbar.min.css",
 					"node_modules/locomotive-scroll/dist/locomotive-scroll.min.css",
 					"node_modules/aos/dist/aos.css",
-					"apps/web/src/scss/styles.scss",
-					"apps/web/src/scss/libs.scss"
+					"apps/web/src/scss/libs.scss",
+					"apps/web/src/scss/styles.scss"
 				],
 				"scripts": [
 					"node_modules/swiper/swiper-bundle.min.js",
