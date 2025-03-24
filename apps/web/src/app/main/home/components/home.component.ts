@@ -101,8 +101,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 						},
 						{
 							root: null,
-							rootMargin: '100px 0px 0px 0px', // Delay trigger until element is 100px into the viewport
-							threshold: 0.5, // Trigger when 50% of the element is visible
+							rootMargin: '0px',
+							threshold: 0.5,
 						}
 					);
 

@@ -16,7 +16,12 @@ body {
 // Headings
 h1,
 h2,
-h3,
+h3 {
+	margin: 0;
+	color: $color-text-primary;
+	font-weight: $font-weight-bold;
+}
+
 h4,
 h5,
 h6 {
@@ -62,7 +67,7 @@ p {
 
 // Link
 a {
-	color: $color-text-blue;
+	color: $color-text-primary;
 
 	text-decoration: 0;
 
@@ -73,7 +78,7 @@ a {
 	&:focus {
 		text-decoration: none;
 
-		color: $color-text-blue;
+		color: $color-text-secondary;
 	}
 
 	&[disabled] {
