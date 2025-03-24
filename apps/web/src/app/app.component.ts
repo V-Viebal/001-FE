@@ -148,7 +148,6 @@ export class AppComponent implements OnInit, OnDestroy {
 				this.setupFooter();
 				this.setupMobileMenu();
 				this.setupNavbar();
-				this.setupIntercom();
 			});
 		});
 	}
@@ -438,43 +437,5 @@ export class AppComponent implements OnInit, OnDestroy {
 				);
 			}
 		});
-	}
-
-	private setupIntercom(): void {
-		(window as any).intercomSettings = {
-			api_base: 'https://api-iam.intercom.io',
-			app_id: 'd70rtwaa',
-		};
-		const w = window as any;
-		const ic = w.Intercom;
-		if (typeof ic === 'function') {
-			ic('reattach_activator');
-			ic('update', w.intercomSettings);
-		} else {
-			const d = document;
-			const i = function (...args: any[]) {
-				i.q.push(args);
-			} as any;
-			i.q = [] as any[];
-			i.c = function (args: any[]) {
-				i.q.push(args);
-			};
-			w.Intercom = i;
-			const loadIntercom = () => {
-				const s = d.createElement('script');
-				s.type = 'text/javascript';
-				s.async = true;
-				s.src = 'https://widget.intercom.io/widget/d70rtwaa';
-				const x = d.getElementsByTagName('script')[0];
-				x.parentNode?.insertBefore(s, x);
-			};
-			if (document.readyState === 'complete') {
-				loadIntercom();
-			} else if (w.attachEvent) {
-				w.attachEvent('onload', loadIntercom);
-			} else {
-				w.addEventListener('load', loadIntercom, false);
-			}
-		}
 	}
 }
