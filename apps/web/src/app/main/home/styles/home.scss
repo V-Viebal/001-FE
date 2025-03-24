@@ -1392,6 +1392,97 @@ $background-color_4: #2f3337;
 				}
 			}
 		}
+		.your-learning {
+			.gradient-empty {
+				display: none;
+			}
+		}
+		.your-learning__container {
+			.swiper-button-next {
+				display: none;
+			}
+			.swiper-button-prev {
+				display: none;
+			}
+		}
+	}
+	@media all and (max-width: 1600px) {
+		.main-header {
+			.content-container {
+				left: calc(50% + 60px);
+			}
+			.img-container {
+				height: 516px;
+				width: 660px;
+				margin-top: 50px;
+			}
+		}
+		.your-learning {
+			.gradient-empty {
+				top: 264px;
+				height: 280px;
+				width: 215px;
+			}
+		}
+		.your-learning__container {
+			.swiper-button-next {
+				right: 64px;
+			}
+		}
+	}
+	@media all and (max-width: 800px) {
+		.main-header {
+			height: 758px;
+			min-height: 758px;
+			padding-top: 79px;
+			padding-bottom: 133px;
+			padding-inline: 24px;
+			align-items: flex-end;
+			h1+p {
+				letter-spacing: .01em;
+			}
+			p {
+				font-size: 16px;
+				padding-right: 22px;
+			}
+			.content-container {
+				left: unset;
+				right: 0;
+				top: 95px;
+				mix-blend-mode: lighten;
+			}
+			.text-container {
+				padding-top: 0;
+			}
+			.img-container {
+				height: 320px;
+				width: 343px;
+				.bg {
+					background: none;
+				}
+				.bg--1 {
+					height: 100%;
+				}
+				.bg--2 {
+					height: 27%;
+					border-radius: 14px;
+				}
+			}
+			.button-text-container {
+				.bg {
+					background: none;
+				}
+			}
+			.header-bg {
+				top: -124px;
+				left: -285px;
+			}
+			.header-bg.img-container {
+				height: 1009px;
+				width: 890px;
+			}
+		}
+
 		.finding-job__container-pillars-of-academy {
 			flex-direction: column;
 			.gradient-light {
@@ -1513,95 +1604,6 @@ $background-color_4: #2f3337;
 						display: none;
 					}
 				}
-			}
-		}
-		.your-learning {
-			.gradient-empty {
-				display: none;
-			}
-		}
-		.your-learning__container {
-			.swiper-button-next {
-				display: none;
-			}
-			.swiper-button-prev {
-				display: none;
-			}
-		}
-	}
-	@media all and (max-width: 1600px) {
-		.main-header {
-			.content-container {
-				left: calc(50% + 60px);
-			}
-			.img-container {
-				height: 516px;
-				width: 660px;
-			}
-		}
-		.your-learning {
-			.gradient-empty {
-				top: 264px;
-				height: 280px;
-				width: 215px;
-			}
-		}
-		.your-learning__container {
-			.swiper-button-next {
-				right: 64px;
-			}
-		}
-	}
-	@media all and (max-width: 800px) {
-		.main-header {
-			height: 758px;
-			min-height: 758px;
-			padding-top: 79px;
-			padding-bottom: 133px;
-			padding-inline: 24px;
-			align-items: flex-end;
-			h1+p {
-				letter-spacing: .01em;
-			}
-			p {
-				font-size: 16px;
-				padding-right: 22px;
-			}
-			.content-container {
-				left: unset;
-				right: 0;
-				top: 95px;
-				mix-blend-mode: lighten;
-			}
-			.text-container {
-				padding-top: 0;
-			}
-			.img-container {
-				height: 320px;
-				width: 343px;
-				.bg {
-					background: none;
-				}
-				.bg--1 {
-					height: 100%;
-				}
-				.bg--2 {
-					height: 27%;
-					border-radius: 14px;
-				}
-			}
-			.button-text-container {
-				.bg {
-					background: none;
-				}
-			}
-			.header-bg {
-				top: -124px;
-				left: -285px;
-			}
-			.header-bg.img-container {
-				height: 1009px;
-				width: 890px;
 			}
 		}
 		.video-section {

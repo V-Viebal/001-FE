@@ -3573,31 +3573,6 @@ footer {
 	}
 }
 @media all and (max-width: 1200px) {
-	h1+p {
-		margin-top: 16px;
-	}
-	h1 {
-		font-size: 40px;
-		letter-spacing: -0.02em;
-	}
-	h2 {
-		font-size: 32px;
-		line-height: 32px;
-		padding-bottom: 0px;
-		span {
-			font-size: 32px;
-			line-height: 32px;
-			padding-bottom: 0px;
-		}
-	}
-	h3 {
-		font-size: 24px;
-		line-height: 24px;
-	}
-	p {
-		font-size: 16px;
-		line-height: 22px;
-	}
 	.badge--absolute-right {
 		position: initial;
 	}
@@ -4140,6 +4115,31 @@ footer {
 	}
 }
 @media screen and (max-width: 800px) {
+	h1+p {
+		margin-top: 16px;
+	}
+	h1 {
+		font-size: 40px;
+		letter-spacing: -0.02em;
+	}
+	h2 {
+		font-size: 32px;
+		line-height: 32px;
+		padding-bottom: 0px;
+		span {
+			font-size: 32px;
+			line-height: 32px;
+			padding-bottom: 0px;
+		}
+	}
+	h3 {
+		font-size: 24px;
+		line-height: 24px;
+	}
+	p {
+		font-size: 16px;
+		line-height: 22px;
+	}
 	footer {
 		.footer-container {
 			max-width: 100%;

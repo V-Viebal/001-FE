@@ -62,7 +62,6 @@ import {
 
 declare const google: any;
 declare const gapi: any;
-declare const msal: any;
 
 interface ISignupStep {
 	signUp: number;
@@ -142,11 +141,6 @@ export class SignUpComponent extends AuthBase
 
 		if ( this.token ) {
 			this.verifyComplete( this.token );
-		} else if (
-			this._activatedRoute.snapshot.routeConfig?.path
-				=== CONSTANT.PATH.SIGN_UP
-		) {
-			this.stateNavigate([ CONSTANT.PATH.SIGN_IN ]);
 		}
 	}
 

@@ -75,7 +75,7 @@ mixin content
 							| {{ "LABEL.OR_CONTINUE_WITH" | translate}}
 						cub-divider.full-width(horizontal)
 					.button-login
-						button.flex(
+						button.full-width(
 							cubButton='secondary',
 							icon='assets/images/icons/google.svg',
 							iconSize='16px',
@@ -88,4 +88,9 @@ mixin content
 					a.text-semibold.d-inline-block(
 						(click)='stateNavigate([ PATH?.RESET_PASSWORD ])')
 						| {{ "LABEL.RESET_PASSWORD" | translate }}
+				span
+					| {{ existAccount ? ('LABEL.NOT_YOUR_EMAIL' | translate) : ('LABEL.NO_ACCOUNT' | translate) }}&nbsp;
+					a.text-semibold.d-inline-block(
+						(click)='stateNavigate([ PATH?.SIGN_UP ])')
+						| {{ existAccount ? ('LABEL.GO_BACK' | translate) : ("LABEL.SIGN_UP" | translate) }}
 include patterns/auth.pug
