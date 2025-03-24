@@ -68,6 +68,20 @@ mixin content
 							cub-loading
 						+else
 							| {{ "LABEL.SIGN_IN" | translate }}
+				.layout-column.layout-align-start-center.full-viewport-horizontal.layout-gap-8
+					.layout-row.full-width.layout-align-center-center
+						cub-divider.full-width(horizontal)
+						.continue-with
+							| {{ "LABEL.OR_CONTINUE_WITH" | translate}}
+						cub-divider.full-width(horizontal)
+					.button-login
+						button.flex(
+							cubButton='secondary',
+							icon='assets/images/icons/google.svg',
+							iconSize='16px',
+							[disabled]='isSubmitting',
+							(click)='signInByGoogle()')
+							| {{ "LABEL.SIGN_IN_WITH_GOOGLE" | translate }}
 			.layout-column.layout-gap-8.text-center
 				span
 					| {{ "LABEL.FORGOT_YOUR_PASSWORD" | translate }}&nbsp;

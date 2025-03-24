@@ -42,6 +42,13 @@ import {
 import {
 	AuthBase
 } from './auth-base';
+import { ENVIRONMENT } from '@environments/environment';
+import { ISocialCredential, ISocialProfile, ISocialRequest, IToken } from '../interfaces';
+import _ from 'lodash';
+
+
+declare const google: any;
+declare const gapi: any;
 
 @Unsubscriber()
 @Component({
@@ -65,6 +72,7 @@ export class SignInComponent extends AuthBase
 	protected wrongEmail: string;
 	protected account: Partial<Account> = {};
 	protected signInForm: FormGroup;
+	protected socialProfile: ISocialProfile;
 
 	private _auth2: any;
 
@@ -180,6 +188,94 @@ export class SignInComponent extends AuthBase
 					= false;
 
 				this._cdRef.markForCheck();
+			},
+		});
+	}
+
+	protected signInByGoogle() {
+		gapi.load( 'client', () => {} );
+
+		this.auth2
+			= google.accounts.oauth2.initTokenClient({
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				client_id: ENVIRONMENT.GOOGLE_CLIENT_ID,
+				scope: CONSTANT.GOOGLE_SCOPE,
+				ux_mode: 'popup',
+				callback: this._onGoogleResponse.bind( this ),
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				error_callback: ( response: { type: string } ) => {
+					if ( response.type ) {
+						this._cdRef.markForCheck();
+					};
+				},
+			});
+	}
+
+	private _onGoogleResponse( response: any ) {
+		if ( response.error !== undefined ) {
+			throw response;
+		}
+
+		const accessToken: string
+			= gapi.client.getToken()
+			.access_token;
+
+		this._authService
+		.getGoogleProfile( accessToken )
+		.pipe(
+			finalize( () => {
+				this._cdRef.markForCheck();
+			} ),
+			untilCmpDestroyed( this )
+		)
+		.subscribe({
+			next: ( profile: ISocialProfile ) => {
+				this.socialProfile = profile;
+
+				const token: IToken
+					= {
+						socialID: profile.id,
+						accessToken,
+						type: 'google',
+					};
+				const credential: ISocialRequest
+					= {
+						token,
+						email: profile.email,
+					};
+
+				this._signInSocial( credential );
+			},
+		});
+	}
+
+	private _signInSocial( credential: ISocialRequest ) {
+		this._authService
+		.authWithSocial( credential )
+		.pipe(
+			finalize( () => {
+				this._cdRef.markForCheck();
+			} ),
+			untilCmpDestroyed( this )
+		)
+		.subscribe({
+			next: ( accountAccess: ISocialCredential | string) => {
+				if( _.isString( accountAccess ) ) {
+					this.stateNavigate([ CONSTANT.PATH.SIGN_IN ]);
+
+					super.stateNavigate(
+						[ CONSTANT.PATH.SIGN_UP ],
+						{
+							token: accountAccess as string,
+							email: this.socialProfile.email,
+							name: this.socialProfile.name,
+						}
+					);
+				} else {
+					this.account =
+						( accountAccess as ISocialCredential )
+						.account;
+				}
 			},
 		});
 	}
