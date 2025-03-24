@@ -50,7 +50,7 @@
 					"node_modules/swiper/modules/navigation.min.css",
 					"node_modules/swiper/modules/pagination.min.css",
 					"node_modules/swiper/modules/scrollbar.min.css",
-					"node_modules/locomotive-scroll/dist/locomotive-scroll.min.css",
+					"node_modules/lenis/dist/lenis.css",
 					"node_modules/aos/dist/aos.css",
 					"apps/web/src/scss/libs.scss",
 					"apps/web/src/scss/styles.scss"
@@ -59,7 +59,6 @@
 					"node_modules/swiper/swiper-bundle.min.js",
 					"node_modules/jquery/dist/jquery.min.js",
 					"node_modules/aos/dist/aos.js",
-					"node_modules/locomotive-scroll/dist/locomotive-scroll.min.js",
 					"apps/web/preload-font.js"
 				],
 				"stylePreprocessorOptions": {

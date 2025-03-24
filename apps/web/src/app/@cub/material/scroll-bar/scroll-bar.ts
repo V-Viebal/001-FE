@@ -1,369 +1,355 @@
 import {
-    AfterViewInit,
-    ChangeDetectorRef,
-    ContentChildren,
-    Directive,
-    ElementRef,
-    EventEmitter,
-    HostBinding,
-    HostListener,
-    inject,
-    Input,
-    NgZone,
-    OnDestroy,
-    OnInit,
-    Output,
-    PLATFORM_ID,
-    QueryList,
+	AfterViewInit,
+	ChangeDetectorRef,
+	ContentChildren,
+	Directive,
+	ElementRef,
+	EventEmitter,
+	HostBinding,
+	HostListener,
+	inject,
+	Input,
+	NgZone,
+	OnDestroy,
+	OnInit,
+	Output,
+	PLATFORM_ID,
+	QueryList,
 } from '@angular/core';
 import ResizeObserver from 'resize-observer-polyfill';
 import { startWith } from 'rxjs';
 import _ from 'lodash';
-import LocomotiveScroll from 'locomotive-scroll';
+import Lenis from 'lenis';
 
 import {
-    CoerceBoolean,
-    DefaultValue,
-    DetectScrollDirective,
-    untilCmpDestroyed,
+	CoerceBoolean,
+	DefaultValue,
+	DetectScrollDirective,
+	untilCmpDestroyed,
 } from 'angular-core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { CUBScrollBarViewPortItemDirective } from './scroll-bar-view-port-item.directive';
 
 export enum CUBScrollBarMode {
-    Auto = 'auto',
-    Scroll = 'scroll',
-    Visible = 'visible',
+	Auto = 'auto',
+	Scroll = 'scroll',
+	Visible = 'visible',
 }
 
 @Directive({
-    selector: '[cubScrollBar]',
+	selector: '[cubScrollBar]',
 })
 export class CUBScrollBar
-    extends DetectScrollDirective
-    implements AfterViewInit, OnInit, OnDestroy
+	extends DetectScrollDirective
+	implements AfterViewInit, OnInit, OnDestroy
 {
-    @ContentChildren(CUBScrollBarViewPortItemDirective, { descendants: true })
-    public items: QueryList<CUBScrollBarViewPortItemDirective>;
+	@ContentChildren(CUBScrollBarViewPortItemDirective, { descendants: true })
+	public items: QueryList<CUBScrollBarViewPortItemDirective>;
 
-    @Input() @CoerceBoolean() public deepScroll: boolean;
-    @Input() @CoerceBoolean() public suppress: boolean;
-    @Input() @CoerceBoolean() public suppressX: boolean;
-    @Input() @CoerceBoolean() public suppressY: boolean;
-    @HostBinding('style.--scroll-bar-mode')
-    @Input()
-    @DefaultValue()
-    public mode: CUBScrollBarMode = CUBScrollBarMode.Auto;
+	@Input() @CoerceBoolean() public deepScroll: boolean;
+	@Input() @CoerceBoolean() public suppress: boolean;
+	@Input() @CoerceBoolean() public suppressX: boolean;
+	@Input() @CoerceBoolean() public suppressY: boolean;
+	@HostBinding('style.--scroll-bar-mode')
+	@Input()
+	@DefaultValue()
+	public mode: CUBScrollBarMode = CUBScrollBarMode.Auto;
 
-    @Output() public init: EventEmitter<CUBScrollBar> =
-        new EventEmitter<CUBScrollBar>();
+	@Output() public init: EventEmitter<CUBScrollBar> =
+		new EventEmitter<CUBScrollBar>();
 
-    public readonly elementRef: ElementRef = inject(ElementRef);
-    protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-    protected readonly ngZone: NgZone = inject(NgZone);
-    protected readonly platformId: Object = inject(PLATFORM_ID);
+	public readonly elementRef: ElementRef = inject(ElementRef);
+	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+	protected readonly ngZone: NgZone = inject(NgZone);
+	protected readonly platformId: Object = inject(PLATFORM_ID);
 
-    @HostBinding('attr.scrollBar')
-    protected readonly attrScrollBar: boolean = true;
+	@HostBinding('attr.scrollBar')
+	protected readonly attrScrollBar: boolean = true;
 
-    private _loadItemsThrottle: ReturnType<typeof _.throttle> = _.throttle(
-        () => {
-            this.ngZone.runOutsideAngular(() => {
-                const items: CUBScrollBarViewPortItemDirective[] =
-                    this.items.toArray();
-                for (const i of items ?? []) {
-                    i.checkInViewPort();
-                }
-                this.cdRef.detectChanges();
-            });
-        },
-        17
-    );
+	@HostBinding('style.overflow-x')
+	get overflowX(): string {
+		return this.suppress || this.suppressX ? 'hidden' : 'auto';
+	}
 
-    private readonly _resizeObserver: ResizeObserver = new ResizeObserver(
-        () => {
-            this._loadItemsThrottle.cancel();
-            this._loadItemsThrottle();
-            if (this.scroll) {
-                this.scroll.update();
-            }
-        }
-    );
+	@HostBinding('style.overflow-y')
+	get overflowY(): string {
+		return this.suppress || this.suppressY ? 'hidden' : 'auto';
+	}
 
-    private scroll: LocomotiveScroll | undefined;
+	private _loadItemsThrottle: ReturnType<typeof _.throttle> = _.throttle(
+		() => {
+			this.ngZone.runOutsideAngular(() => {
+				const items: CUBScrollBarViewPortItemDirective[] =
+					this.items?.toArray() || [];
+				for (const i of items) {
+					i.checkInViewPort();
+				}
+				this.cdRef.detectChanges();
+			});
+		},
+		17
+	);
 
-    @HostBinding('attr.deepScroll')
-    get attrDeepScroll(): boolean {
-        return this.deepScroll || undefined;
-    }
+	private readonly _resizeObserver: ResizeObserver = new ResizeObserver(
+		() => {
+			this._loadItemsThrottle.cancel();
+			this._loadItemsThrottle();
+			this.scroll?.resize();
+		}
+	);
 
-    @HostBinding('attr.suppressX')
-    get attrSuppressX(): boolean {
-        return this.suppress === true || this.suppressX === true;
-    }
+	private scroll: Lenis | undefined;
 
-    @HostBinding('attr.suppressY')
-    get attrSuppressY(): boolean {
-        return this.suppress === true || this.suppressY === true;
-    }
+	@HostBinding('attr.deepScroll')
+	get attrDeepScroll(): boolean {
+		return this.deepScroll || undefined;
+	}
 
-    @HostBinding('attr.scrollableX')
-    get attrScrollableX(): boolean {
-        return !this.suppress && !this.suppressX && this.scrollableX;
-    }
+	@HostBinding('attr.suppressX')
+	get attrSuppressX(): boolean {
+		return this.suppress || this.suppressX;
+	}
 
-    @HostBinding('attr.scrollableY')
-    get attrScrollableY(): boolean {
-        return !this.suppress && !this.suppressY && this.scrollableY;
-    }
+	@HostBinding('attr.suppressY')
+	get attrSuppressY(): boolean {
+		return this.suppress || this.suppressY;
+	}
 
-    get nativeElement(): HTMLElement {
-        return this.elementRef.nativeElement;
-    }
+	@HostBinding('attr.scrollableX')
+	get attrScrollableX(): boolean {
+		return (
+			!this.suppress &&
+			!this.suppressX &&
+			this.scrollWidth > this.viewportWidth
+		);
+	}
 
-    get viewportWidth(): number {
-        return this.nativeElement.clientWidth;
-    }
-    get viewportHeight(): number {
-        return this.nativeElement.clientHeight;
-    }
-    get scrollWidth(): number {
-        return (
-            this.scroll?.scroll?.instance?.scroll?.x ||
-            this.nativeElement.scrollWidth
-        );
-    }
-    get scrollHeight(): number {
-        return (
-            this.scroll?.scroll?.instance?.scroll?.y ||
-            this.nativeElement.scrollHeight
-        );
-    }
-    get scrollLeft(): number {
-        return (
-            this.scroll?.scroll?.instance?.scroll?.x ||
-            this.nativeElement.scrollLeft
-        );
-    }
-    get scrollTop(): number {
-        return (
-            this.scroll?.scroll?.instance?.scroll?.y ||
-            this.nativeElement.scrollTop
-        );
-    }
+	@HostBinding('attr.scrollableY')
+	get attrScrollableY(): boolean {
+		return (
+			!this.suppress &&
+			!this.suppressY &&
+			this.scrollHeight > this.viewportHeight
+		);
+	}
 
-    @HostListener('scroll')
-    public triggerScroll() {
-        // Skip native scroll event since Locomotive Scroll handles scrolling
-        if (!this.scroll) {
-            this._loadItemsThrottle.cancel();
-            this._loadItemsThrottle();
-        }
-    }
+	get nativeElement(): HTMLElement {
+		return this.elementRef.nativeElement;
+	}
 
-    ngOnInit() {
-        this.init.emit(this);
-        if (isPlatformBrowser(this.platformId)) {
-            this._initLocomotiveScroll();
-        }
-    }
+	get viewportWidth(): number {
+		return this.nativeElement.clientWidth;
+	}
 
-    ngAfterViewInit() {
-        this._resizeObserver.observe(this.nativeElement);
+	get viewportHeight(): number {
+		return this.nativeElement.clientHeight;
+	}
 
-        // Load items
-        this.items.changes
-            .pipe(startWith(this.items), untilCmpDestroyed(this))
-            .subscribe(() => {
-                this._loadItemsThrottle.cancel();
-                this._loadItemsThrottle();
-                if (this.scroll) {
-                    this.scroll.update();
-                }
-            });
-    }
+	get scrollWidth(): number {
+		return (
+			this.scroll?.dimensions.scrollWidth ||
+			this.nativeElement.scrollWidth
+		);
+	}
 
-    ngOnDestroy() {
-        this._resizeObserver.disconnect();
-        this._loadItemsThrottle.cancel();
-        if (this.scroll) {
-            this.scroll.destroy();
-            this.scroll = undefined;
-        }
-    }
+	get scrollHeight(): number {
+		return (
+			this.scroll?.dimensions.scrollHeight ||
+			this.nativeElement.scrollHeight
+		);
+	}
 
-    public reset() {
-        if (this.scroll) {
-            this.scroll.scrollTo(0, { duration: 0 });
-        } else {
-            this.nativeElement.scrollTo(0, 0);
-        }
-    }
+	get scrollLeft(): number {
+		return this.scroll?.scroll || this.nativeElement.scrollLeft;
+	}
 
-    public scrollBy(options: ScrollToOptions) {
-        if (this.scroll) {
-            const currentX = this.scroll.scroll.instance.scroll.x;
-            const currentY = this.scroll.scroll.instance.scroll.y;
-            this.scroll.scrollTo(
-                (options.left || 0) + currentX,
-                (options.top || 0) + currentY,
-                { duration: 0 }
-            );
-        } else {
-            this.nativeElement.scrollBy(options);
-        }
-    }
+	get scrollTop(): number {
+		return this.scroll?.scroll || this.nativeElement.scrollTop;
+	}
 
-    public scrollTo(options: ScrollToOptions, duration?: number) {
-        if (this.scroll) {
-            this.scroll.scrollTo(options.left || 0, options.top || 0, {
-                duration: duration || 0,
-            });
-        } else if (_.isFinite(duration)) {
-            this._animateScrollTo(
-                options.left,
-                options.top,
-                duration,
-                this.nativeElement
-            );
-        } else {
-            this.nativeElement.scrollTo(options);
-        }
-    }
+	@HostListener('scroll')
+	public triggerScroll(): void {
+		if (!this.scroll) {
+			this._loadItemsThrottle.cancel();
+			this._loadItemsThrottle();
+		}
+	}
 
-    public scrollToLeft(duration?: number) {
-        this.scrollTo({ left: 0 }, duration);
-    }
+	ngOnInit(): void {
+		this.init.emit(this);
+		if (isPlatformBrowser(this.platformId)) {
+			this._initLenis();
+		}
+	}
 
-    public scrollToRight(duration?: number) {
-        this.scrollTo(
-            {
-                left: this.scrollWidth + this.viewportWidth,
-            },
-            duration
-        );
-    }
+	ngAfterViewInit(): void {
+		this._resizeObserver.observe(this.nativeElement);
 
-    public scrollToTop(duration?: number) {
-        this.scrollTo({ top: 0 }, duration);
-    }
+		this.items.changes
+			.pipe(startWith(this.items), untilCmpDestroyed(this))
+			.subscribe(() => {
+				this._loadItemsThrottle.cancel();
+				this._loadItemsThrottle();
+				this.scroll?.resize();
+			});
+	}
 
-    public scrollToBottom(duration?: number) {
-        this.scrollTo(
-            {
-                top: this.scrollHeight + this.viewportHeight,
-            },
-            duration
-        );
-    }
+	ngOnDestroy(): void {
+		this._resizeObserver.disconnect();
+		this._loadItemsThrottle.cancel();
+		this.scroll?.destroy();
+		this.scroll = undefined;
+	}
 
-    public scrollElementIntoView(
-        targetElement: HTMLElement,
-        options: ScrollIntoViewOptions = { behavior: 'smooth' },
-        duration: number = 450
-    ) {
-        if (!this.nativeElement.contains(targetElement)) return;
+	public reset(): void {
+		if (this.scroll) {
+			this.scroll.scrollTo(0, { immediate: true });
+		} else {
+			this.nativeElement.scrollTo(0, 0);
+		}
+	}
 
-        const targetRect: DOMRect = targetElement.getBoundingClientRect();
-        const containerRect: DOMRect =
-            this.nativeElement.getBoundingClientRect();
+	public scrollBy(options: ScrollToOptions): void {
+		if (this.scroll) {
+			const currentScroll = this.scroll.scroll;
+			const target = (options.top || options.left || 0) + currentScroll;
+			this.scroll.scrollTo(target, { immediate: true });
+		} else {
+			this.nativeElement.scrollBy(options);
+		}
+	}
 
-        // Center the element
-        const scrollLeft: number =
-            this.scrollLeft +
-            (targetRect.left - containerRect.left) -
-            (this.viewportWidth / 2 - targetRect.width / 2);
-        const scrollTop: number =
-            this.scrollTop +
-            (targetRect.top - containerRect.top) -
-            (this.viewportHeight / 2 - targetRect.height / 2);
+	public scrollTo(options: ScrollToOptions, duration?: number): void {
+		const target =
+			options.top !== undefined ? options.top : options.left || 0;
+		if (this.scroll) {
+			this.scroll.scrollTo(target, { duration: duration || 0 });
+		} else if (_.isFinite(duration)) {
+			this._animateScrollTo(options.left, options.top, duration);
+		} else {
+			this.nativeElement.scrollTo(options);
+		}
+	}
 
-        if (this.scroll) {
-            this.scroll.scrollTo(scrollLeft, scrollTop, {
-                duration: _.isFinite(duration) ? duration : 0,
-            });
-        } else if (_.isFinite(duration)) {
-            this._animateScrollTo(
-                scrollLeft,
-                scrollTop,
-                duration,
-                this.nativeElement
-            );
-        } else {
-            this.nativeElement.scrollTo({
-                left: scrollLeft,
-                top: scrollTop,
-                ...options,
-            });
-        }
-    }
+	public scrollToLeft(duration?: number): void {
+		this.scrollTo({ left: 0 }, duration);
+	}
 
-    private _initLocomotiveScroll(): void {
-        if (!isPlatformBrowser(this.platformId) || this.scroll) return;
+	public scrollToRight(duration?: number): void {
+		this.scrollTo(
+			{ left: this.scrollWidth - this.viewportWidth },
+			duration
+		);
+	}
 
-        this.ngZone.runOutsideAngular(() => {
-            this.scroll = new LocomotiveScroll({
-                el: this.nativeElement,
-                smooth: true,
-                multiplier: 1,
-                lerp: 0.08, // Very smooth scrolling
-                direction: 'vertical',
-                smartphone: { smooth: true, lerp: 0.1 },
-                tablet: { smooth: true, lerp: 0.1 },
-                reloadOnContextChange: true,
-                scrollFromAnywhere: true,
-            });
+	public scrollToTop(duration?: number): void {
+		this.scrollTo({ top: 0 }, duration);
+	}
 
-            // Sync with viewport items and AOS
-            this.scroll.on('scroll', () => {
-                this._loadItemsThrottle.cancel();
-                this._loadItemsThrottle();
-                if (window.AOS) {
-                    window.AOS.refresh();
-                }
-                this.ngZone.run(() => this.cdRef.markForCheck());
-            });
+	public scrollToBottom(duration?: number): void {
+		this.scrollTo(
+			{ top: this.scrollHeight - this.viewportHeight },
+			duration
+		);
+	}
 
-            // Initial update after a short delay
-            setTimeout(() => {
-                if (this.scroll) {
-                    this.scroll.update();
-                }
-            }, 1000);
-        });
-    }
+	public scrollElementIntoView(
+		targetElement: HTMLElement,
+		options: ScrollIntoViewOptions = { behavior: 'smooth' },
+		duration: number = 450
+	): void {
+		if (!this.nativeElement.contains(targetElement)) return;
 
-    private _animateScrollTo(
-        scrollLeft: number,
-        scrollTop: number,
-        duration: number = 0,
-        element: Element = document.scrollingElement as HTMLElement
-    ) {
-        // Easing function (ease-in-out cubic)
-        function easeInOutCubic(t: number) {
-            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        }
+		const targetRect: DOMRect = targetElement.getBoundingClientRect();
+		const containerRect: DOMRect =
+			this.nativeElement.getBoundingClientRect();
 
-        const startTime: number = performance.now();
-        const startLeft: number = element.scrollLeft;
-        const startTop: number = element.scrollTop;
-        const deltaX: number = scrollLeft - startLeft;
-        const deltaY: number = scrollTop - startTop;
+		const scrollLeft: number =
+			this.scrollLeft +
+			(targetRect.left - containerRect.left) -
+			(this.viewportWidth / 2 - targetRect.width / 2);
+		const scrollTop: number =
+			this.scrollTop +
+			(targetRect.top - containerRect.top) -
+			(this.viewportHeight / 2 - targetRect.height / 2);
 
-        function step(timestamp: number) {
-            const elapsedTime: number = timestamp - startTime;
-            const progress: number = Math.min(elapsedTime / duration, 1);
-            const easedProgress: number = easeInOutCubic(progress);
+		if (this.scroll) {
+			const target =
+				!this.suppress && !this.suppressY ? scrollTop : scrollLeft;
+			this.scroll.scrollTo(target, {
+				duration: _.isFinite(duration) ? duration : 0,
+			});
+		} else if (_.isFinite(duration)) {
+			this._animateScrollTo(scrollLeft, scrollTop, duration);
+		} else {
+			this.nativeElement.scrollTo({
+				left: scrollLeft,
+				top: scrollTop,
+				...options,
+			});
+		}
+	}
 
-            element.scrollLeft = startLeft + deltaX * easedProgress;
-            element.scrollTop = startTop + deltaY * easedProgress;
+	private _initLenis(): void {
+		if (!isPlatformBrowser(this.platformId) || this.scroll) return;
 
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        }
+		this.ngZone.runOutsideAngular(() => {
+			this.scroll = new Lenis({
+				wrapper: this.nativeElement,
+				content: this.nativeElement,
+				lerp: 0.08,
+				smoothWheel: true,
+				duration: 1.2,
+				easing: (t: number) =>
+					Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			});
 
-        window.requestAnimationFrame(step);
-    }
+			const raf = (time: number) => {
+				this.scroll?.raf(time);
+				requestAnimationFrame(raf);
+			};
+			requestAnimationFrame(raf);
+
+			this.scroll.on('scroll', () => {
+				this._loadItemsThrottle.cancel();
+				this._loadItemsThrottle();
+				if (window.AOS) {
+					window.AOS.refresh();
+				}
+				this.ngZone.run(() => this.cdRef.markForCheck());
+			});
+		});
+	}
+
+	private _animateScrollTo(
+		scrollLeft?: number,
+		scrollTop?: number,
+		duration: number = 0,
+		element: Element = this.nativeElement
+	): void {
+		const easeInOutCubic = (t: number) =>
+			t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+		const startTime = performance.now();
+		const startLeft = element.scrollLeft;
+		const startTop = element.scrollTop;
+		const deltaX = (scrollLeft ?? startLeft) - startLeft;
+		const deltaY = (scrollTop ?? startTop) - startTop;
+
+		const step = (timestamp: number) => {
+			const elapsedTime = timestamp - startTime;
+			const progress = Math.min(elapsedTime / duration, 1);
+			const easedProgress = easeInOutCubic(progress);
+
+			element.scrollLeft = startLeft + deltaX * easedProgress;
+			element.scrollTop = startTop + deltaY * easedProgress;
+
+			if (progress < 1) {
+				window.requestAnimationFrame(step);
+			}
+		};
+
+		window.requestAnimationFrame(step);
+	}
 }

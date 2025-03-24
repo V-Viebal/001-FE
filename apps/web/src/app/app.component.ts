@@ -108,7 +108,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
 			const observeAosElements = () => {
 				const aosElements = document.querySelectorAll('[data-aos]');
-				aosElements.forEach((el) => {
+				aosElements.forEach((el) => {console.log(el);
+
 					this.intersectionObserver?.observe(el);
 				});
 			};

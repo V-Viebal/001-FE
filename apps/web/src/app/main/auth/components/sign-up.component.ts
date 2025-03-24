@@ -337,10 +337,9 @@ export class SignUpComponent extends AuthBase
 				const token: IToken = {
 					socialID: profile.id,
 					accessToken,
-					type: 'google',
+					socialType: CONSTANT.SOCIAL_TYPE.GOOGLE,
 				};
 				const credential: ISocialRequest = {
-					email: profile.email,
 					token,
 				};
 

@@ -243,13 +243,12 @@ export class SignInComponent extends AuthBase
 				const token: IToken
 					= {
 						socialID: profile.id,
+						socialType: CONSTANT.SOCIAL_TYPE.GOOGLE,
 						accessToken,
-						type: 'google',
 					};
 				const credential: ISocialRequest
 					= {
-						token,
-						email: profile.email,
+						token
 					};
 
 				this._signInSocial( credential );
@@ -269,8 +268,6 @@ export class SignInComponent extends AuthBase
 		.subscribe({
 			next: ( accountAccess: ISocialCredential | string) => {
 				if( _.isString( accountAccess ) ) {
-					this.stateNavigate([ CONSTANT.PATH.SIGN_IN ]);
-
 					super.stateNavigate(
 						[ CONSTANT.PATH.SIGN_UP ],
 						{
