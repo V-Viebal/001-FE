@@ -212,13 +212,13 @@ h2 {
 	margin: 0;
 	font-size: 48px;
 	font-weight: 600;
-	line-height: 48px;
+	line-height: 1.2em;
 	letter-spacing: -0.02em;
 	text-align: center;
 	padding-bottom: 5px;
 	span {
 		font-size: 48px;
-		line-height: 48px;
+		line-height: 1.2em;
 		letter-spacing: -0.02em;
 		text-align: center;
 	}
@@ -227,7 +227,7 @@ h3 {
 	margin: 0;
 	font-size: 32px;
 	font-weight: 600;
-	line-height: 32px;
+	line-height: 1.2em;
 	letter-spacing: -0.02em;
 	text-align: center;
 }
@@ -235,7 +235,7 @@ h4 {
 	margin: 0;
 	font-size: 24px;
 	font-weight: 600;
-	line-height: 24px;
+	line-height: 1.2em;
 	letter-spacing: -0.02em;
 	text-align: left;
 }
@@ -1488,10 +1488,9 @@ button.swiper-pagination-bullet {
 	}
 }
 .nav-bar {
-	color: $color_7;
 	position: fixed;
+	color: $color_7;
 	width: 100%;
-	top: -110px;
 	z-index: 999;
 	padding: 0;
 	background: rgba(0,0,0,0);
@@ -1746,7 +1745,7 @@ button.swiper-pagination-bullet {
 					}
 					p {
 						margin-left: 16px;
-						line-height: 1em;
+						line-height: 1.2em;
 					}
 				}
 			}
@@ -1924,7 +1923,7 @@ button.swiper-pagination-bullet {
 						background: #5721f2;
 						border-radius: 16px;
 						font-size: 14px;
-						line-height: 1em;
+						line-height: 1.2em;
 						letter-spacing: -0.01em;
 						color: $color_7;
 						&:hover {
@@ -2264,11 +2263,11 @@ button.swiper-pagination-bullet {
 	}
 }
 .nav-bar-white.visible {
-	top: 0 !important;
-	order: 2;
+	top: 0;
 }
 .nav-bar-white--padding-top {
 	background: rgba(0,0,0,0);
+
 	.submenus-container {
 		background: #141517;
 	}
@@ -2406,7 +2405,7 @@ button.swiper-pagination-bullet {
 			font-weight: 600;
 			font-size: 24px;
 			text-align: left;
-			line-height: 1em;
+			line-height: 1.2em;
 			color: $color_1;
 		}
 		h3+p {
@@ -2545,7 +2544,7 @@ button.swiper-pagination-bullet {
 						h4 {
 							font-weight: 400;
 							font-size: 14px;
-							line-height: 1em;
+							line-height: 1.2em;
 							letter-spacing: -0.01em;
 							color: $color_1;
 							padding: 0;
@@ -2565,7 +2564,7 @@ button.swiper-pagination-bullet {
 					margin-top: 24px;
 					font-weight: 400;
 					font-size: 14px;
-					line-height: 1em;
+					line-height: 1.2em;
 					color: $color_1;
 					img {
 						margin-left: 4px;
@@ -2620,7 +2619,7 @@ button.swiper-pagination-bullet {
 				color: $color_1;
 				font-size: 16px;
 				font-weight: 400;
-				line-height: 1em;
+				line-height: 1.2em;
 				letter-spacing: -0.01em;
 				text-decoration: none;
 				transition: all .5s;
@@ -2787,7 +2786,7 @@ button.swiper-pagination-bullet {
 		position: relative;
 		display: flex;
 		justify-content: space-between;
-		line-height: 1em;
+		line-height: 1.2em;
 		font-size: 14px;
 		color: $color_1;
 		font-weight: 400;
@@ -2914,7 +2913,7 @@ button.swiper-pagination-bullet {
 		h3 {
 			white-space: initial;
 			font-size: 18px;
-			line-height: 1em;
+			line-height: 1.2em;
 			letter-spacing: -0.01em;
 			color: $color_1;
 			text-align: left;
@@ -3036,7 +3035,7 @@ button.swiper-pagination-bullet {
 		align-items: center;
 		justify-content: space-between;
 		color: $color_1;
-		line-height: 1em;
+		line-height: 1.2em;
 		font-size: 18px;
 		font-weight: 600;
 	}
@@ -3123,7 +3122,7 @@ button.swiper-pagination-bullet {
 		position: relative;
 		h3 {
 			font-size: 16px;
-			line-height: 1em;
+			line-height: 1.2em;
 			letter-spacing: -0.01em;
 			color: $color_1;
 			text-align: left;
@@ -3500,6 +3499,7 @@ footer {
 		padding: 0 16px;
 	}
 	.colorful-container {
+		padding: 185px 20px 50px;
 		min-height: 709px;
 		overflow: hidden;
 	}
@@ -3752,7 +3752,7 @@ footer {
 				a {
 					line-height: 24px;
 					p {
-						line-height: 1em;
+						line-height: 1.2em;
 					}
 				}
 			}
@@ -3774,7 +3774,7 @@ footer {
 			li {
 				&:not(:last-of-type) {
 					.link-and-dropdown {
-						margin-inline: 16px;
+						padding-inline: 16px;
 						width: calc(100% - 32px);
 						a {
 							letter-spacing: -0.01em;
@@ -3792,7 +3792,6 @@ footer {
 		border-bottom: unset;
 	}
 	.nav-bar.visible {
-		top: 4px;
 		ul {
 			li {
 				&:hover {

@@ -1434,8 +1434,8 @@ $background-color_4: #2f3337;
 		.main-header {
 			height: 758px;
 			min-height: 758px;
-			padding-top: 79px;
-			padding-bottom: 133px;
+			padding-top: 84px;
+			padding-bottom: 48px;
 			padding-inline: 24px;
 			align-items: flex-end;
 			h1+p {
@@ -1610,7 +1610,7 @@ $background-color_4: #2f3337;
 			padding-top: 1px;
 			.gradient-border {
 				&::after {
-					height: 100%;
+					height: calc(100% + 2px);
 				}
 			}
 			.video-container {
@@ -1765,7 +1765,7 @@ $background-color_4: #2f3337;
 		}
 		.code-review__container {
 			.colorful-container {
-				min-height: 750px;
+				min-height: 710px;
 			}
 		}
 		.code-review__container-title {

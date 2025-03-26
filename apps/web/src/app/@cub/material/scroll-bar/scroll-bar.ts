@@ -56,8 +56,7 @@ export class CUBScrollBar
 	@DefaultValue()
 	public mode: CUBScrollBarMode = CUBScrollBarMode.Auto;
 
-	@Output() public init: EventEmitter<CUBScrollBar> =
-		new EventEmitter<CUBScrollBar>();
+	@Output() public init: EventEmitter<CUBScrollBar> = new EventEmitter<CUBScrollBar>();
 
 	public readonly elementRef: ElementRef = inject(ElementRef);
 	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
@@ -69,19 +68,18 @@ export class CUBScrollBar
 
 	@HostBinding('style.overflow-x')
 	get overflowX(): string {
-		return this.suppress || this.suppressX ? 'hidden' : 'auto';
+		return (this.suppress || this.suppressX) ? 'hidden' : 'auto';
 	}
 
 	@HostBinding('style.overflow-y')
 	get overflowY(): string {
-		return this.suppress || this.suppressY ? 'hidden' : 'auto';
+		return (this.suppress || this.suppressY) ? 'hidden' : 'auto';
 	}
 
 	private _loadItemsThrottle: ReturnType<typeof _.throttle> = _.throttle(
 		() => {
 			this.ngZone.runOutsideAngular(() => {
-				const items: CUBScrollBarViewPortItemDirective[] =
-					this.items?.toArray() || [];
+				const items: CUBScrollBarViewPortItemDirective[] = this.items?.toArray() || [];
 				for (const i of items) {
 					i.checkInViewPort();
 				}
@@ -95,11 +93,12 @@ export class CUBScrollBar
 		() => {
 			this._loadItemsThrottle.cancel();
 			this._loadItemsThrottle();
-			this.scroll?.resize();
+			this._scroll?.resize();
 		}
 	);
 
-	private scroll: Lenis | undefined;
+	private _scroll: Lenis | undefined;
+	private _rafId?: number;
 
 	@HostBinding('attr.deepScroll')
 	get attrDeepScroll(): boolean {
@@ -118,20 +117,12 @@ export class CUBScrollBar
 
 	@HostBinding('attr.scrollableX')
 	get attrScrollableX(): boolean {
-		return (
-			!this.suppress &&
-			!this.suppressX &&
-			this.scrollWidth > this.viewportWidth
-		);
+		return !this.suppress && !this.suppressX && this.scrollWidth > this.viewportWidth;
 	}
 
 	@HostBinding('attr.scrollableY')
 	get attrScrollableY(): boolean {
-		return (
-			!this.suppress &&
-			!this.suppressY &&
-			this.scrollHeight > this.viewportHeight
-		);
+		return !this.suppress && !this.suppressY && this.scrollHeight > this.viewportHeight;
 	}
 
 	get nativeElement(): HTMLElement {
@@ -147,30 +138,24 @@ export class CUBScrollBar
 	}
 
 	get scrollWidth(): number {
-		return (
-			this.scroll?.dimensions.scrollWidth ||
-			this.nativeElement.scrollWidth
-		);
+		return this._scroll?.dimensions.scrollWidth || this.nativeElement.scrollWidth;
 	}
 
 	get scrollHeight(): number {
-		return (
-			this.scroll?.dimensions.scrollHeight ||
-			this.nativeElement.scrollHeight
-		);
+		return this._scroll?.dimensions.scrollHeight || this.nativeElement.scrollHeight;
 	}
 
 	get scrollLeft(): number {
-		return this.scroll?.scroll || this.nativeElement.scrollLeft;
+		return this._scroll?.scroll || this.nativeElement.scrollLeft;
 	}
 
 	get scrollTop(): number {
-		return this.scroll?.scroll || this.nativeElement.scrollTop;
+		return this._scroll?.scroll || this.nativeElement.scrollTop;
 	}
 
 	@HostListener('scroll')
 	public triggerScroll(): void {
-		if (!this.scroll) {
+		if (!this._scroll) {
 			this._loadItemsThrottle.cancel();
 			this._loadItemsThrottle();
 		}
@@ -178,9 +163,7 @@ export class CUBScrollBar
 
 	ngOnInit(): void {
 		this.init.emit(this);
-		if (isPlatformBrowser(this.platformId)) {
-			this._initLenis();
-		}
+		this._initLenis();
 	}
 
 	ngAfterViewInit(): void {
@@ -191,40 +174,39 @@ export class CUBScrollBar
 			.subscribe(() => {
 				this._loadItemsThrottle.cancel();
 				this._loadItemsThrottle();
-				this.scroll?.resize();
+				this._scroll?.resize();
 			});
 	}
 
 	ngOnDestroy(): void {
 		this._resizeObserver.disconnect();
 		this._loadItemsThrottle.cancel();
-		this.scroll?.destroy();
-		this.scroll = undefined;
+		this._scroll?.destroy();
+		this._scroll = undefined;
 	}
 
 	public reset(): void {
-		if (this.scroll) {
-			this.scroll.scrollTo(0, { immediate: true });
+		if (this._scroll) {
+			this._scroll.scrollTo(0, { immediate: true });
 		} else {
 			this.nativeElement.scrollTo(0, 0);
 		}
 	}
 
 	public scrollBy(options: ScrollToOptions): void {
-		if (this.scroll) {
-			const currentScroll = this.scroll.scroll;
+		if (this._scroll) {
+			const currentScroll = this._scroll.scroll;
 			const target = (options.top || options.left || 0) + currentScroll;
-			this.scroll.scrollTo(target, { immediate: true });
+			this._scroll.scrollTo(target, { immediate: true });
 		} else {
 			this.nativeElement.scrollBy(options);
 		}
 	}
 
 	public scrollTo(options: ScrollToOptions, duration?: number): void {
-		const target =
-			options.top !== undefined ? options.top : options.left || 0;
-		if (this.scroll) {
-			this.scroll.scrollTo(target, { duration: duration || 0 });
+		const target = options.top !== undefined ? options.top : options.left || 0;
+			if (this._scroll) {
+			this._scroll.scrollTo(target, { duration: duration || 0 });
 		} else if (_.isFinite(duration)) {
 			this._animateScrollTo(options.left, options.top, duration);
 		} else {
@@ -237,10 +219,7 @@ export class CUBScrollBar
 	}
 
 	public scrollToRight(duration?: number): void {
-		this.scrollTo(
-			{ left: this.scrollWidth - this.viewportWidth },
-			duration
-		);
+		this.scrollTo({ left: this.scrollWidth - this.viewportWidth }, duration);
 	}
 
 	public scrollToTop(duration?: number): void {
@@ -248,10 +227,7 @@ export class CUBScrollBar
 	}
 
 	public scrollToBottom(duration?: number): void {
-		this.scrollTo(
-			{ top: this.scrollHeight - this.viewportHeight },
-			duration
-		);
+		this.scrollTo({ top: this.scrollHeight - this.viewportHeight }, duration);
 	}
 
 	public scrollElementIntoView(
@@ -262,8 +238,7 @@ export class CUBScrollBar
 		if (!this.nativeElement.contains(targetElement)) return;
 
 		const targetRect: DOMRect = targetElement.getBoundingClientRect();
-		const containerRect: DOMRect =
-			this.nativeElement.getBoundingClientRect();
+		const containerRect: DOMRect = this.nativeElement.getBoundingClientRect();
 
 		const scrollLeft: number =
 			this.scrollLeft +
@@ -274,10 +249,9 @@ export class CUBScrollBar
 			(targetRect.top - containerRect.top) -
 			(this.viewportHeight / 2 - targetRect.height / 2);
 
-		if (this.scroll) {
-			const target =
-				!this.suppress && !this.suppressY ? scrollTop : scrollLeft;
-			this.scroll.scrollTo(target, {
+		if (this._scroll) {
+			const target = (!this.suppress && !this.suppressY) ? scrollTop : scrollLeft;
+			this._scroll.scrollTo(target, {
 				duration: _.isFinite(duration) ? duration : 0,
 			});
 		} else if (_.isFinite(duration)) {
@@ -292,33 +266,57 @@ export class CUBScrollBar
 	}
 
 	private _initLenis(): void {
-		if (!isPlatformBrowser(this.platformId) || this.scroll) return;
+		if (!isPlatformBrowser(this.platformId) || this._scroll) return;
 
 		this.ngZone.runOutsideAngular(() => {
-			this.scroll = new Lenis({
+			const contentElement = this.nativeElement.querySelector(':scope > *') || this.nativeElement;
+
+			this._scroll = new Lenis({
 				wrapper: this.nativeElement,
-				content: this.nativeElement,
+				content: contentElement,
 				lerp: 0.08,
 				smoothWheel: true,
 				duration: 1.2,
-				easing: (t: number) =>
-					Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 			});
 
 			const raf = (time: number) => {
-				this.scroll?.raf(time);
-				requestAnimationFrame(raf);
+				this._scroll?.raf(time);
+				this._rafId = requestAnimationFrame(raf);
 			};
-			requestAnimationFrame(raf);
 
-			this.scroll.on('scroll', () => {
+			this._scroll.on('scroll', (_e: any) => {
+				if (!this._rafId) {
+					this._rafId = requestAnimationFrame(raf);
+				}
 				this._loadItemsThrottle.cancel();
 				this._loadItemsThrottle();
-				if (window.AOS) {
-					window.AOS.refresh();
-				}
 				this.ngZone.run(() => this.cdRef.markForCheck());
 			});
+
+			const mutationObserver = new MutationObserver(() => {
+				this._scroll?.resize();
+			});
+
+			mutationObserver.observe(this.nativeElement, {
+				childList: true,
+				subtree: true,
+			});
+
+			setTimeout(() => {
+				this._scroll?.resize();
+			}, 100);
+
+			this.ngOnDestroy = () => {
+				mutationObserver.disconnect();
+				this._resizeObserver.disconnect();
+				this._loadItemsThrottle.cancel();
+				if (this._rafId) {
+					cancelAnimationFrame(this._rafId);
+				}
+				this._scroll?.destroy();
+				this._scroll = undefined;
+			};
 		});
 	}
 
@@ -328,8 +326,7 @@ export class CUBScrollBar
 		duration: number = 0,
 		element: Element = this.nativeElement
 	): void {
-		const easeInOutCubic = (t: number) =>
-			t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+		const easeInOutCubic = (t: number) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
 		const startTime = performance.now();
 		const startLeft = element.scrollLeft;
