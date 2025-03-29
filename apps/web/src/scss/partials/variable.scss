@@ -23,7 +23,7 @@ $font-weight-regular: 400;
 
 /* COLORS */
 $color-white: #ffffff; // sass-lint:disable-line hex-length
-$color-black: #000000; // sass-lint:disable-line hex-length
+$color-black: #0b0d0f; // sass-lint:disable-line hex-length
 $color-dark-blue: #0066cc; // sass-lint:disable-line hex-length
 $color-light-blue: #2997ff;
 
@@ -59,9 +59,9 @@ $color-material-destructive-default: #e20016;
 $color-material-destructive-hover: #ff3130;
 $color-material-destructive-disable: #fda29b; // color(red, 300)
 
-$color-text-primary: #262626;
-$color-text-secondary: #666;
-$color-text-tertiary: #b2b2b2;
+$color-text-primary: #eeeff5;
+$color-text-secondary: #d4cece;
+$color-text-tertiary: #5f5e5e;
 $color-text-white: $color-white;
 $color-text-black: $color-black;
 $color-text-blue: $color-dark-blue;

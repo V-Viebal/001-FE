@@ -229,8 +229,8 @@ export class AuthService {
 	): Observable<ISocialCredential> {
 		const params: ApiParams
 			= {
-				email: credential.email,
 				token: _.aesEncrypt( credential.token ),
+				tokenType: credential.token.socialType,
 			};
 
 		return this._apiService
@@ -239,7 +239,11 @@ export class AuthService {
 			this._accountService.storedAccount = result.account;
 
 			this.setStoredAuth({
-				accessToken: result.accountToken,
+				accessToken: result.accessToken,
+				refreshToken: result.refreshToken,
+				tokenType: result.tokenType,
+				expiresAt: moment().utc().add( result.expiresIn, 'seconds' ).unix(),
+				expiresIn: result.expiresIn,
 				accountEmail: result.account?.email,
 			});
 		} ) );

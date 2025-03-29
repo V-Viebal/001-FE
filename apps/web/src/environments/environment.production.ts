@@ -8,7 +8,7 @@ export const ENVIRONMENT = {
 	GOOGLE_CLIENT_ID				: process.env.GOOGLE_CLIENT_ID,
 	APP_URL							: 'https://viebal.top',
 	APP_NAME						: 'Viebal',
-	APP_LOGO						: 'assets/images/logos/logo.png',
+	APP_LOGO						: 'assets/images/logos/logo-horizontal.png',
 	APP_LOGO_VERTICAL				: 'assets/images/logos/logo-vertical.png',
 	APP_VERSION						: appVersion,
 } as const;

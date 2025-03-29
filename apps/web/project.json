@@ -50,9 +50,10 @@
 					"node_modules/swiper/modules/navigation.min.css",
 					"node_modules/swiper/modules/pagination.min.css",
 					"node_modules/swiper/modules/scrollbar.min.css",
+					"node_modules/lenis/dist/lenis.css",
 					"node_modules/aos/dist/aos.css",
-					"apps/web/src/scss/styles.scss",
-					"apps/web/src/scss/libs.scss"
+					"apps/web/src/scss/libs.scss",
+					"apps/web/src/scss/styles.scss"
 				],
 				"scripts": [
 					"node_modules/swiper/swiper-bundle.min.js",
@@ -98,7 +99,10 @@
 					"xlsx",
 					"leader-line-new",
 					"core-js",
-					"locomotive-scroll"
+					"locomotive-scroll",
+					"aos",
+					"swiper",
+					"jquery"
 				]
 			},
 			"configurations": {

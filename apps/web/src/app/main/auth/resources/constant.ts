@@ -11,5 +11,8 @@ export const CONSTANT = {
 		RESET_PASSWORD	: 'reset-password',
 		SIGNUP			: 'signup',
 	},
+	SOCIAL_TYPE: {
+		GOOGLE: 'Google',
+	},
 	GOOGLE_SCOPE: 'profile email',
 } as const;

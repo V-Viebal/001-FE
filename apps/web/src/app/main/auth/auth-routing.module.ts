@@ -8,7 +8,9 @@ import {
 
 import {
 	SignOutComponent,
-	SignInComponent
+	SignInComponent,
+	SignUpComponent,
+	ResetPasswordComponent
 } from './components';
 import {
 	CONSTANT
@@ -22,6 +24,14 @@ const routes: Routes = [
 	{
 		path: CONSTANT.PATH.SIGN_OUT,
 		component: SignOutComponent,
+	},
+	{
+		path: CONSTANT.PATH.SIGN_UP,
+		component: SignUpComponent,
+	},
+	{
+		path: CONSTANT.PATH.RESET_PASSWORD,
+		component: ResetPasswordComponent,
 	},
 ];
 

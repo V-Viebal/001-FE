@@ -7,7 +7,7 @@ mixin content
 		[ngStyle]=`{
 			'max-width.px'
 			: (step == SIGNUP_STEP?.otp)
-			? 404 : '410' }`)
+			? 404 : '430' }`)
 		.layout-column.layout-align-start-center.layout-gap-20.full-width
 			ng-container([ngSwitch]='step')
 				ng-container(*ngSwitchCase='SIGNUP_STEP?.signUp')
@@ -50,7 +50,7 @@ mixin content
 								| {{ "LABEL.OR_CONTINUE_WITH" | translate }}
 							cub-divider.full-width(horizontal)
 						.button-login
-							button.flex-50(
+							button.full-width(
 								cubButton='secondary',
 								icon='assets/images/icons/google.svg',
 								iconSize='16px',

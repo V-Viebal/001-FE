@@ -2,7 +2,7 @@ mixin content
 	.layout.layout-column.ph-20(
 		[ngStyle]=`{
 			'max-width.px'
-			: '410' }`)
+			: '430' }`)
 		.layout-column.layout-align-start-center.layout-gap-20.full-width
 			h2
 				| {{ existAccount ? ('LABEL.ACCOUNT_EXISTS' | translate) : ('LABEL.SIGN_IN' | translate) }}
@@ -68,10 +68,29 @@ mixin content
 							cub-loading
 						+else
 							| {{ "LABEL.SIGN_IN" | translate }}
-			.layout-column.layout-gap-8.text-center
+				.layout-column.layout-align-start-center.full-viewport-horizontal.layout-gap-8
+					.layout-row.full-width.layout-align-center-center
+						cub-divider.full-width(horizontal)
+						.continue-with
+							| {{ "LABEL.OR_CONTINUE_WITH" | translate}}
+						cub-divider.full-width(horizontal)
+					.button-login
+						button.full-width(
+							cubButton='secondary',
+							icon='assets/images/icons/google.svg',
+							iconSize='16px',
+							[disabled]='isSubmitting',
+							(click)='signInByGoogle()')
+							| {{ "LABEL.SIGN_IN_WITH_GOOGLE" | translate }}
+			.layout-column.layout-gap-8.text-center.full-width
 				span
 					| {{ "LABEL.FORGOT_YOUR_PASSWORD" | translate }}&nbsp;
-					a.text-semibold(
+					a.text-semibold.d-inline-block(
 						(click)='stateNavigate([ PATH?.RESET_PASSWORD ])')
 						| {{ "LABEL.RESET_PASSWORD" | translate }}
+				span
+					| {{ existAccount ? ('LABEL.NOT_YOUR_EMAIL' | translate) : ('LABEL.NO_ACCOUNT' | translate) }}&nbsp;
+					a.text-semibold.d-inline-block(
+						(click)='stateNavigate([ PATH?.SIGN_UP ])')
+						| {{ existAccount ? ('LABEL.GO_BACK' | translate) : ("LABEL.SIGN_UP" | translate) }}
 include patterns/auth.pug

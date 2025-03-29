@@ -1,8 +1,8 @@
 import { Account } from '@main/account/interfaces';
+import { IAccountToken } from './auth.interface';
 
-export interface ISocialCredential {
+export interface ISocialCredential extends IAccountToken {
 	account: Account;
-	accountToken: string;
 }
 
 export interface ISocialProfile {
@@ -15,12 +15,11 @@ export interface ISocialProfile {
 }
 
 export interface ISocialRequest {
-	email: string;
 	token: IToken;
 }
 
 export interface IToken {
 	socialID: string;
 	accessToken: string;
-	type: 'google';
+	socialType: string;
 }

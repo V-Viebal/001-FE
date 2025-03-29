@@ -16,12 +16,17 @@ body {
 // Headings
 h1,
 h2,
-h3,
+h3 {
+	margin: 0;
+	color: $color-text-primary;
+	font-weight: $font-weight-bold;
+}
+
 h4,
 h5,
 h6 {
 	margin: 0;
-
+	color: $color-text-primary;
 	font-weight: $font-weight-semibold;
 }
 
@@ -40,42 +45,6 @@ h3,
 h4,
 h5 {
 	font-family: InterHeading;
-}
-
-h1,
-.h1 {
-	font-size: $h1;
-	line-height: 40px;
-}
-
-h2,
-.h2 {
-	font-size: $h2;
-	line-height: 36px;
-}
-
-h3,
-.h3 {
-	font-size: $h3;
-	line-height: 32px;
-}
-
-h4,
-.h4 {
-	font-size: $h4;
-	line-height: 28px;
-}
-
-h5,
-.h5 {
-	font-size: $h5;
-	line-height: 24px;
-}
-
-h6,
-.h6 {
-	font-size: $h6;
-	line-height: 16px;
 }
 
 // Label
@@ -98,7 +67,7 @@ p {
 
 // Link
 a {
-	color: $color-text-blue;
+	color: $color-text-primary;
 
 	text-decoration: 0;
 
@@ -109,7 +78,7 @@ a {
 	&:focus {
 		text-decoration: none;
 
-		color: $color-text-blue;
+		color: $color-text-secondary;
 	}
 
 	&[disabled] {
