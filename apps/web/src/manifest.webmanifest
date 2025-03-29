@@ -1,11 +1,15 @@
 {
-	"name": "",
-	"short_name": "",
+	"name": "Khoá Học Tốt",
+	"short_name": "KHT",
 	"theme_color": "#fafafa",
 	"background_color": "#fafafa",
 	"display": "standalone",
-	"scope": "./",
-	"start_url": "./",
+	"scope": "/",
+	"start_url": "/index.html",
+	"display_override": ["standalone", "window-controls-overlay"],
+	"prefer_related_applications": false,
+	"categories": ["productivity"],
+	"lang": "en-US",
 	"icons": [
 		{
 			"src": "assets/images/logos/pwa/72x72.png",
@@ -38,6 +42,12 @@
 			"purpose": "maskable any"
 		},
 		{
+			"src": "assets/images/logos/pwa/256x256.png",
+			"sizes": "256x256",
+			"type": "image/png",
+			"purpose": "maskable any"
+		},
+		{
 			"src": "assets/images/logos/pwa/384x384.png",
 			"sizes": "384x384",
 			"type": "image/png",
@@ -46,6 +56,12 @@
 		{
 			"src": "assets/images/logos/pwa/512x512.png",
 			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "assets/images/logos/pwa/1024x1024.png",
+			"sizes": "1024x1024",
 			"type": "image/png",
 			"purpose": "maskable any"
 		}

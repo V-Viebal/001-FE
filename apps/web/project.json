@@ -51,15 +51,14 @@
 					"node_modules/swiper/modules/pagination.min.css",
 					"node_modules/swiper/modules/scrollbar.min.css",
 					"node_modules/lenis/dist/lenis.css",
-					"node_modules/aos/dist/aos.css",
 					"apps/web/src/scss/libs.scss",
 					"apps/web/src/scss/styles.scss"
 				],
 				"scripts": [
 					"node_modules/swiper/swiper-bundle.min.js",
 					"node_modules/jquery/dist/jquery.min.js",
-					"node_modules/aos/dist/aos.js",
-					"apps/web/preload-font.js"
+					"apps/web/preload-font.js",
+					"node_modules/@lottiefiles/dotlottie-wc/dist/dotlottie-wc.js"
 				],
 				"stylePreprocessorOptions": {
 					"includePaths": ["apps/web"]
@@ -99,7 +98,7 @@
 					"xlsx",
 					"leader-line-new",
 					"core-js",
-					"locomotive-scroll",
+					"dotlottie-wc",
 					"aos",
 					"swiper",
 					"jquery"

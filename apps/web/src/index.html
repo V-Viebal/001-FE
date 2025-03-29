@@ -107,17 +107,6 @@
 
 	</head>
 	<body style="position: relative">
-		<app></app>
-
-		<!-- Splash Screen with Optimized LCP Animation -->
-		<div class="splash-screen">
-			<dotlottie-wc
-				src="assets/images/icons/splash-icon.lottie"
-				autoplay>
-			</dotlottie-wc>
-		</div>
-
-		<!-- Inline CSS for Splash Screen (Minimized for Performance) -->
 		<style>
 			body {
 				margin: 0;
@@ -138,12 +127,18 @@
 				background-color: #000;
 				transition: opacity 0.3s ease; /* Smooth fade-out */
 			}
-
-			.splash-screen dotlottie-wc {
-				width: 500px; /* Adjust size as needed */
-				height: 500px;
-			}
 		</style>
+
+		<app></app>
+
+		<!-- Splash Screen with Optimized LCP Animation -->
+		<div class="splash-screen">
+			<dotlottie-wc
+				src="assets/images/icons/splash-icon.lottie"
+				autoplay
+				style="width: 500px; height: 500px;">
+			</dotlottie-wc>
+		</div>
 
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {

@@ -5,4 +5,4 @@ Disallow: /not-found
 
 Noindex:/not-found
 
-Sitemap: https://viebal.top/sitemap.xml
+Sitemap: https://kht.viebal.top/sitemap.xml

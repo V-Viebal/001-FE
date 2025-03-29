@@ -59,12 +59,6 @@ import {
 import {
 	HomeComponent
 } from '@main/home/components';
-import {
-	CareerComponent
-} from '@main/career/components';
-import {
-	CourseComponent
-} from '@main/course/components';
 
 import {
 	AppRoutingModules
@@ -117,8 +111,6 @@ export function initializeTranslateService(translate: TranslateService) {
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		CourseComponent,
-		CareerComponent
 	],
 	providers: [
 		{

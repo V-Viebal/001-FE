@@ -1,8 +1,6 @@
 /// <reference path="types.d.ts" />
 
 import {
-	APP_INITIALIZER,
-	Injector,
 	NgModule
 } from '@angular/core';
 import {
@@ -23,7 +21,6 @@ import {
 
 import './lodash-mixin';
 import {
-	appInitializerFactory,
 	CustomEventManager
 } from './loaders';
 import {
@@ -72,7 +69,6 @@ import {
 import {
 	ApiService,
 	CanDeactivateGuardService,
-	LocaleService,
 	MediaService,
 	NetworkService,
 	PageService,
@@ -85,22 +81,15 @@ import {
 	PhoneValidator,
 	UrlValidator
 } from './validators';
-import {
-	I18nLazyTranslateModule
-} from './i18n-lazy-translate.module';
 
 @NgModule({
 	imports: [
 		HttpClientModule,
 		RouterModule,
 		CommonModule,
-
-		I18nLazyTranslateModule,
 	],
 	exports: [
 		CommonModule,
-
-		I18nLazyTranslateModule,
 
 		EmailValidator,
 		PhoneValidator,
@@ -209,12 +198,6 @@ import {
 	],
 	providers: [
 		{
-			provide: APP_INITIALIZER,
-			useFactory: appInitializerFactory,
-			deps: [ Injector ],
-			multi: true,
-		},
-		{
 			provide: EventManager,
 			useClass: CustomEventManager,
 		},
@@ -224,7 +207,6 @@ import {
 		/* Service Inject (Do not remove) */
 		ApiService,
 		CanDeactivateGuardService,
-		LocaleService,
 		MediaService,
 		NetworkService,
 		PageService,
