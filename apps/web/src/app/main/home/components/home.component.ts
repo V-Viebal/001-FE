@@ -1,11 +1,9 @@
 import {
 	Component,
-	ChangeDetectorRef,
 	ChangeDetectionStrategy,
-	OnInit,
 	inject,
-	NgZone,
 	OnDestroy,
+	AfterViewInit,
 } from '@angular/core';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -21,10 +19,8 @@ import { Navigation } from 'swiper/modules';
 	host: { class: 'home' },
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit, OnDestroy {
-	private readonly _cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+export class HomeComponent implements AfterViewInit, OnDestroy {
 	private readonly _platformId: Object = inject(PLATFORM_ID);
-	private readonly _ngZone: NgZone = inject(NgZone);
 
 	private eventListeners: {
 		element: HTMLElement;
@@ -33,10 +29,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}[] = [];
 	private intersectionObservers: IntersectionObserver[] = [];
 
-	ngOnInit() {
-		this._initData();
-		if (isPlatformBrowser(this._platformId)) {
-			this._initFrontendLogic();
+	ngAfterViewInit() {
+		if ( isPlatformBrowser( this._platformId ) ) {
+			this._setupFooter();
+			this._setupMobileMenu();
+			this._setupNavbar();
+			this._initLightEffect();
 		}
 	}
 
@@ -44,24 +42,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 		this._cleanupEventListeners();
 		this.intersectionObservers.forEach((observer) => observer.disconnect());
 		this.intersectionObservers = [];
-	}
-
-	private _initData() {
-		this._cdRef.markForCheck();
-	}
-
-	private _initFrontendLogic(): void {
-		if (!isPlatformBrowser(this._platformId)) return;
-
-		this._ngZone.runOutsideAngular(() => {
-			// Ensure DOM is fully loaded before running logic
-			$(document).ready(() => {
-				this._setupFooter(); // Module 501
-				this._setupMobileMenu(); // Module 732
-				this._setupNavbar(); // Module 951
-				this._initLightEffect();
-			});
-		});
 	}
 
 	// Module 501: Footer Logic

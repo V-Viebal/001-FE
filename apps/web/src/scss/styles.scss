@@ -1564,7 +1564,7 @@ button.swiper-pagination-bullet {
 				}
 				.link-and-dropdown--active {
 					margin-inline: 0;
-					width: 100%;
+					width: 100% !important;
 					padding-inline: 32px;
 				}
 			}
@@ -3500,7 +3500,7 @@ footer {
 	}
 	.colorful-container {
 		padding: 185px 20px 50px;
-		min-height: 709px;
+		min-height: 672px;
 		overflow: hidden;
 	}
 	.card-black {

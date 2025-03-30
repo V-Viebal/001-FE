@@ -6,10 +6,8 @@ import {
 	NgZone,
 	OnDestroy,
 } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
 import { debounce } from 'lodash';
 
 @Component({
@@ -25,7 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	constructor(
 		@Inject(PLATFORM_ID) private platformId: Object,
-		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
 		private ngZone: NgZone
 	) {
@@ -40,9 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	async ngOnInit(): Promise<void> {
 		try {
-			const initialLang = 'vi';
 			if (isPlatformBrowser(this.platformId)) {
-				await firstValueFrom(this.translate.use(initialLang));
 				this.initAOS();
 			}
 			this.translationsLoaded = true;
@@ -114,8 +109,8 @@ export class AppComponent implements OnInit, OnDestroy {
 			const scrollContainer = document.querySelector('[cubScrollBar]');
 			this.intersectionObserver = new IntersectionObserver(
 				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
+					for (const entry of entries) {
+						if ( entry.isIntersecting ) {
 							// Add aos-animate class to trigger AOS animation
 							entry.target.classList.add('aos-animate');
 							// Update AOS's internal state
@@ -143,7 +138,7 @@ export class AppComponent implements OnInit, OnDestroy {
 								);
 							}
 						}
-					});
+					}
 				},
 				{
 					root: scrollContainer,
