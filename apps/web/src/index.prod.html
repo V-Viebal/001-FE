@@ -25,14 +25,6 @@
 			content="học kỹ năng, khóa học đa lĩnh vực, phát triển sự nghiệp, thực hành dự án, xây dựng portfolio, KHT, học online"
 		/>
 
-		<link
-			rel="preload"
-			href="assets/images/icons/splash-icon.lottie"
-			as="fetch"
-			type="application/json"
-			crossorigin
-		/>
-
 		<!-- Canonical URL for SEO (avoid duplicate content) -->
 		<link rel="canonical" href="https://kht.viebal.top" />
 
@@ -107,16 +99,6 @@
 
 	</head>
 	<body style="position: relative">
-		<app></app>
-
-		<!-- Splash Screen with Optimized LCP Animation -->
-		<div class="splash-screen">
-			<dotlottie-wc
-				src="assets/images/icons/splash-icon.lottie"
-				autoplay>
-			</dotlottie-wc>
-		</div>
-
 		<!-- Inline CSS for Splash Screen (Minimized for Performance) -->
 		<style>
 			body {
@@ -144,6 +126,16 @@
 				height: 500px;
 			}
 		</style>
+
+		<app></app>
+
+		<!-- Splash Screen with Optimized LCP Animation -->
+		<div class="splash-screen">
+			<dotlottie-wc
+				src="assets/images/icons/splash-icon.lottie"
+				autoplay>
+			</dotlottie-wc>
+		</div>
 
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
