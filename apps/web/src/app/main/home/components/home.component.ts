@@ -4,14 +4,20 @@ import {
 	OnDestroy,
 	AfterRenderPhase,
 	afterNextRender,
-	NgZone,
 	Inject,
+	PLATFORM_ID
 } from '@angular/core';
-import { PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Unsubscriber } from '@core';
+import {
+	isPlatformBrowser
+} from '@angular/common';
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import {
+	Navigation
+} from 'swiper/modules';
+
+import {
+	Unsubscriber
+} from '@core';
 
 @Unsubscriber()
 @Component({
@@ -32,16 +38,13 @@ export class HomeComponent implements OnDestroy {
 
 	constructor(
 		@Inject(PLATFORM_ID) private _platformId: Object,
-		private _ngZone: NgZone
 	) {
 		afterNextRender(() => {
 			if ( isPlatformBrowser( this._platformId ) ) {
-				this._ngZone.runOutsideAngular(() => {
-					this._setupFooter();
-					this._setupMobileMenu();
-					this._setupNavbar();
-					this._initLightEffect();
-				});
+				this._setupMobileMenu();
+				this._setupNavbar();
+				this._setupFooter();
+				this._initLightEffect();
 			}
 		}, { phase: AfterRenderPhase.MixedReadWrite });
 	}
@@ -243,13 +246,6 @@ export class HomeComponent implements OnDestroy {
 		const navItems = document.querySelectorAll(
 			'.nav-bar__content .right .nvc__left li'
 		);
-		const dropdownItems: HTMLElement[] = [];
-		const submenus = document.querySelectorAll(
-			'.submenus-container .submenu'
-		);
-		const submenuContainer = document.querySelector(
-			'.submenus-container'
-		) as HTMLElement;
 		const nav = document.querySelector('nav') as HTMLElement;
 		const langSwitchers = document.querySelectorAll('.lang-switcher');
 		const toggleRoadbar = document.querySelector(
@@ -260,134 +256,10 @@ export class HomeComponent implements OnDestroy {
 
 		if (
 			!nav ||
-			!submenuContainer ||
-			navItems.length === 0 ||
-			submenus.length === 0
+			navItems.length === 0
 		) {
-			console.error(
-				'Navbar setup failed: Missing required DOM elements',
-				{
-					nav,
-					submenuContainer,
-					navItems: navItems.length,
-					submenus: submenus.length,
-				}
-			);
 			return;
 		}
-
-		// Dropdown items setup
-		navItems.forEach((item) => {
-			const reveal = item.querySelector('.dropdown-reveal');
-			if (reveal) dropdownItems.push(item as HTMLElement);
-		});
-
-		dropdownItems.forEach((item, index) => {
-			const reveal = item.querySelector(
-				'.dropdown-reveal'
-			) as HTMLElement;
-			const listener = () => {
-				console.log('Dropdown mouseenter triggered for item:', item);
-				nav.classList.add('nav-bar-active-bg');
-				dropdownItems.forEach((d) => {
-					const dReveal = d.querySelector(
-						'.dropdown-reveal'
-					) as HTMLElement;
-					dReveal.style.transform = '';
-					dReveal.style.animation = '';
-				});
-				nav.classList.add('nav-bar-white');
-				submenus.forEach((s: HTMLElement) => {
-					s.style.display = 'none';
-					s.classList.remove('active');
-				});
-				navItems.forEach((n) => n.classList.remove('active'));
-				item.classList.add('active');
-				submenuContainer.style.display = 'flex';
-				submenuContainer.style.pointerEvents = 'auto';
-				submenuContainer.style.opacity = '1';
-				const submenu = submenus[index] as HTMLElement;
-				if (submenu) {
-					submenu.style.display = 'flex';
-					submenu.style.opacity = '1';
-				} else {
-					console.warn('No submenu found for index:', index);
-				}
-				reveal.style.animation = 'arrowAnimation .4s';
-				reveal.style.transform = 'rotateX(180deg) rotateY(180deg)';
-			};
-			reveal.addEventListener('mouseenter', listener);
-			this.eventListeners.push({
-				element: reveal,
-				type: 'mouseenter',
-				listener,
-			});
-		});
-
-		navItems.forEach((item, index) => {
-			if (item.classList.contains('no-dropdown')) {
-				const listener = () => {
-					console.log(
-						'No-dropdown mouseenter triggered for item:',
-						item
-					);
-					nav.classList.remove('nav-bar-active-bg');
-					dropdownItems.forEach((d) => {
-						const dReveal = d.querySelector(
-							'.dropdown-reveal'
-						) as HTMLElement;
-						dReveal.style.transform = '';
-						dReveal.style.animation = '';
-					});
-					submenus.forEach((s: HTMLElement) => {
-						s.style.display = 'none';
-						s.classList.remove('active');
-					});
-					navItems.forEach((n) => n.classList.remove('active'));
-					item.classList.add('active');
-					submenuContainer.style.opacity = '0';
-					submenuContainer.style.pointerEvents = 'none';
-					submenuContainer.style.display = 'none';
-					const submenu = submenus[index] as HTMLElement;
-					if (submenu) submenu.style.opacity = '0';
-				};
-				item.addEventListener('mouseenter', listener);
-				this.eventListeners.push({
-					element: item as HTMLElement,
-					type: 'mouseenter',
-					listener,
-				});
-			}
-		});
-
-		const navLeaveListener = (e: Event) => {
-			if ((e.target as Element).closest('nav')) {
-				console.log('Nav mouseleave triggered');
-				nav.classList.remove('nav-bar-active-bg');
-				dropdownItems.forEach((d) => {
-					const dReveal = d.querySelector(
-						'.dropdown-reveal'
-					) as HTMLElement;
-					dReveal.style.transform = '';
-					dReveal.style.animation = '';
-				});
-				submenus.forEach((s: HTMLElement) => {
-					s.style.display = 'none';
-					s.classList.remove('active');
-				});
-				navItems.forEach((n) => n.classList.remove('active'));
-				submenuContainer.style.opacity = '0';
-				submenuContainer.style.pointerEvents = 'none';
-				submenuContainer.style.display = 'none';
-				submenus.forEach((s: HTMLElement) => (s.style.opacity = '0'));
-			}
-		};
-		nav.addEventListener('mouseleave', navLeaveListener);
-		this.eventListeners.push({
-			element: nav,
-			type: 'mouseleave',
-			listener: navLeaveListener,
-		});
 
 		// Language switcher
 		langSwitchers.forEach((switcher: HTMLElement) => {
@@ -635,7 +507,7 @@ export class HomeComponent implements OnDestroy {
 				},
 				{
 					root: null,
-					rootMargin: '200px 0px 0px 0px',
+					rootMargin: '500px 0px 0px 0px',
 					threshold: 0.5,
 				}
 			);

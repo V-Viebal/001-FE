@@ -43,7 +43,7 @@ import { CourseComponent } from '@main/course/components';
 import { AppRoutingModules } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateLoaderService } from './translate-loader.factory';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer, NgOptimizedImage } from '@angular/common';
 
 // Service Worker Registration with environment check
 const ServiceWorkerModule: ModuleWithProviders<SWModule> = SWModule.register(
@@ -89,7 +89,7 @@ export function initializeServiceWorker(
 @NgModule({
 	imports: [
 		CoreModule,
-		BrowserModule.withServerTransition({ appId: 'serverApp' }), // Enable SSR with appId
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -103,6 +103,7 @@ export function initializeServiceWorker(
 		ErrorModule,
 		AuthModule,
 		AppRoutingModules,
+		NgOptimizedImage,
 		ServiceWorkerModule,
 	],
 	declarations: [

@@ -2,13 +2,13 @@ nav.nav-bar.visible
 	.background--empty
 	.nav-bar__content.nav-bar__content--mobile.ui-grid
 		.left
-			a(routerlink='/')
+			a(routerLink='/')
 				.nbc__logo
 					img.logo-desktop(src='/assets/images/logos/logo-horizontal.png', alt='KHT Khoá học tốt')
 		.right
 			.buttons-container
 				.button-container
-					a(routerlink='/sign-up')
+					a(routerLink='/sign-up')
 						button.button.button--round-border.button--main-blue-btn(style='white-space: nowrap') Đăng ký
 			.nvc__right
 				.toggle-roadbar
@@ -16,292 +16,56 @@ nav.nav-bar.visible
 						.toggle-roadbar__hamburger
 	.nav-bar__content.ui-grid
 		.left
-			a(routerlink='/')
+			a(routerLink='/')
 				.nbc__logo
 					img.logo-desktop(src='/assets/images/logos/logo-horizontal.png', alt='KHT Khoá học tốt')
 		.right.right--center
 			ul.nvc__left
-				li
-					a(routerlink='/')
-						p Học viện
-						span.dropdown-reveal
-							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
-							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
-							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 				li.no-dropdown
-					a(routerlink='/learning-paths')
+					a(routerLink='/learning-paths')
 						p Lộ trình học tập
 				li.no-dropdown
-					a(routerlink='/challenges')
+					a(routerLink='/challenges')
 						p Dự án thực hành
 				li.no-dropdown
-					a(routerlink='/pricing')
+					a(routerLink='/pricing')
 						p Bảng giá
 				li.no-dropdown
-					a(routerlink='/community')
+					a(routerLink='/community')
 						p Cộng đồng
-				li
-					a(target='_blank', routerlink='/about-us')
-						p Về chúng tôi
-						span.dropdown-reveal
-							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
-							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
-							img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
 				li.no-dropdown
-					a(routerlink='/faq')
-						p Câu hỏi thường gặp
+					a(routerLink='/about-us')
+						p Cộng đồng
+				li.no-dropdown
+					a(routerLink='/faq')
+						p FAQ
 		.right
 			.nvc__right
 				.button-container
-					a(routerlink='/sign-up')
+					a(routerLink='/sign-up')
 						button.button.button--round-border.button--main-blue-btn(style='white-space: nowrap') Đăng ký
-	.submenus-container
-		.submenus
-			.submenu-container
-				.submenu
-					.all-services
-						h3.page-section-description--smaller
-							| Học mọi kỹ năng bạn muốn
-							br
-							| với KHT - Khoá học tốt
-						p
-							| Từ công nghệ, kinh doanh đến nghệ thuật –
-							br
-							| khám phá và phát triển sự nghiệp của bạn!
-					.submenu__column
-						a(href='index.htm#three-pillars')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-1-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-1.svg')
-							.internal-container
-								p.list-item-content Cách học hiệu quả
-								p.submenu__column__desc Khám phá nền tảng đa lĩnh vực
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a(href='index.htm#real-projects')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-2-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-2.svg')
-							.internal-container
-								p.list-item-content Thực hành dự án thực tế
-								p.submenu__column__desc Học qua trải nghiệm
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a(href='index.htm#code-review')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-3-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-3.svg')
-							.internal-container
-								p.list-item-content Nhận phản hồi từ chuyên gia
-								p.submenu__column__desc Cải thiện kỹ năng nhanh chóng
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a(href='index.htm#practical-experience')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-4-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-4.svg')
-							.internal-container
-								p.list-item-content Xây dựng portfolio chuyên nghiệp
-								p.submenu__column__desc Gây ấn tượng với nhà tuyển dụng
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-					.rounded-container.rounded-container--text.NavOpinion
-						.swiper-wrapper
-							.opinion.swiper-slide
-								div
-									img.img-stars(src='/assets/customs/img/nav-bar/stars.svg')
-									p.opinion-content "Tôi đã học cả lập trình và marketing – rất linh hoạt và thực tế!"
-								.opinion-data
-									picture
-										source(srcset='/assets/customs/img/nav-bar/user1.jpg?v=2', type='image/png')
-										source(srcset='https://invo.academy//assets/customs/img/nav-bar/user1.wepb', type='image/webp')
-										img(src='/assets/customs/img/nav-bar/user1.jpg?v=2', alt='Học kỹ năng đa dạng')
-									.opinion-user
-										h4 Nguyễn Minh Anh
-										p Tốt nghiệp khóa 3 tháng
-										p KHT Khoá học tốt
-							.opinion.swiper-slide
-								div
-									img.img-stars(src='/assets/customs/img/nav-bar/stars.svg')
-									p.opinion-content "Khóa học thiết kế giúp tôi xây dựng portfolio ấn tượng!"
-								.opinion-data
-									picture
-										source(srcset='/assets/customs/img/nav-bar/user2.jpg?v=2', type='image/png')
-										source(srcset='https://invo.academy//assets/customs/img/nav-bar/user2.wepb', type='image/webp')
-										img(src='/assets/customs/img/nav-bar/user2.jpg?v=2', alt='Học kỹ năng đa dạng')
-									.opinion-user
-										h4 Trần Văn Hùng
-										p Tốt nghiệp khóa 2 tháng
-										p KHT Khoá học tốt
-							.opinion.swiper-slide
-								div
-									img.img-stars(src='/assets/customs/img/nav-bar/stars.svg')
-									p.opinion-content "Tôi học kỹ năng mềm và kinh doanh – tự tin hơn bao giờ hết!"
-								.opinion-data
-									picture
-										source(srcset='/assets/customs/img/nav-bar/user3.jpg?v=2', type='image/png')
-										source(srcset='https://invo.academy//assets/customs/img/nav-bar/user3.wepb', type='image/webp')
-										img(src='/assets/customs/img/nav-bar/user3.jpg?v=2', alt='Học kỹ năng đa dạng')
-									.opinion-user
-										h4 Lê Thị Mai
-										p Tốt nghiệp khóa 3 tháng
-										p KHT Khoá học tốt
-						.toggle-opinion
-							button.button-transparent.swiper-button-prev.rotate-left
-								img(src='/assets/customs/img/nav-bar/toggle-right.svg')
-							button.button-transparent.swiper-button-next
-								img(src='/assets/customs/img/nav-bar/toggle-right.svg')
-				.submenu
-					.all-services
-						h3.page-section-description--smaller
-							| Đội ngũ chuyên gia đa lĩnh vực
-							br
-							| hỗ trợ bạn
-						p
-							| Chúng tôi mang đến kinh nghiệm thực tiễn
-							br
-							| từ nhiều ngành nghề để giúp bạn thành công.
-					.submenu__column
-						a(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4', target='_blank')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-1-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-1.svg')
-							.internal-container
-								p.list-item-content Sứ mệnh của chúng tôi
-								p.submenu__column__desc Hành trình của KHT - Khoá học tốt
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a(routerlink='/contact')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-5-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-5.svg')
-							.internal-container
-								p.list-item-content Liên hệ
-								p.submenu__column__desc Hỏi đáp nhanh chóng
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a(routerlink='/careers')
-							.icon-container
-								img.cat-icon.icon-container__non-active(src='/assets/customs/img/nav-bar/platforma-6-active.svg')
-								img.cat-icon.icon-container__active(src='/assets/customs/img/nav-bar/platforma-6.svg')
-							.internal-container
-								p.list-item-content Cơ hội việc làm
-								p.submenu__column__desc Tham gia đội ngũ KHT
-							img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-					a.rounded-container.rounded-container--image(routerlink='/about-us')
-						picture
-							source(srcset='/assets/customs/img/nav-bar/team.webp?v=2', type='image/webp')
-							source(srcset='/assets/customs/img/nav-bar/team.jpg?v=2', type='image/jpg')
-							img.team(src='/assets/customs/img/nav-bar/team.jpg?v=2', alt='Học kỹ năng đa dạng')
-						.gradient
-						.rounded-container--image__text
-							h3 KHT Khoá học tốt
-							p
-								| Khám phá ngay
-								br
-								| và tìm hiểu về KHT.
-						img.arrow-right(src='/assets/customs/img/nav-bar/arrow-right-big.svg')
 	cub-scroll-bar.mobile-menu.mobile-menu--white-bg(suppressx)
 		ul.nvc__left
-			li#howIt.dropdown-container
-				.link-and-dropdown
-					a Học viện
-					span.dropdown-reveal-nav
-						img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
-				.submenu-container.submenu-container-mobile
-					.inner-padding
-						.all-services
-							h3.page-section-description--smaller
-								| Học mọi kỹ năng bạn muốn
-								br
-								| với KHT - Khoá học tốt
-							p
-								| Từ công nghệ, kinh doanh đến nghệ thuật –
-								br
-								| khám phá và phát triển sự nghiệp của bạn!
-						.submenu
-							.submenu__column
-								a.link-mobile-submenu(href='index.htm#three-pillars')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-1.svg')
-									.internal-container
-										p.list-item-content Cách học hiệu quả
-										p.submenu__column__desc Khám phá nền tảng đa lĩnh vực
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-								a.link-mobile-submenu(href='index.htm#real-projects')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-2.svg')
-									.internal-container
-										p.list-item-content Thực hành dự án thực tế
-										p.submenu__column__desc Học qua trải nghiệm
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-								a.link-mobile-submenu(href='index.htm#code-review')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-3.svg')
-									.internal-container
-										p.list-item-content Nhận phản hồi từ chuyên gia
-										p.submenu__column__desc Cải thiện kỹ năng nhanh chóng
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-								a.link-mobile-submenu(href='index.htm#practical-experience')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-4.svg')
-									.internal-container
-										p.list-item-content Xây dựng portfolio chuyên nghiệp
-										p.submenu__column__desc Gây ấn tượng với nhà tuyển dụng
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
 			li
 				.link-and-dropdown
-					a(routerlink='/learning-paths') Lộ trình học tập
+					a(routerLink='/learning-paths') Lộ trình học tập
 			li
 				.link-and-dropdown
-					a(routerlink='/challenges') Dự án thực hành
+					a(routerLink='/challenges') Dự án thực hành
 			li
 				.link-and-dropdown
-					a(routerlink='/pricing') Bảng giá
+					a(routerLink='/pricing') Bảng giá
 			li
 				.link-and-dropdown
-					a(routerlink='/community') Cộng đồng
-			li.dropdown-container
-				.link-and-dropdown
-					a(routerlink='/about-us') Về chúng tôi
-					span.dropdown-reveal-nav
-						img(src='/assets/customs/img/nav-bar/toggle-arrow.svg')
-				.submenu-container.submenu-container-mobile
-					.inner-padding
-						.all-services
-							h3.page-section-description--smaller
-								| Đội ngũ chuyên gia đa lĩnh vực
-								br
-								| hỗ trợ bạn
-							p
-								| Chúng tôi mang đến kinh nghiệm thực tiễn
-								br
-								| từ nhiều ngành nghề để giúp bạn thành công.
-						.submenu
-							.submenu__column
-								a.link-mobile-submenu(href='https://classy-hedgehog-bb8.notion.site/Misja-INVO-Academy-3f418dde60ce4442acb96645881daee4', target='_blank')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-1.svg')
-									.internal-container
-										p.list-item-content Sứ mệnh của chúng tôi
-										p.submenu__column__desc Hành trình của KHT - Khoá học tốt
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-								a.link-mobile-submenu(href='contact/index.htm')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-5.svg')
-									.internal-container
-										p.list-item-content Liên hệ
-										p.submenu__column__desc Hỏi đáp nhanh chóng
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-								a.link-mobile-submenu(routerlink='/careers', target='_blank')
-									img.cat-icon(src='/assets/customs/img/nav-bar/platforma-6.svg')
-									.internal-container
-										p.list-item-content Cơ hội việc làm
-										p.submenu__column__desc Tham gia đội ngũ KHT
-									img(src='/assets/customs/img/nav-bar/arrow-white.svg')
-						a.rounded-container.rounded-container--image(routerlink='/', target='_blank')
-							img(src='/assets/customs/img/nav-bar/team.jpg?v=2')
-							.gradient
-							.rounded-container--image__text
-								h3 KHT Khoá học tốt
-								p
-									| Khám phá ngay
-									br
-									| và tìm hiểu về KHT.
-							img.arrow-right(src='/assets/customs/img/nav-bar/arrow-right-big.svg')
+					a(routerLink='/community') Cộng đồng
 			li
 				.link-and-dropdown
-					a(routerlink='/faq') Câu hỏi thường gặp
+					a(routerLink='/about-us') Về chúng tôi
+			li
+				.link-and-dropdown
+					a(routerLink='/faq') Câu hỏi thường gặp
 			li.white-link
-				a.contact(routerlink='/sign-up') Đăng ký
+				a.contact(routerLink='/sign-up') Đăng ký
 
 section.main-header
 	.text-container
@@ -316,7 +80,7 @@ section.main-header
 			br
 			| Tất cả đều có tại đây để bạn chinh phục!
 		.button-text-container
-			a.button-link(routerlink='/sign-up')
+			a.button-link(routerLink='/sign-up')
 				button.button Bắt đầu ngay
 			.bg
 	.content-container
@@ -339,18 +103,18 @@ section.main-header
 	.net-bg
 		img.image-background(src='/assets/customs/img/header/siatka.svg', alt='Học kỹ năng đa dạng')
 
-section#home-video.video-section
-	.video-container.gradient-border
-		.buttons
-			.buttons-center
-				img.play.shown(src='/assets/customs/img/video-section/play.svg', alt='Học kỹ năng đa dạng')
-				img.fs-mobile(src='/assets/customs/img/video-section/fs-mobile.svg', alt='Học kỹ năng đa dạng')
-			.img-container.img-container--fullscreen
-				img.fullscreen(src='/assets/customs/img/video-section/fullscreen.svg')
-			.img-container.img-container--toggle-audio
-				img.unmute.shown(src='/assets/customs/img/video-section/unmute.svg')
-				img.mute(src='/assets/customs/img/video-section/mute.svg')
-		video(controls='', autoplay='', muted='true', loop='', playsinline='', poster='/assets/customs/video/home/home.jpg?v=2', src='/assets/customs/video/home/home-6.mp4?v=2', type='video/mp4')
+//- section#home-video.video-section
+//- 	.video-container.gradient-border
+//- 		.buttons
+//- 			.buttons-center
+//- 				img.play.shown(src='/assets/customs/img/video-section/play.svg', alt='Học kỹ năng đa dạng')
+//- 				img.fs-mobile(src='/assets/customs/img/video-section/fs-mobile.svg', alt='Học kỹ năng đa dạng')
+//- 			.img-container.img-container--fullscreen
+//- 				img.fullscreen(src='/assets/customs/img/video-section/fullscreen.svg')
+//- 			.img-container.img-container--toggle-audio
+//- 				img.unmute.shown(src='/assets/customs/img/video-section/unmute.svg')
+//- 				img.mute(src='/assets/customs/img/video-section/mute.svg')
+//- 		video(controls='', autoplay='', muted='true', loop='', playsinline='', poster='/assets/customs/video/home/home.jpg?v=2', src='/assets/customs/video/home/home-6.mp4?v=2', type='video/mp4')
 
 section.finding-job
 	.finding-job__container.flex
@@ -504,28 +268,28 @@ section#real-projects.real-projects
 				img.img-up.svg-image(src='/assets/customs/img/big-box/data.svg', alt='Học kỹ năng đa dạng')
 				h4 Tài liệu từ chuyên gia hàng đầu
 
-section.your-learning
-	.gradient-empty
-	.your-learning__title
-		h2 Khám phá kỹ năng bạn yêu thích
-	.your-learning__container.learningL
-		.your-learning__container-wrapper.swiper-wrapper
-			a.your-learning__container-slide.swiper-slide(href='https://kht.viebal.top/paths/oeyuhZegnJMSaitvYmq5', target='_blank')
-				picture
-					source(srcset='/assets/customs/img/swiper2/slide1.webp?v=2', type='image/webp')
-					source(srcset='/assets/customs/img/swiper2/slide1.png?v=2', type='image/png')
-					img.img-slide(src='/assets/customs/img/swiper2/slide1.png?v=2', alt='Học kỹ năng đa dạng')
-				span Lập trình: Xây ứng dụng Spotify
-			a.your-learning__container-slide.swiper-slide(href='https://kht.viebal.top/paths/YMINoABoBytAnSzkOEta', target='_blank')
-				picture
-					source(srcset='/assets/customs/img/swiper2/slide2.webp?v=2', type='image/webp')
-					source(srcset='/assets/customs/img/swiper2/slide2.png?v=2', type='image/png')
-					img.img-slide(src='/assets/customs/img/swiper2/slide2.png?v=2', alt='Học kỹ năng đa dạng')
-				span Thiết kế: Tạo giao diện Netflix
-		.swiper-button-next
-			img.next(src='/assets/customs/img/swiper2/next.png?v=2')
-		.swiper-button-prev
-			img.prev(src='/assets/customs/img/swiper2/next.png?v=2')
+//- section.your-learning
+//- 	.gradient-empty
+//- 	.your-learning__title
+//- 		h2 Khám phá kỹ năng bạn yêu thích
+//- 	.your-learning__container.learningL
+//- 		.your-learning__container-wrapper.swiper-wrapper
+//- 			a.your-learning__container-slide.swiper-slide(href='https://kht.viebal.top/paths/oeyuhZegnJMSaitvYmq5', target='_blank')
+//- 				picture
+//- 					source(srcset='/assets/customs/img/swiper2/slide1.webp?v=2', type='image/webp')
+//- 					source(srcset='/assets/customs/img/swiper2/slide1.png?v=2', type='image/png')
+//- 					img.img-slide(src='/assets/customs/img/swiper2/slide1.png?v=2', alt='Học kỹ năng đa dạng')
+//- 				span Lập trình: Xây ứng dụng Spotify
+//- 			a.your-learning__container-slide.swiper-slide(href='https://kht.viebal.top/paths/YMINoABoBytAnSzkOEta', target='_blank')
+//- 				picture
+//- 					source(srcset='/assets/customs/img/swiper2/slide2.webp?v=2', type='image/webp')
+//- 					source(srcset='/assets/customs/img/swiper2/slide2.png?v=2', type='image/png')
+//- 					img.img-slide(src='/assets/customs/img/swiper2/slide2.png?v=2', alt='Học kỹ năng đa dạng')
+//- 				span Thiết kế: Tạo giao diện Netflix
+//- 		.swiper-button-next
+//- 			img.next(src='/assets/customs/img/swiper2/next.png?v=2')
+//- 		.swiper-button-prev
+//- 			img.prev(src='/assets/customs/img/swiper2/next.png?v=2')
 
 section#code-review.code-review
 	.code-review__container.flex
@@ -656,7 +420,7 @@ section.best-community
 					h4 Hỗ trợ phát triển sự nghiệp
 					p Mẹo tìm việc và cơ hội phát triển trong mọi ngành.
 			.swiper-scrollbar
-		a.button-blue.button-font(routerlink='/community') Tham gia cộng đồng
+		a.button-blue.button-font(routerLink='/community') Tham gia cộng đồng
 
 section#how-it-works.have-prepared
 	.have-prepared__container.flex
@@ -705,7 +469,7 @@ section#how-it-works.have-prepared
 							source(srcset='/assets/customs/img/big-box/mute1.webp?v=2', type='image/webp')
 							source(srcset='/assets/customs/img/big-box/mute1.png?v=2', type='image/png')
 							img.mute-img(src='/assets/customs/img/big-box/mute1.png?v=2', alt='Học kỹ năng đa dạng')
-				a.container-middle__bottom-bc(routerlink='/sign-up')
+				a.container-middle__bottom-bc(routerLink='/sign-up')
 					.container-middle__bottom.card-black.card-black__center(data-aos='fade-up', data-aos-duration='300', data-aos-delay='100')
 						img.svg-last-section(src='/assets/customs/img/big-box/book2.svg', alt='Học kỹ năng đa dạng')
 						div
@@ -735,16 +499,6 @@ section#how-it-works.have-prepared
 						source(src='/assets/customs/img/big-box/the-best.webp?v=2', type='image/webp')
 						img(src='/assets/customs/img/big-box/the-best.png?v=2', alt='Học kỹ năng đa dạng')
 						.gradient-rb--bg
-		.have-prepared__container-big-box.card-black(data-aos='fade-up', data-aos-duration='300', data-aos-delay='')
-			picture
-				source(media='(max-width: 800px)', srcset='/assets/customs/img/big-box/meetups-mobile.webp?v=2', type='image/webp')
-				source(media='(max-width: 800px)', srcset='/assets/customs/img/big-box/meetups-mobile.png?v=2', type='image/png')
-				source(srcset='/assets/customs/img/big-box/meetups.webp?v=2', type='image/webp')
-				img.events-img(src='/assets/customs/img/big-box/meetups.png?v=2', alt='Học kỹ năng đa dạng')
-			.big-box__content
-				img.svg-last-section(src='/assets/customs/img/big-box/calendar.svg', alt='Học kỹ năng đa dạng')
-				h4 Sự kiện với chuyên gia
-				p Tham gia sự kiện, học hỏi từ các chuyên gia hàng đầu!
 
 footer
 	.footer-container.footer-direction
@@ -755,34 +509,33 @@ footer
 					| HỌC VIỆN
 					img.turn-down(src='/assets/customs/img/footer/turn-down.svg', alt='Xem thêm')
 				.description
-					a(href='pricing/index.htm') Bảng giá
-					a(href='https://intercom.help/invo-academy/pl/', target='_blank') Câu hỏi thường gặp
-					a(href='invo-academy-vs-frontend-mentor/index.htm', target='_blank') KHT vs Các nền tảng khác
+					a(routerLink='/pricing') Bảng giá
+					a(routerLink='/faq') Câu hỏi thường gặp
 			.small-dash
 			.footer-container__content-box.footer-direction
 				.category.small-font
 					| NỀN TẢNG
 					img.turn-down(src='/assets/customs/img/footer/turn-down.svg', alt='Xem thêm')
 				.description
-					a(href='index.htm#three-pillars') Cách học hiệu quả
-					a(href='index.htm#home-video') Phương pháp của chúng tôi
-					a(routerlink='/challenges') Dự án thực hành
+					a(href='#three-pillars') Cách học hiệu quả
+					a(href='#home-video') Phương pháp của chúng tôi
+					a(routerLink='/challenges') Dự án thực hành
 			.small-dash
 			.footer-container__content-box.footer-direction
 				.category.small-font
 					| CHỨC NĂNG
 					img.turn-down(src='/assets/customs/img/footer/turn-down.svg', alt='Xem thêm')
 				.description
-					a(href='index.htm#real-projects') Thực hành dự án
-					a(href='index.htm#code-review') Nhận phản hồi
-					a(href='index.htm#practical-experience') Xây dựng portfolio
+					a(href='#real-projects') Thực hành dự án
+					a(href='#code-review') Nhận phản hồi
+					a(href='#practical-experience') Xây dựng portfolio
 			.small-dash
 			.footer-container__content-box.footer-direction
 				.category.small-font
 					| CỘNG ĐỒNG
 					img.turn-down(src='/assets/customs/img/footer/turn-down.svg', alt='Xem thêm')
 				.description
-					a(routerlink='/community') Cộng đồng
+					a(routerLink='/community') Cộng đồng
 					a(href='https://www.facebook.com/', target='_blank') Nhóm Facebook
 					a(href='https://www.facebook.com/', target='_blank') Hướng dẫn
 			.small-dash
@@ -791,24 +544,25 @@ footer
 					| VỀ CHÚNG TÔI
 					img.turn-down(src='/assets/customs/img/footer/turn-down.svg', alt='Xem thêm')
 				.description
-					a(routerlink='/contact') Liên hệ
-					a(routerlink='/about-us') Sứ mệnh của chúng tôi
-					a(routerlink='/about-us') KHT Khoá học tốt
+					a(routerLink='/contact') Liên hệ
+					a(routerLink='/about-us') Sứ mệnh của chúng tôi
+					a(routerLink='/about-us') KHT Khoá học tốt
 		.footer-container__content-contact
 			.contact-social
 				.contact-social__email
 					img.sms(src='/assets/customs/img/footer/sms.svg', alt='Xem thêm')
 					a(href='cdn-cgi/l/email-protection.html')
-						span.__cf_email__(type='email', href='mailto:viebalmail@gmail.com') [viebalmail&#64;gmail.com]
+						span.__cf_email__(type='email', href='mailto:viebalmail@gmail.com') viebalmail&#64;gmail.com
 				.contact-social__portal
 					a(href='https://www.facebook.com', target='_blank')
 						svg.svg-portal.hover-svg(viewbox='0 0 8 17', fill='red', xmlns='http://www.w3.org/2000/svg')
 							path(d='M6.53946 2.82271H8V0.119708C7.74802 0.082875 6.88143 0 5.87218 0C3.76635 0 2.32381 1.40746 2.32381 3.99429V6.375H0V9.39675H2.32381V17H5.1729V9.39746H7.40272L7.75669 6.37571H5.17224V4.29392C5.1729 3.42054 5.39422 2.82271 6.53946 2.82271Z', fill='#EEEFF5')
-					a(href='https://www.linkedin.com', target='_blank')
-						svg.svg-link.hover-svg(viewbox='0 0 16 16', fill='none', xmlns='http://www.w3.org/2000/svg')
-							path(d='M15.9959 15.9998V15.9991H15.9998V10.1048C15.9998 7.22125 15.4022 5 12.1568 5C10.5967 5 9.54967 5.88931 9.12224 6.7324H9.07711V5.2692H6V15.9991H9.20412V10.6861C9.20412 9.28715 9.45942 7.93444 11.1272 7.93444C12.7706 7.93444 12.795 9.5309 12.795 10.7758V15.9998H15.9959Z', fill='#EEEFF5')
-							path(d='M0 5H3.99992V15.9998H0L0 5Z', fill='#EEEFF5')
-							path(d='M1.99996 0C0.895889 0 0 0.891712 0 1.99064C0 3.08956 0.895889 3.99992 1.99996 3.99992C3.10404 3.99992 3.99992 3.08956 3.99992 1.99064C3.99923 0.891712 3.10334 0 1.99996 0Z', fill='#EEEFF5')
+					a(href='https://www.zalo.com', target='_blank')
+						svg.svg-portal.hover-svg(viewbox='0 0 24 24', fill='red', xmlns='http://www.w3.org/2000/svg')
+							path(d='M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.552 17.552a.75.75 0 0 1-1.06 0l-4.243-4.243-4.243 4.243a.75.75 0 0 1-1.06-1.06l4.243-4.243-4.243-4.243a.75.75 0 0 1 1.06-1.06l4.243 4.243 4.243-4.243a.75.75 0 0 1 1.06 1.06l-4.243 4.243 4.243 4.243a.75.75 0 0 1 0 1.06z', fill='#EEEFF5')
+					a(href='https://www.telegram.com', target='_blank')
+						svg.svg-portal.hover-svg(viewbox='0 0 24 24', fill='red', xmlns='http://www.w3.org/2000/svg')
+							path(d='M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.895 17.185c-.133.395-.583.65-1.057.598l-5.657-1.657c-.395-.117-.75-.383-.917-.75L6.75 8.25c-.167-.383.033-.817.417-.95.383-.133.817.033.95.417l3.25 7.083 4.917-4.917c.3-.3.783-.3 1.083 0 .3.3.3.783 0 1.083l-5.5 5.5 5.083 1.5c.383.117.65.517.545.9z', fill='#EEEFF5')
 			.contact-data
 				.contact-data__address
 					.contact-data__address-logo
@@ -823,6 +577,6 @@ footer
 		.footer-container__bottom
 			span.copyright.small-font © KHT - Khoá học tốt 2025 — Đã đăng ký bản quyền.
 			.footer-container__bottom-political
-				a.small-font(href='https://classy-hedgehog-bb8.notion.site/INVO-Academy-terms-d1a565036ca944feb221956c683f658e', target='_blank') Điều khoản và điều kiện
-				a.small-font(href='https://classy-hedgehog-bb8.notion.site/Privacy-Policy-b72b7f2b03724b2a94ec9498aab63c88', target='_blank') Chính sách bảo mật
-				a.small-font(href='https://classy-hedgehog-bb8.notion.site/Terms-of-using-INVO-Academy-projects-license-c600ac8e70334fb0ba53ae9bb5f36d30', target='_blank') Giấy phép dự án
+				a.small-font(href='', target='_blank') Điều khoản và điều kiện
+				a.small-font(href='', target='_blank') Chính sách bảo mật
+				a.small-font(href='', target='_blank') Giấy phép dự án

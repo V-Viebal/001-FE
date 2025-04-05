@@ -1,7 +1,6 @@
 import {
 	Component,
 	Inject,
-	NgZone,
 	OnDestroy,
 	afterNextRender,
 	AfterRenderPhase,
@@ -23,13 +22,10 @@ export class AppComponent implements OnDestroy {
 
 	constructor(
 		@Inject(PLATFORM_ID) private _platformId: Object,
-		private _ngZone: NgZone
 	) {
 		afterNextRender(() => {
 			if ( isPlatformBrowser( this._platformId ) ) {
-				this._ngZone.runOutsideAngular(() => {
-					this.initAOS();
-				});
+				this.initAOS();
 			}
 		}, { phase: AfterRenderPhase.MixedReadWrite });
 	}
