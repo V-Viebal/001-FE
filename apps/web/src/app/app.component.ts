@@ -1,10 +1,11 @@
 import {
 	Component,
 	Inject,
-	OnInit,
-	ChangeDetectorRef,
 	NgZone,
 	OnDestroy,
+	afterNextRender,
+	AfterRenderPhase,
+	ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
@@ -13,39 +14,24 @@ import { debounce } from 'lodash';
 @Component({
 	selector: 'app',
 	templateUrl: './app.pug',
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit, OnDestroy {
-	protected translationsLoaded = false;
+export class AppComponent implements OnDestroy {
 	private intersectionObserver: IntersectionObserver | null = null;
 	private resizeObserver: ResizeObserver | null = null;
 	private mutationObserver: MutationObserver | null = null;
-	private refreshAOSDebounced: () => void;
 
 	constructor(
-		@Inject(PLATFORM_ID) private platformId: Object,
-		private cdr: ChangeDetectorRef,
-		private ngZone: NgZone
+		@Inject(PLATFORM_ID) private _platformId: Object,
+		private _ngZone: NgZone
 	) {
-		if (!isPlatformBrowser(this.platformId)) {
-			this.translationsLoaded = true;
-		}
-
-		this.refreshAOSDebounced = debounce(() => {
-			window.AOS.refresh();
-		}, 100);
-	}
-
-	async ngOnInit(): Promise<void> {
-		try {
-			if (isPlatformBrowser(this.platformId)) {
-				this.initAOS();
+		afterNextRender(() => {
+			if ( isPlatformBrowser( this._platformId ) ) {
+				this._ngZone.runOutsideAngular(() => {
+					this.initAOS();
+				});
 			}
-			this.translationsLoaded = true;
-			this.cdr.detectChanges();
-		} catch (error) {
-			this.translationsLoaded = true;
-			this.cdr.detectChanges();
-		}
+		}, { phase: AfterRenderPhase.MixedReadWrite });
 	}
 
 	ngOnDestroy(): void {
@@ -61,119 +47,113 @@ export class AppComponent implements OnInit, OnDestroy {
 	}
 
 	private initAOS(): void {
-		if (!isPlatformBrowser(this.platformId)) return;
+		if ( !isPlatformBrowser( this._platformId ) ) return;
 
-		this.ngZone.runOutsideAngular(() => {
-			const AOS = (window as any).AOS;
-			if (!AOS) {
-				return;
-			}
+		const AOS = (window as any).AOS;
 
-			AOS.init({
-				duration: 300,
-				once: true,
-				mirror: false,
-				offset: 0,
-				disable: false,
-				startEvent: 'DOMContentLoaded',
-				anchorPlacement: 'top-bottom',
-			});
+		if (!AOS) return;
 
-			// Debug AOS refresh (only log when necessary)
-			window.AOS.refresh = (function (originalRefresh) {
-				return function () {
-					originalRefresh.apply(this, arguments);
-				};
-			})(window.AOS.refresh);
+		AOS.init({
+			duration: 300,
+			once: true,
+			mirror: false,
+			offset: 0,
+			disable: false,
+			startEvent: 'DOMContentLoaded',
+			anchorPlacement: 'top-bottom',
+		});
 
-			const refreshAOS = () => {
-				console.log('Refreshing AOS');
-				AOS.refreshHard();
+		// Debug AOS refresh (only log when necessary)
+		window.AOS.refresh = (function (originalRefresh) {
+			return function () {
+				originalRefresh.apply(this, arguments);
 			};
+		})(window.AOS.refresh);
 
-			// Initialize AOS after DOM is fully loaded
-			const initializeAOS = () => {
-				refreshAOS();
-			};
+		const refreshAOS = () => {
+			AOS.refreshHard();
+		};
 
-			if (
-				document.readyState === 'complete' ||
-				document.readyState === 'interactive'
-			) {
-				initializeAOS();
-			} else {
-				document.addEventListener('DOMContentLoaded', initializeAOS);
-			}
+		// Initialize AOS after DOM is fully loaded
+		const initializeAOS = () => {
+			refreshAOS();
+		};
 
-			// Use IntersectionObserver to trigger AOS animations
-			const scrollContainer = document.querySelector('[cubScrollBar]');
-			this.intersectionObserver = new IntersectionObserver(
-				(entries) => {
-					for (const entry of entries) {
-						if ( entry.isIntersecting ) {
-							// Add aos-animate class to trigger AOS animation
-							entry.target.classList.add('aos-animate');
-							// Update AOS's internal state
-							if (window.AOS) {
-								const aosElements = window.AOS.elements || [];
-								const elementIndex = aosElements.findIndex(
-									(el: any) => el.node === entry.target
-								);
-								if (elementIndex !== -1) {
-									aosElements[elementIndex].animated = true;
-									aosElements[elementIndex].position = {
-										top: entry.boundingClientRect.top,
-										bottom: entry.boundingClientRect.bottom,
-									};
-								} else {
-									AOS.refreshHard();
-								}
-								// Debounced refresh
-								this.refreshAOSDebounced();
-							}
-							// Unobserve the element if AOS is set to animate once
-							if (window.AOS?.config?.once ?? true) {
-								this.intersectionObserver?.unobserve(
-									entry.target
-								);
+		if (
+			document.readyState === 'complete' ||
+			document.readyState === 'interactive'
+		) {
+			initializeAOS();
+		} else {
+			document.addEventListener('DOMContentLoaded', initializeAOS);
+		}
+
+		// Use IntersectionObserver to trigger AOS animations
+		const scrollContainer = document.querySelector('[cubScrollBar]');
+		this.intersectionObserver = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if ( entry.isIntersecting ) {
+						// Add aos-animate class to trigger AOS animation
+						entry.target.classList.add('aos-animate');
+						// Update AOS's internal state
+						if (window.AOS) {
+							const aosElements = window.AOS.elements || [];
+							const elementIndex = aosElements.findIndex(
+								(el: any) => el.node === entry.target
+							);
+							if (elementIndex !== -1) {
+								aosElements[elementIndex].animated = true;
+								aosElements[elementIndex].position = {
+									top: entry.boundingClientRect.top,
+									bottom: entry.boundingClientRect.bottom,
+								};
+							} else {
+								AOS.refreshHard();
 							}
 						}
+						// Unobserve the element if AOS is set to animate once
+						if (window.AOS?.config?.once ?? true) {
+							this.intersectionObserver?.unobserve(
+								entry.target
+							);
+						}
 					}
-				},
-				{
-					root: scrollContainer,
-					rootMargin: '0px',
-					threshold: 0.1,
 				}
-			);
+			},
+			{
+				root: scrollContainer,
+				rootMargin: '0px',
+				threshold: 0.1,
+			}
+		);
 
-			this.resizeObserver = new ResizeObserver(() => {
-				AOS.refreshHard();
-			});
-
-			const observeAosElements = () => {
-				const aosElements = document.querySelectorAll(
-					'[data-aos]:not(.aos-animate)'
-				);
-				aosElements.forEach((el) => {
-					this.intersectionObserver?.observe(el);
-				});
-			};
-
-			this.mutationObserver = new MutationObserver(
-				debounce(() => {
-					observeAosElements();
-				}, 100)
-			);
-
-			this.mutationObserver.observe(document.body, {
-				childList: true,
-				subtree: true,
-			});
-
-			observeAosElements();
-			this.resizeObserver.observe(document.body);
+		this.resizeObserver = new ResizeObserver(() => {
+			AOS.refreshHard();
 		});
+
+		const observeAosElements = () => {
+			const aosElements = document.querySelectorAll(
+				'[data-aos]:not(.aos-animate)'
+			);
+			aosElements.forEach((el) => {
+				this.intersectionObserver?.observe(el);
+			});
+		};
+
+		this.mutationObserver = new MutationObserver(
+			debounce(() => {
+				observeAosElements();
+			}, 100)
+		);
+
+		this.mutationObserver.observe(document.body, {
+			childList: true,
+			subtree: true,
+		});
+
+		observeAosElements();
+		this.resizeObserver.observe(document.body);
 	}
 
 }
