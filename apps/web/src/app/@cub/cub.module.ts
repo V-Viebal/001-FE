@@ -1,20 +1,26 @@
 import {
-	NgModule
+	NgModule,
+	PLATFORM_ID,
+	TransferState,
 } from '@angular/core';
-
 import {
-	I18nLazyTranslateModule
-} from 'angular-core';
+	TranslateLoader,
+	TranslateModule
+} from '@ngx-translate/core';
+import {
+	HttpClient
+} from '@angular/common/http';
+import {
+	TranslateLoaderService
+} from 'app/translate-loader.factory';
 
 @NgModule({
 	imports: [
-		I18nLazyTranslateModule
-		.forChild({
-			prefix: 'CUB',
-			loader: ( lang: string ) => {
-				return import(
-					`./i18n/${lang}.json`
-				);
+		TranslateModule.forChild({
+			loader: {
+				provide: TranslateLoader,
+				useClass: TranslateLoaderService,
+				deps: [ HttpClient, TransferState, PLATFORM_ID ],
 			},
 		}),
 	],

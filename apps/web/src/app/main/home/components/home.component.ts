@@ -3,7 +3,9 @@ import {
 	ChangeDetectionStrategy,
 	inject,
 	OnDestroy,
-	AfterViewInit,
+	AfterRenderPhase,
+	afterNextRender,
+	NgZone,
 } from '@angular/core';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -19,8 +21,9 @@ import { Navigation } from 'swiper/modules';
 	host: { class: 'home' },
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
+export class HomeComponent implements OnDestroy {
 	private readonly _platformId: Object = inject(PLATFORM_ID);
+	private readonly _ngZone: NgZone = inject( NgZone );
 
 	private eventListeners: {
 		element: HTMLElement;
@@ -29,13 +32,17 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 	}[] = [];
 	private intersectionObservers: IntersectionObserver[] = [];
 
-	ngAfterViewInit() {
-		if ( isPlatformBrowser( this._platformId ) ) {
-			this._setupFooter();
-			this._setupMobileMenu();
-			this._setupNavbar();
-			this._initLightEffect();
-		}
+	constructor() {
+		afterNextRender(() => {
+			if ( isPlatformBrowser( this._platformId ) ) {
+				this._ngZone.runOutsideAngular(() => {
+					this._setupFooter();
+					this._setupMobileMenu();
+					this._setupNavbar();
+					this._initLightEffect();
+				});
+			}
+		}, { phase: AfterRenderPhase.MixedReadWrite });
 	}
 
 	ngOnDestroy(): void {
